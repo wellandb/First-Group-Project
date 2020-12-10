@@ -22,7 +22,7 @@ h1 {
 }
 
 /* add space between html parts header, main, footer */
-header, main, footer {
+header, main, nav, footer {
   border-color: white;
   border-style: solid;
   margin: 10px;
