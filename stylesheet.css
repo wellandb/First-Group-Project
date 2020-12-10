@@ -42,3 +42,10 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+/*h1 - Park Ez change color, font and place*/
+.title {
+  color: #3498DB;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
