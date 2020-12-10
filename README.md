@@ -1,4 +1,6 @@
 # DONE
+Create index.html, javascript.js and stylesheet.css (Nadine) <br>
+Add create a title, header, subheader and drop down menu using html, css and javascript (Nadine) <br>
 Add pay iamges (Esi) <br>
 Add links to other pages (Ben) <br>
 
