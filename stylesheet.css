@@ -3,8 +3,10 @@
 body {
   text-align: center;
 }
-
-/*h1 - Park Ez change color, font and place*/
+.jumbotron{
+    text-align: center;
+}
+/*h1 - Park Ez change color, font and place
 .title {
   color: #3498DB;
   text-align: center;
@@ -15,15 +17,15 @@ h1 {
   font-size: 3em
 }
 
-/* style for the pay images */
+ style for the pay images 
 .payImage {
   padding: 10px;
   height: 50px;
 }
 
-/* add space between html parts header, main, footer */
-header, main, nav, footer {
+/* add space between html parts header, main, footer 
+/*header, main, nav, footer {
   border-color: white;
   border-style: solid;
   margin: 10px;
-}
+}/**/
