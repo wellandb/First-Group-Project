@@ -14,38 +14,38 @@
     <title>Park EZ</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style ="background-color: white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="index.html" ><img src="../../res/img/graphics/Website_LogoV2.png" style="max-height:500px; max-width: 200px;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-            <span class="navbar-toggler-icon" style="color:#004AAD" ><i class="fas fa-bars"></i></span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse.navbar-collapse" id="navbarContent" >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html " style = "color: #004AAD;"><span class="fas fa-home" style="padding-right: 5px;"></span>Home</a>
-            </li>
-            <li class="nav-item">
-                <!-- Create about page-->
-                <a class="nav-link" href="#" style = "color: #004AAD;"><i class="fas fa-users" style="padding-right: 5px;"></i>About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="map.html" style = "color: #004AAD;"><i class="fas fa-location-arrow" style="padding-right: 5px;"></i>Locations</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style = "color: #004AAD;">
-                    <i class="far fa-user-circle" style="padding-right: 5px;"></i>
-                    Account</a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                    <li><a class="dropdown-item" href="account.html">Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Tickets</a></li>
-                    <li><a class="dropdown-item" href="#">Summary</a></li>
-                  </ul>
-                </li>
-            </li>
-          </ul>
-       </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html" style = "color: #004AAD;"><i class="fas fa-home" style="padding-right: 5px;"></i>Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style = "color: #004AAD;"><i class="fas fa-users" style="padding-right: 5px;"></i>About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html" style = "color: #004AAD;"><i class="fas fa-location-arrow" style="padding-right: 5px;"></i>Locations</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="account.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"; style = "color: #004AAD">
+              <i class="far fa-user-circle" style="padding-right: 5px;"></i>Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="account.html">Profile</a>
+              <a class="dropdown-item" href="#">Tickets</a>
+              <a class="dropdown-item" href="#">Summary</a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
+
+
+
     
     <!-- <main>
     	TODO: add car picture
