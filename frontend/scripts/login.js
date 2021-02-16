@@ -1,12 +1,28 @@
-import { provider } from "./firebase.js";
+// import { provider } from "./firebase.js";
 
-document.getElementById("btnLogin").addEventListener("click", login);
-var headerName = document.getElementById("name");
-var headerEmail = document.getElementById("email");
+document.getElementById("btn-google").addEventListener("click", login);
+document.getElementById("btn-twitter").addEventListener("click", login);
+document.getElementById("btn-facebook").addEventListener("click", login);
+document.getElementById("btn-apple").addEventListener("click", login);
 
-function login() {
+function login(e) {
 	console.log("Sign In Sequence Initiated");
+	switch (e.target.id) {
+		case "btn-google":
+			var provider = new firebase.auth.GoogleAuthProvider();
+			firebasePopup(provider);
+		case "btn-twitter":
+			var provider = new firebase.auth.TwitterAuthProvider();
+			firebasePopup(provider);
+		case "btn-facebook":
+			var provider = new firebase.auth.FacebookAuthProvider();
+			firebasePopup(provider);
+		// case "btn-apple":
+		// 	var provider = new firebase.auth.AppleAuthProvider();
+	}
+}
 
+function firebasePopup(provider) {
 	firebase
 		.auth()
 		.signInWithPopup(provider)
@@ -20,11 +36,8 @@ function login() {
 			// The signed-in user info.
 			var user = result.user;
 
-			console.log(user);
-			headerName.textContent = "Name: " + user.displayName;
-			headerEmail.textContent = "Email: " + user.email;
+			console.log(user.displayName);
 		})
-
 		.catch((error) => {
 			// Handle Errors here.
 			console.log(error);
