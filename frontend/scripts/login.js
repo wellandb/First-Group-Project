@@ -3,7 +3,6 @@
 document.getElementById("btn-google").addEventListener("click", login);
 document.getElementById("btn-twitter").addEventListener("click", login);
 document.getElementById("btn-facebook").addEventListener("click", login);
-document.getElementById("btn-apple").addEventListener("click", login);
 
 function login(e) {
 	console.log("Sign In Sequence Initiated");
