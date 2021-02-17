@@ -1,0 +1,54 @@
+body {
+	text-align: center;
+}
+.container input {
+	display: none;
+}
+.container {
+	cursor: pointer;
+	padding: 0px 0px;
+}
+.container label{
+	background-color: #ECECEC;
+	text-align: center;
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 4px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+.container input:checked + label{
+	background: #A8A8A8;
+}
+table {
+	text-align: left;
+}
+th, td{
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-right: 5px;
+	padding-left: 25px;
+	font-weight: normal;
+	vertical-align: middle;
+}
+.bold{
+	font-weight: bold;
+}
+.your_stays{
+	margin-top: 10px;
+}
+.your_stays th, td{
+	padding-left: 50px;
+}
+hr {
+	width: 90%;
+	border-width: 2px;
+	border-color: black;
+	margin: 0.1em auto;
+}
+div {
+	text-align: left;
+}
+.your_stays_text {
+	padding-left: 25px;
+}
