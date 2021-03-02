@@ -46,51 +46,63 @@
 	<header>
 		<h1>MY ACCOUNT</h1>
 	</header>
-	<table>
-		<tr>
-			<th class="bold">Name</th>
-			<th>John Doe</th>
-		</tr>
-		<tr>
-			<th class="bold">Email</th>
-			<th>johnd@gmail.com</th>
-		</tr>
-		<tr>
-			<th class="bold">Disabled</th>
-			<th>
-				<form class="container">
-				    <input type="radio" name="disabled" id="yes" value="yes">
-					<label for="yes">YES</label>
-					<input type="radio" name="disabled" id="no" value="no">
-					<label for="no">NO</label>
-				</form>
-			</th>
-		</tr>
-	</table><br>
-	<h2>Your Stays</h2>
-	<div>
-		<span class="your_stays_text">date</span>
-		<hr>
-		<span class="your_stays_text">place</span>
-		<table class="your_stays">
-			<tr>
-				<th class="bold">Cost</th>
-				<th>x pounds</th>
-			</tr>
-			<tr>
-				<th class="bold">Duration</th>
-				<th>x minutes</th>
-			</tr>
-			<tr>
-				<th class="bold">Start</th>
-				<th>start time</th>
-			</tr>
-			<tr>
-				<th class="bold">End</th>
-				<th>End time</th>
-			</tr>
-		</table>
-	</div>
+    <div class="container" style="text-align:center;">
+      <div class="row g-2">
+        <div class="col-6">
+          <div class="p-3"><b>Name</b></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Get name from FB</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3"><b>Email</b></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Get email from FB</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3"><b>Disabled</b></div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">
+		    	<a class="btn btn-secondary" role="button" style = "color: white;background-color: #004AAD;">Yes</a>
+		      	<a class="btn btn-secondary" role = "button" style = "color: white;background-color: #004AAD;">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 style="padding-top: 50px;padding-bottom: 10px;text-align: center;">Your Stays</h2>
+    <p style = "text-align: left; padding-left: 10%"> Insert Date from FB</p>
+    <hr>
+    <p style = "text-align: left;padding-left: 10%"><b>Insert Location from FB</b></p>
+    <div class="container" style="text-align:center;">
+      <div class="row g-2">
+        <div class="col-6">
+          <div class="p-3">Cost</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Get from FB</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Duration</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Get from FB</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Start</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Get from FB</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">End</div>
+        </div>
+        <div class="col-6">
+          <div class="p-3">Get from FB</div>
+        </div>
+      </div>
+    </div>
 	<footer class="footer mt-auto py-3 bg-light">
 		<div class="container">
 		  <span class="text-muted">Place sticky footer content here.</span>
