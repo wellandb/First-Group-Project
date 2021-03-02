@@ -1,8 +1,65 @@
-// import { provider } from "./firebase.js";
-
 document.getElementById("btn-google").addEventListener("click", login);
 document.getElementById("btn-twitter").addEventListener("click", login);
 document.getElementById("btn-facebook").addEventListener("click", login);
+
+var txtEmail = document.getElementById("txt-email");
+var password = document.getElementById("pass-password");
+var password1 = document.getElementById("pass-password1");
+var password2 = document.getElementById("pass-password2");
+
+const loginButton = document.querySelector("#btn-login");
+const signUpButton = document.querySelector("#btn-sign-up");
+const container = document.querySelector(".container");
+
+loginButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	let email = txtEmail.value;
+	let p = password.value;
+
+	container.classList.remove("sign-up-mode");
+
+	firebase
+		.auth()
+		.signInWithEmailAndPassword(email, p)
+		.then((userCredential) => {
+			// Signed in
+			var user = userCredential.user;
+			console.log(user);
+			window.location = "index.html";
+		})
+		.catch((error) => {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log(errorMessage);
+			clearFields();
+		});
+});
+
+signUpButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	container.classList.add("sign-up-mode");
+	console.log(true);
+
+	e.preventDefault();
+	let email = txtEmail.value;
+	let p1 = password1.value;
+	let p2 = password2.value;
+	if (p1 == p2) {
+		firebase
+			.auth()
+			.createUserWithEmailAndPassword(email, p1)
+			.then((userCredential) => {
+				// Signed in
+				var user = userCredential.user;
+			})
+			.catch((error) => {
+				var errorCode = error.code;
+				var errorMessage = error.message;
+			});
+	} else {
+		alert("passwords dont match");
+	}
+});
 
 function login(e) {
 	console.log("Sign In Sequence Initiated");
@@ -16,8 +73,6 @@ function login(e) {
 		case "btn-facebook":
 			var provider = new firebase.auth.FacebookAuthProvider();
 			firebasePopup(provider);
-		// case "btn-apple":
-		// 	var provider = new firebase.auth.AppleAuthProvider();
 	}
 }
 
@@ -47,4 +102,9 @@ function firebasePopup(provider) {
 			// The firebase.auth.AuthCredential type that was used.
 			var credential = error.credential;
 		});
+}
+
+function clearFields() {
+	txtEmail.value = "";
+	password.value = "";
 }
