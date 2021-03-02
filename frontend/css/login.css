@@ -46,6 +46,16 @@ input {
 	grid-template-columns: 1fr;
 }
 
+.container.sign-up-mode form.sign-in-form {
+	z-index: 1;
+	opacity: 0;
+}
+
+.container.sign-up-mode form.sign-up-form {
+	z-index: 2;
+	opacity: 1;
+}
+
 /* FIELDS ________________________________________________________________________________________________ */
 form {
 	display: flex;
