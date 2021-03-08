@@ -2,13 +2,14 @@ document.getElementById("btn-google").addEventListener("click", login);
 document.getElementById("btn-twitter").addEventListener("click", login);
 document.getElementById("btn-facebook").addEventListener("click", login);
 
-var txtEmail = document.getElementById("txt-email");
-var password = document.getElementById("pass-password");
-var password1 = document.getElementById("pass-password1");
-var password2 = document.getElementById("pass-password2");
+const txtEmail = document.getElementById("txt-email");
+const password = document.getElementById("pass-password");
+const password1 = document.getElementById("pass-password1");
+const password2 = document.getElementById("pass-password2");
 
 const loginButton = document.querySelector("#btn-login");
 const signUpButton = document.querySelector("#btn-sign-up");
+const errorLog = document.querySelector("#error-text");
 const container = document.querySelector(".container");
 
 loginButton.addEventListener("click", (e) => {
@@ -31,6 +32,7 @@ loginButton.addEventListener("click", (e) => {
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			console.log(errorMessage);
+			errorLog.innerHTML = errorMessage;
 			clearFields();
 		});
 });
@@ -38,7 +40,6 @@ loginButton.addEventListener("click", (e) => {
 signUpButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	container.classList.add("sign-up-mode");
-	console.log(true);
 
 	e.preventDefault();
 	let email = txtEmail.value;
@@ -51,13 +52,16 @@ signUpButton.addEventListener("click", (e) => {
 			.then((userCredential) => {
 				// Signed in
 				var user = userCredential.user;
+				window.location = "index.html";
 			})
 			.catch((error) => {
 				var errorCode = error.code;
 				var errorMessage = error.message;
+				errorLog.innerHTML = errorMessage;
+				// clearFields();
 			});
 	} else {
-		alert("passwords dont match");
+		errorLog.innerHTML = "Passwords don't match!";
 	}
 });
 
@@ -91,6 +95,7 @@ function firebasePopup(provider) {
 			var user = result.user;
 
 			console.log(user.displayName);
+			window.location = "index.html";
 		})
 		.catch((error) => {
 			// Handle Errors here.
