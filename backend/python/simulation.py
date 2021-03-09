@@ -32,16 +32,18 @@ win.blit(pygame.transform.scale(bg, (500,600)),(0,0))
 carPark = [['' for i in range(12)] for j in range(4)]
 # j = 20, 200, 250, 420
 # i = 110, +30
+carimage = pygame.image.load("carImage.png")
+
 for i in range(12):
     for j in range(4):
         if j == 0:
-            carPark[j][i] = (20, 110+(40*i))
+            carPark[j][i] = (15, 70+(35*i))
         elif j == 1:
-            carPark[j][i] = (200, 110+(40*i))
+            carPark[j][i] = (180, 70+(35*i))
         elif j == 2:
-            carPark[j][i] = (250, 110+(40*i))
+            carPark[j][i] = (250, 70+(35*i))
         elif j == 3:
-            carPark[j][i] = (410, 110+(40*i))
+            carPark[j][i] = (410, 70+(35*i))
 
 # Car park taken spots
 carParkTaken = [['' for i in range(12)] for j in range(4)]
@@ -55,6 +57,8 @@ carParkTaken = [['' for i in range(12)] for j in range(4)]
 # Car test
 car1 = randomCar()
 car1.generateRandomSpot(win, carPark, carParkTaken)
+
+
 
 # setting up clock
 clock = pygame.time.Clock()
