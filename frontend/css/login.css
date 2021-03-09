@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@5x00&display=swap");
 
 * {
 	padding: 0;
@@ -129,7 +129,7 @@ h2 {
 /* LOGIN BUTTON ________________________________________________________________________________________________ */
 
 .btn {
-	width: 150px;
+	width: 140px;
 	height: 49px;
 	border: none;
 	outline: none;
@@ -148,7 +148,9 @@ h2 {
 	color: white;
 }
 
-.error {
+.error,
+.error2 {
+	font-size: 0.9rem;
 	color: #db103c;
 }
 

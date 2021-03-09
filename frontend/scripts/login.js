@@ -1,15 +1,20 @@
 document.getElementById("btn-google").addEventListener("click", login);
 document.getElementById("btn-twitter").addEventListener("click", login);
 document.getElementById("btn-facebook").addEventListener("click", login);
+document
+	.querySelector("#btn-sign-up-screen")
+	.addEventListener("click", nextScreen);
 
 const txtEmail = document.getElementById("txt-email");
+const txtEmailSignup = document.getElementById("sign-up-email");
 const password = document.getElementById("pass-password");
 const password1 = document.getElementById("pass-password1");
 const password2 = document.getElementById("pass-password2");
 
 const loginButton = document.querySelector("#btn-login");
 const signUpButton = document.querySelector("#btn-sign-up");
-const errorLog = document.querySelector("#error-text");
+const errorLog = document.querySelector(".error");
+const errorLog2 = document.querySelector(".error2");
 const container = document.querySelector(".container");
 
 loginButton.addEventListener("click", (e) => {
@@ -41,8 +46,7 @@ signUpButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	container.classList.add("sign-up-mode");
 
-	e.preventDefault();
-	let email = txtEmail.value;
+	let email = txtEmailSignup.value;
 	let p1 = password1.value;
 	let p2 = password2.value;
 	if (p1 == p2) {
@@ -57,13 +61,18 @@ signUpButton.addEventListener("click", (e) => {
 			.catch((error) => {
 				var errorCode = error.code;
 				var errorMessage = error.message;
-				errorLog.innerHTML = errorMessage;
+				errorLog2.innerHTML = errorMessage;
 				// clearFields();
 			});
 	} else {
-		errorLog.innerHTML = "Passwords don't match!";
+		errorLog2.innerHTML = "Passwords don't match!";
 	}
 });
+
+function nextScreen(e) {
+	e.preventDefault();
+	container.classList.add("sign-up-mode");
+}
 
 function login(e) {
 	console.log("Sign In Sequence Initiated");
