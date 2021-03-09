@@ -6,14 +6,14 @@ from firebase_admin import firestore
 # Fetch the service account key JSON file contents
 cred = credentials.Certificate('/home/csimage/GitRepos/first_group_project/database/private_key.json')
 firebase_admin.initialize_app(cred, {
-  'projectId': "parkez-database"
+  'projectId': "park-ez-36240"
 })
 
 db = firestore.client()
 
 doc_ref = db.collection(u'userData').document(u'janedoe')
 doc_ref.set({
-	u'email': u'janedoe@janedoe.janedoe',
+    u'email': u'janedoe@janedoe.janedoe',
     u'first_name': u'Jane',
     u'last_name': u'Doe',
     u'plate_number': u'XXXXXXX',
@@ -22,7 +22,7 @@ doc_ref.set({
 
 doc_ref = db.collection(u'userTicket').document(u'exampleTicket')
 doc_ref.set({
-	u'userId': u'janedoe',
+    u'userId': u'janedoe',
     u'parking_location': u'XX',
     u'start_time': u'00:00',
     u'end_time': u'00:00',
@@ -31,14 +31,14 @@ doc_ref.set({
 
 doc_ref = db.collection(u'carParkSpaces').document(u'exampleDoc')
 doc_ref.set({
-	u'carparkId': u'A',
+    u'carparkId': u'A',
     u'taken': u'0',
     u'isForDisabled': u'00'
 })
 
 doc_ref = db.collection(u'carParkData').document(u'exampleCarPark(A)')
 doc_ref.set({
-	u'name': u'A',
+    u'name': u'A',
     u'location': u'xxxxx',
     u'parking_entrance': u'xxxxxxx',
     u'parking_exit': u'xxxxxxx',
