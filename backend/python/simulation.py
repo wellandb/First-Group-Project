@@ -30,9 +30,7 @@ win.blit(pygame.transform.scale(bg, (500,600)),(0,0))
 
 # Car park location array
 carPark = [['' for i in range(12)] for j in range(4)]
-# j = 20, 200, 250, 420
-# i = 110, +30
-carimage = pygame.image.load("carImage.png")
+
 
 for i in range(12):
     for j in range(4):
@@ -48,16 +46,10 @@ for i in range(12):
 # Car park taken spots
 carParkTaken = [['' for i in range(12)] for j in range(4)]
 
-# for i in range(0,600,10):
-#     for j in range(0,500,10):
-#         pygame.draw.line(win, red, (j,0), (j,600))
-#         pygame.draw.line(win, red, (0,i), (500,i))
-
 
 # Car test
 car1 = randomCar()
 car1.generateRandomSpot(win, carPark, carParkTaken)
-
 
 
 # setting up clock
