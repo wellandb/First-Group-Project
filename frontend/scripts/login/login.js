@@ -33,8 +33,8 @@ loginButton.addEventListener("click", (e) => {
 			// Signed in
 			var user = userCredential.user;
 			console.log(user);
-			localStorage.setItem("currentUser", result.email);
-			window.location = "index.html";
+			localStorage.setItem("currentUser", user.email);
+			window.location = "../index.html";
 		})
 		.catch((error) => {
 			var errorCode = error.code;
