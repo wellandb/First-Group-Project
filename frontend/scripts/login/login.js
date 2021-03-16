@@ -17,6 +17,8 @@ const errorLog = document.querySelector(".error");
 const errorLog2 = document.querySelector(".error2");
 const container = document.querySelector(".container");
 
+var db = firebase.firestore();
+
 loginButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	let email = txtEmail.value;
@@ -31,6 +33,7 @@ loginButton.addEventListener("click", (e) => {
 			// Signed in
 			var user = userCredential.user;
 			console.log(user);
+			localStorage.setItem("currentUser", result.email);
 			window.location = "index.html";
 		})
 		.catch((error) => {
@@ -56,7 +59,10 @@ signUpButton.addEventListener("click", (e) => {
 			.then((userCredential) => {
 				// Signed in
 				var user = userCredential.user;
-				window.location = "index.html";
+				console.log(user);
+				localStorage.setItem("currentUser", user.email);
+				localStorage.setItem("userObject", JSON.stringify(user));
+				window.location = "signUp.html";
 			})
 			.catch((error) => {
 				var errorCode = error.code;
@@ -95,26 +101,32 @@ function firebasePopup(provider) {
 		.signInWithPopup(provider)
 		.then((result) => {
 			/** @type {firebase.auth.OAuthCredential} */
-			var credential = result.credential;
-
-			// This gives you a Google Access Token. You can use it to access the Google API.
-			var token = credential.accessToken;
 
 			// The signed-in user info.
 			var user = result.user;
+			localStorage.setItem("currentUser", user.email);
+			localStorage.setItem("userObject", JSON.stringify(user));
+			var docRef = db.collection("userData").doc(user.email);
 
-			console.log(user.displayName);
-			window.location = "index.html";
+			docRef
+				.get()
+				.then((doc) => {
+					if (doc.exists) {
+						console.log("Document data:", doc.data());
+						window.location = "../index.html";
+					} else {
+						// doc.data() will be undefined in this case
+						console.log("No such document!");
+						window.location = "signUp.html";
+					}
+				})
+				.catch((error) => {
+					console.log("Error getting document:", error);
+				});
 		})
 		.catch((error) => {
 			// Handle Errors here.
 			console.log(error);
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			// The email of the user's account used.
-			var email = error.email;
-			// The firebase.auth.AuthCredential type that was used.
-			var credential = error.credential;
 		});
 }
 
