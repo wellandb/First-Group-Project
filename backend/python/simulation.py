@@ -64,7 +64,7 @@ while run:
     for event in pygame.event.get():
         # bomb out of loop if quit
         if event.type == pygame.QUIT:
-            run = True
+            run = False
 
     pygame.display.update()
 #quit program
