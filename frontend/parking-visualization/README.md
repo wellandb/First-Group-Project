@@ -1,8 +1,13 @@
 # DONE
+
 Just a scratch for drawing the parking given an encoded grid/map.
+<br>• Consider moving it to a js file.
+<br>• Add nav bar
+<br>• Add footer
+<br>• Link to index.html and other pages
 
 # TODO
-•  Consider moving it to a js file.
+
 <br> • Connect with the database.
 <br> • Add listeners for updates in the database after talking about the connection with Nadine.
 <br> • Draw the path to the closest free space - you should make direction checks for this (LRUP).
