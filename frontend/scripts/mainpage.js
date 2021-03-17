@@ -38,9 +38,7 @@ const A5 = document.getElementById("five+");
 const carParkA_Prices = db.collection("prices").doc("c3mkCBrcCtxyfv6LFOBI");
 carParkA_Prices.get().then((doc) => {
     if (doc.exists) {
-        console.log(doc.data().half);
         Ahalf.innerText = doc.data().half;
-        console.log(doc.data().one);
         A1.innerText = doc.data().one;
         A2.innerText = doc.data().two;
         A3.innerText = doc.data().three;
