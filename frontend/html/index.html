@@ -12,13 +12,14 @@
      <!-- FIREBASE PACKAGES -->
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
-    <script src="frontend/scripts/firebase.js"></script>
+    <script src="../scripts/firebase.js"></script>
 
-    <title>Park EZ</title>
+
+    <title >Park EZ</title>
   </head>
   <body>
 
-    <script type="module" src="../database/mainPage.js"></script>
+    <!-- <script type="module" src="../database/mainPage.js"></script> -->
     
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
       <a class="navbar-brand" href="index.html" ><img src="../../res/img/graphics/Website_LogoV2.png" style="max-height:500px; max-width: 200px;"></a>
@@ -61,37 +62,31 @@
       </ul>
       </div>
     </div>
-    <h5 style="padding-top: 50px;padding-bottom: 10px;text-align: center;">Get Cark Park Name from Firebase</h5>
+    <h5 style="padding-top: 50px;padding-bottom: 10px;text-align: center;"><span id ="location"></span></h5>
     <div class="container" style="text-align:center;">
       <div class="row g-2">
         <div class="col-6">
           <div class="p-3">Free Spaces</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get from FB</div>
+          <div class="p-3" id="free"></div>
         </div>
         <div class="col-6">
           <div class="p-3">Taken Spaces</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get from FB</div>
+          <div class="p-3" id="taken"></div>
         </div>
         <div class="col-6">
           <div class="p-3">Capacity</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get from FB</div>
-        </div>
-        <div class="col-6">
-          <div class="p-3">Distance</div>
-        </div>
-        <div class="col-6">
-          <div class="p-3">Get from FB</div>
+          <div class="p-3" id="total"></div>
         </div>
       </div>
     </div>
     <div class="container-fluid" style="text-align: center;">
-      <a class="btn btn-primary" href="#" role="button" style="background-color: #004AAD; color: white;">Park at ...</a>
+      <a class="btn btn-primary" href="#" role="button" style="background-color: #004AAD; color: white;" id="park"></a>
       <a class="btn btn-primary" href="map.html" role="button" style="background-color: #004AAD; color: white;">View Map</a>
       <h5 style="padding-top: 50px;padding-bottom: 10px; text-align: center;">Get Cark Park Name from Firebase</h5>
     </div>
@@ -107,41 +102,41 @@
           <div class="p-3">30 minutes</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get Price from FB</div>
+          <div class="p-3" id = "half"></div>
         </div>
         <div class="col-6">
           <div class="p-3">1 Hour</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get Price from FB</div>
+          <div class="p-3" id = "one"></div>
         </div>
         <div class="col-6">
           <div class="p-3">2 Hours</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get Price from FB</div>
+          <div class="p-3" id= "two"></div>
         </div>
         <div class="col-6">
           <div class="p-3">3 Hours</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get Price from FB</div>
+          <div class="p-3" id = "three"></div>
         </div>
         <div class="col-6">
           <div class="p-3">4 Hours</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get Price from FB</div>
+          <div class="p-3" id = "four"></div>
         </div>
         <div class="col-6">
           <div class="p-3">5 Hours +</div>
         </div>
         <div class="col-6">
-          <div class="p-3">Get Price from FB</div>
+          <div class="p-3" id = "five+"></div>
         </div>
       </div>
     </div>
-   
+   <script src= "../scripts/mainpage.js"></script>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
         <span class="text-muted">
