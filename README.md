@@ -1,5 +1,5 @@
 # DONE
-Created the frontend of all the pages and fixed their responsiveness(Nadine) <br>
+Created the frontend of all the pages(except about us and part of the summary page) and fixed their responsiveness(Nadine) <br>
 Connected the pages to the database(Nadine) <br>
 Created the parking visualization javascript(Esi)<br>
 Wrote Dykstra's algorithm(Esi)<br>
