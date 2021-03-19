@@ -10,8 +10,10 @@ buttonYes.addEventListener("click", setSelected);
 buttonNo.addEventListener("click", setSelected);
 
 var db = firebase.firestore();
-var user = JSON.parse(localStorage.getItem("userObject"));
-
+let user = JSON.parse(sessionStorage.getItem("user"));
+var email = user.email;
+console.log(email);
+sessionStorage.removeItem("user");
 fn.value = user.displayName.split(" ")[0];
 ln.value = user.displayName.split(" ")[1];
 
@@ -30,7 +32,7 @@ function addToDatabase(event) {
 		errorLog.innerHTML = "Enter first and last name!";
 	} else {
 		db.collection("userData")
-			.doc(user.email)
+			.doc(email)
 			.set({
 				first_name: fn.value,
 				last_name: ln.value,
