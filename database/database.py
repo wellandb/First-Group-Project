@@ -4,7 +4,7 @@ from firebase_admin import firestore
 
 # Use the application default credentials
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('/home/csimage/GitRepos/first_group_project/private_key.json')
+cred = credentials.Certificate('/home/csimage/GitRepos/first_group_project/database/private_key.json')
 firebase_admin.initialize_app(cred, {
   'projectId': "parkez-database"
 })
@@ -46,6 +46,18 @@ doc_ref.set({
     u'mall_exit': u'xxxxxxx',
     u'total_spaces': u'100',
     u'disability_spaces': u'7'
+
+})
+
+doc_ref = db.collection(u'prices').document(u'examplePrices')
+doc_ref.set({
+    u'carparkName': u'XXX',
+    u'0.5': u'4.99',
+    u'1': u'5.99',
+    u'2': u'6.99',
+    u'3': u'8.99',
+    u'4': u'9.99',
+    u'5': u'100',
 
 })
 
