@@ -106,7 +106,7 @@ function firebasePopup(provider) {
 			var user = result.user;
 			sessionStorage.setItem("currentUser", user.uid);
 			sessionStorage.setItem("user", JSON.stringify(user));
-			var docRef = db.collection("userData").doc(user.email);
+			var docRef = db.collection("userData").doc(user.uid);
 
 			docRef
 				.get()

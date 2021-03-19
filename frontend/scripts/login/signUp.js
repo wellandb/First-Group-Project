@@ -10,12 +10,25 @@ buttonYes.addEventListener("click", setSelected);
 buttonNo.addEventListener("click", setSelected);
 
 var db = firebase.firestore();
-let user = JSON.parse(sessionStorage.getItem("user"));
-var email = user.email;
-console.log(email);
-sessionStorage.removeItem("user");
-fn.value = user.displayName.split(" ")[0];
-ln.value = user.displayName.split(" ")[1];
+// let user = JSON.parse(sessionStorage.getItem("user"));
+var user, email;
+firebase.auth().onAuthStateChanged(function (u) {
+	if (u) {
+		user = u;
+		console.log(user);
+		email = user.email;
+		console.log(email);
+		sessionStorage.removeItem("user");
+		fn.value = user.displayName.split(" ")[0];
+		ln.value = user.displayName.split(" ")[1];
+	}
+});
+
+// var email = user.email;
+// console.log(email);
+// sessionStorage.removeItem("user");
+// fn.value = user.displayName.split(" ")[0];
+// ln.value = user.displayName.split(" ")[1];
 
 function addToDatabase(event) {
 	event.preventDefault();
