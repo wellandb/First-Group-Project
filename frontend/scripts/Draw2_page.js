@@ -21,4 +21,4 @@ userTicket.get().then((doc) => {
 .catch((error) => {
     console.log("Error getting document:", error);
 });
-    
+
