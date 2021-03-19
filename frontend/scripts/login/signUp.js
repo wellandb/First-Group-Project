@@ -32,8 +32,9 @@ function addToDatabase(event) {
 		errorLog.innerHTML = "Enter first and last name!";
 	} else {
 		db.collection("userData")
-			.doc(email)
+			.doc(sessionStorage.getItem("currentUser"))
 			.set({
+				email: email,
 				first_name: fn.value,
 				last_name: ln.value,
 				disabled: d,
