@@ -1,15 +1,18 @@
 # DONE
-Create index.html, javascript.js and stylesheet.css (Nadine) <br>
-Add a title, header, subheader and drop down menu using html, css and javascript (Nadine) <br>
-Add pay iamges (Esi) <br>
-Add links to other pages (Ben) <br>
-Reformated For gitflow standard <br>
+Created the frontend of all the pages and fixed their responsiveness(Nadine) <br>
+Connected the pages to the database(Nadine) <br>
+Created the parking visualization javascript(Esi)<br>
+Wrote Dykstra's algorithm(Esi)<br>
+Connected the parking visualization to the database(Nadine)<br>
+Created the login page(Jayan) <br>
+Created a python file to create the database(Ady & Jayan) <br>
+Set up the database(Ady) <br>
 
 # IN PROGRESS
-When someone decides to do something, added it here, so there are no conflicts in who is doing what.
-Making a map using python (Jiayou)
+Creating the DFS parking location finding algorithm(Esi) <br>
+Working on the python parking lor simulation (Ben) <br>
+Working on the python database connectivity and giving the data to the simulation(Jiayou) <br>
+Working on the summary page(Domos) <br>
 
 # TODO
-Find better pay images - with transparent background <br>
-Add the logo <br>
-Fix the style of the nav part <br>
+Connect the algorithm to the python backend, and then to the databse(Esi,Ben and Jiayou) <br>
