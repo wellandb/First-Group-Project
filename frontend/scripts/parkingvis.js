@@ -299,3 +299,6 @@ function draw()
     //requestAnimationFrame(draw); //uncomment this when you add update feature for the grid
 }
 })
+.catch((error) => {
+    console.log("Error getting document:", error);
+});
