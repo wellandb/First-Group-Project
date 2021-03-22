@@ -18,6 +18,7 @@ const errorLog2 = document.querySelector(".error2");
 const container = document.querySelector(".container");
 
 var db = firebase.firestore();
+localStorage.clear();
 
 loginButton.addEventListener("click", (e) => {
 	e.preventDefault();
@@ -33,7 +34,7 @@ loginButton.addEventListener("click", (e) => {
 			// Signed in
 			var user = userCredential.user;
 			console.log(user);
-			localStorage.setItem("currentUser", user.email);
+			sessionStorage.setItem("currentUser", user.uid);
 			window.location = "../index.html";
 		})
 		.catch((error) => {
@@ -59,9 +60,8 @@ signUpButton.addEventListener("click", (e) => {
 			.then((userCredential) => {
 				// Signed in
 				var user = userCredential.user;
-				console.log(user);
-				localStorage.setItem("currentUser", user.email);
-				localStorage.setItem("userObject", JSON.stringify(user));
+				sessionStorage.setItem("currentUser", user.uid);
+				sessionStorage.setItem("user", JSON.stringify(user));
 				window.location = "signUp.html";
 			})
 			.catch((error) => {
@@ -104,9 +104,9 @@ function firebasePopup(provider) {
 
 			// The signed-in user info.
 			var user = result.user;
-			localStorage.setItem("currentUser", user.email);
-			localStorage.setItem("userObject", JSON.stringify(user));
-			var docRef = db.collection("userData").doc(user.email);
+			sessionStorage.setItem("currentUser", user.uid);
+			sessionStorage.setItem("user", JSON.stringify(user));
+			var docRef = db.collection("userData").doc(user.uid);
 
 			docRef
 				.get()
