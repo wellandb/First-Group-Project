@@ -73,3 +73,10 @@ function setSelected(e) {
 		buttonYes.classList.remove("selected");
 	}
 }
+
+// {
+// 	disabled: false,
+// 	email: "test@gmail.com",
+// 	first_name: "test",
+// 	last_name: "user",
+// }
