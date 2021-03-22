@@ -35,18 +35,14 @@ loginButton.addEventListener("click", (e) => {
 			var user = userCredential.user;
 			// console.log(user);
 			sessionStorage.setItem("currentUser", user.uid);
-			switch (sessionStorage.getItem("carPark")) {
-				case "A": {
-					window.location = "../index.html";
-				}
-				case "B": {
-					window.location = "../index.html";
-				}
-				case "C": {
-					window.location = "../index.html";
-				}
+
+			if (sessionStorage.getItem("carPark") == "A") {
+				window.location = "../../parking-visualization/drawA.html";
+			} else if (sessionStorage.getItem("carPark") == "B") {
+				window.location = "../../parking-visualization/drawB.html";
+			} else if (sessionStorage.getItem("carPark") == "C") {
+				window.location = "../../parking-visualization/drawC.html";
 			}
-			window.location = "../index.html";
 		})
 		.catch((error) => {
 			var errorCode = error.code;
@@ -124,18 +120,16 @@ function firebasePopup(provider) {
 				.then((doc) => {
 					if (doc.exists) {
 						// console.log("Document data:", doc.data());
-						switch (sessionStorage.getItem("carPark")) {
-							case "A": {
-								window.location = "../index.html";
-							}
-							case "B": {
-								window.location = "../index.html";
-							}
-							case "C": {
-								window.location = "../index.html";
-							}
+						if (sessionStorage.getItem("carPark") == "A") {
+							window.location =
+								"../../parking-visualization/drawA.html";
+						} else if (sessionStorage.getItem("carPark") == "B") {
+							window.location =
+								"../../parking-visualization/drawB.html";
+						} else if (sessionStorage.getItem("carPark") == "C") {
+							window.location =
+								"../../parking-visualization/drawC.html";
 						}
-						window.location = "../index.html";
 					} else {
 						// doc.data() will be undefined in this case
 						console.log("No such document!");

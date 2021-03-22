@@ -55,18 +55,13 @@ function addToDatabase(event) {
 			.then((docRef) => {
 				console.log("Document written with ID: ");
 
-				switch (sessionStorage.getItem("carPark")) {
-					case "A": {
-						window.location = "../index.html";
-					}
-					case "B": {
-						window.location = "../index.html";
-					}
-					case "C": {
-						window.location = "../index.html";
-					}
+				if (sessionStorage.getItem("carPark") == "A") {
+					window.location = "../../parking-visualization/drawA.html";
+				} else if (sessionStorage.getItem("carPark") == "B") {
+					window.location = "../../parking-visualization/drawB.html";
+				} else if (sessionStorage.getItem("carPark") == "C") {
+					window.location = "../../parking-visualization/drawC.html";
 				}
-				window.location = "../index.html";
 			})
 			.catch((error) => {
 				console.error("Error adding document: ", error);
