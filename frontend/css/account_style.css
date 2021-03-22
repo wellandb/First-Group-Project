@@ -1,5 +1,15 @@
-body {
-	text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@5x00&display=swap");
+
+/* * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+} */
+
+body,
+input {
+	/* text-align: center; */
+	font-family: "Open Sans", sans-serif;
 }
 
 hr {
@@ -7,4 +17,94 @@ hr {
 	border-width: 2px;
 	border-color: black;
 	margin: 0.1em auto;
+}
+
+.details {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.disability {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 3rem;
+	overflow: hidden;
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+}
+
+h2 {
+	font-size: 2.2rem;
+	color: #444;
+	margin-bottom: 10px;
+}
+h3 {
+	font-size: 1.5rem;
+	color: #444;
+	text-align: center;
+	margin-top: 15;
+}
+
+.input-field {
+	max-width: 380px;
+	width: 100%;
+	height: 55px;
+	background-color: #f0f0f0;
+	margin: 10px 0;
+	border-radius: 20px;
+	display: grid;
+	grid-template-columns: 15% 85%;
+	padding: 0 0.4rem;
+}
+
+.input-field i {
+	text-align: center;
+	line-height: 55px;
+	color: #acacac;
+	font-size: 1.1rem;
+}
+
+.input-field input {
+	background: none;
+	outline: none;
+	border: none;
+	line-height: 1;
+	font-weight: 600;
+	font-size: 1.1rem;
+	color: #333;
+}
+
+.input-field input::placeholder {
+	color: #aaa;
+	font-weight: 500;
+}
+
+button,
+.btnD {
+	width: 100px;
+	height: 49px;
+	border: none;
+	outline: none;
+	border-radius: 12px;
+	cursor: pointer;
+	background-color: #f0f0f0;
+	color: #333;
+	text-transform: uppercase;
+	font-weight: 600;
+	margin: 10px 3px;
+	transition: 0.5s;
+}
+
+.btnD.selected {
+	color: black;
+	background-color: #c1c2c5;
 }
