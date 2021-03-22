@@ -33,8 +33,19 @@ loginButton.addEventListener("click", (e) => {
 		.then((userCredential) => {
 			// Signed in
 			var user = userCredential.user;
-			console.log(user);
+			// console.log(user);
 			sessionStorage.setItem("currentUser", user.uid);
+			switch (sessionStorage.getItem("carPark")) {
+				case "A": {
+					window.location = "../index.html";
+				}
+				case "B": {
+					window.location = "../index.html";
+				}
+				case "C": {
+					window.location = "../index.html";
+				}
+			}
 			window.location = "../index.html";
 		})
 		.catch((error) => {
@@ -112,7 +123,18 @@ function firebasePopup(provider) {
 				.get()
 				.then((doc) => {
 					if (doc.exists) {
-						console.log("Document data:", doc.data());
+						// console.log("Document data:", doc.data());
+						switch (sessionStorage.getItem("carPark")) {
+							case "A": {
+								window.location = "../index.html";
+							}
+							case "B": {
+								window.location = "../index.html";
+							}
+							case "C": {
+								window.location = "../index.html";
+							}
+						}
 						window.location = "../index.html";
 					} else {
 						// doc.data() will be undefined in this case

@@ -54,6 +54,18 @@ function addToDatabase(event) {
 			})
 			.then((docRef) => {
 				console.log("Document written with ID: ");
+
+				switch (sessionStorage.getItem("carPark")) {
+					case "A": {
+						window.location = "../index.html";
+					}
+					case "B": {
+						window.location = "../index.html";
+					}
+					case "C": {
+						window.location = "../index.html";
+					}
+				}
 				window.location = "../index.html";
 			})
 			.catch((error) => {
