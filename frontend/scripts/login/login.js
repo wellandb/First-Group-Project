@@ -33,10 +33,12 @@ loginButton.addEventListener("click", (e) => {
 		.then((userCredential) => {
 			// Signed in
 			var user = userCredential.user;
+			localStorage.setItem("loggedIn", true);
 			// console.log(user);
 			sessionStorage.setItem("currentUser", user.uid);
-
-			if (sessionStorage.getItem("carPark") == "A") {
+			if (sessionStorage.getItem("next") == "account") {
+				window.location = "../../html/account.html";
+			} else if (sessionStorage.getItem("carPark") == "A") {
 				window.location = "../../parking-visualization/drawA.html";
 			} else if (sessionStorage.getItem("carPark") == "B") {
 				window.location = "../../parking-visualization/drawB.html";
@@ -114,13 +116,16 @@ function firebasePopup(provider) {
 			sessionStorage.setItem("currentUser", user.uid);
 			sessionStorage.setItem("user", JSON.stringify(user));
 			var docRef = db.collection("userData").doc(user.uid);
+			localStorage.setItem("loggedIn", true);
 
 			docRef
 				.get()
 				.then((doc) => {
 					if (doc.exists) {
 						// console.log("Document data:", doc.data());
-						if (sessionStorage.getItem("carPark") == "A") {
+						if (sessionStorage.getItem("next") == "account") {
+							window.location = "../account.html";
+						} else if (sessionStorage.getItem("carPark") == "A") {
 							window.location =
 								"../../parking-visualization/drawA.html";
 						} else if (sessionStorage.getItem("carPark") == "B") {

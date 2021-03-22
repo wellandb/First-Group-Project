@@ -19,6 +19,12 @@
 
 </head>
 <body>
+  <script>
+    if (localStorage.getItem("loggedIn") == "false") {
+      window.location = "login/login.html";
+      sessionStorage.setItem("next", "account");
+    }
+  </script>
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
 		<a class="navbar-brand" href="index.html" ><img src="../../res/img/graphics/Website_LogoV2.png" style="max-height:500px; max-width: 200px;"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,14 +49,16 @@
 				<a class="dropdown-item" href="account.html">Profile</a>
 				<a class="dropdown-item" href="#">Tickets</a>
 				<a class="dropdown-item" href="#">Summary</a>
-			  </div>
+        <a class="dropdown-item" onclick="
+        firebase.auth().signOut();
+        localStorage.setItem('loggedIn', false); " href="index.html">Sign Out</a>			  </div>
 			</li>
 		  </ul>
 		</div>
 	  </nav>
 	<br>
 
-  <div class="details">
+  <!-- <div class="details">
     <form>
 
       <h2>Set Details</h2>
@@ -74,12 +82,12 @@
       <p id="error" class="error"></p>
 
     </form>
-  </div>
+  </div> -->
 
-	<!-- <header>
+	<header>
 		<h1>MY ACCOUNT</h1>
-	</header> -->
-    <!-- <div class="container" style="text-align:center;">
+	</header>
+    <div class="container" style="text-align:center;">
       <div class="row g-2">
         <div class="col-6">
           <div class="p-3"><b>Name</b></div>
@@ -106,7 +114,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <h2 style="padding-top: 50px;padding-bottom: 10px;text-align: center;">Your Stays</h2>
     <p id="txt-date" style = "text-align: left; padding-left: 10%"> Insert Date from FB</p>
     <hr>

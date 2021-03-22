@@ -9,28 +9,10 @@ const end = document.getElementById("txt-end");
 const location = document.getElementById("txt-location");
 const start = document.getElementById("txt-start");
 
-// var user = localStorage.getItem("currentUser");
-// var user = "test@gmail.com";
-
-// const firestore = firebase.firestore();
-// // get the data from 'name@xxx.com'
-// firestore
-// 	.collection("userTicket")
-// 	.doc("test@gmail.com")
-// 	.get()
-// 	.then(function (doc) {
-// 		if (doc && doc.exists) {
-// 			var data = doc.data();
-// 			// saves the data to 'name'
-// 			firestore
-// 				.collection("userTicket")
-// 				.doc("FoKi7TsRx4bKRLBAOETM7vR1t7d2")
-// 				.set(data);
-// 		}
-// 	});
-
 var db = firebase.firestore();
 var user;
+
+sessionStorage.removeItem("next");
 
 disabled.addEventListener("change", function (e) {
 	let d = false;

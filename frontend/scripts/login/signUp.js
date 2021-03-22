@@ -55,7 +55,9 @@ function addToDatabase(event) {
 			.then((docRef) => {
 				console.log("Document written with ID: ");
 
-				if (sessionStorage.getItem("carPark") == "A") {
+				if (sessionStorage.getItem("next") == "account") {
+					window.location = "../account.html";
+				} else if (sessionStorage.getItem("carPark") == "A") {
 					window.location = "../../parking-visualization/drawA.html";
 				} else if (sessionStorage.getItem("carPark") == "B") {
 					window.location = "../../parking-visualization/drawB.html";

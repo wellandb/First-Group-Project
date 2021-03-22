@@ -16,6 +16,11 @@
     <title>Park EZ</title>
   </head>
   <body>
+    <script>
+      if (localStorage.getItem("loggedIn") == null) {
+        localStorage.setItem("loggedIn", false);
+      }
+    </script>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
       <a class="navbar-brand" href="index.html" ><img src="../../res/img/graphics/Website_LogoV2.png" style="max-height:500px; max-width: 200px;"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +45,9 @@
               <a class="dropdown-item" href="account.html">Profile</a>
               <a class="dropdown-item" href="#">Tickets</a>
               <a class="dropdown-item" href="#">Summary</a>
+              <a class="dropdown-item" onclick="
+                firebase.auth().signOut();
+                localStorage.setItem('loggedIn', false); " href="index.html">Sign Out</a>
             </div>
           </li>
         </ul>
