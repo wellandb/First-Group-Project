@@ -5,6 +5,7 @@ Created the parking visualization javascript(Esi)<br>
 Wrote Dykstra's algorithm(Esi)<br>
 Connected the parking visualization to the database(Nadine)<br>
 Created the login page(Jayan) <br>
+Connect button with login page(Jayan)<br>
 Created a python file to create the database(Ady & Jayan) <br>
 Set up the database(Ady) <br>
 
