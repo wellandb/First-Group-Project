@@ -6,14 +6,14 @@ from firebase_admin import firestore
 # Fetch the service account key JSON file contents
 cred = credentials.Certificate('/home/csimage/GitRepos/first_group_project/database/private_key.json')
 firebase_admin.initialize_app(cred, {
-  'projectId': "parkez-database"
+  'projectId': "park-ez-36240"
 })
 
 db = firestore.client()
 
 doc_ref = db.collection(u'userData').document(u'janedoe')
 doc_ref.set({
-	u'email': u'janedoe@janedoe.janedoe',
+    u'email': u'janedoe@janedoe.janedoe',
     u'first_name': u'Jane',
     u'last_name': u'Doe',
     u'plate_number': u'XXXXXXX',
@@ -22,31 +22,1695 @@ doc_ref.set({
 
 doc_ref = db.collection(u'userTicket').document(u'exampleTicket')
 doc_ref.set({
-	u'userId': u'janedoe',
+    u'userId': u'janedoe',
     u'parking_location': u'XX',
     u'start_time': u'00:00',
     u'end_time': u'00:00',
     u'price': u'5'
 })
 
-doc_ref = db.collection(u'carParkSpaces').document(u'exampleDoc')
+doc_ref = db.collection(u'carParkSpaces').document(u'carParkA')
 doc_ref.set({
-	u'carparkId': u'A',
-    u'taken': u'0',
-    u'isForDisabled': u'00'
+    u'A':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'B':
+    {
+        u'1':
+        {
+            u'symbol': u'E'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'symbol': u'.'
+        },
+
+        u'4':
+        {
+            u'symbol': u'.'
+        },
+
+        u'5':
+        {
+            u'symbol': u'.'
+        },
+
+        u'6':
+        {
+            u'symbol': u'.'
+        },
+
+        u'7':
+        {
+            u'symbol': u'.'
+        },
+
+        u'8':
+        {
+            u'symbol': u'.'
+        },
+
+        u'9':
+        {
+            u'symbol': u'.'
+        },
+
+        u'10':
+        {
+            u'symbol': u'.'
+        },
+
+        u'11':
+        {
+            u'symbol': u'.'
+        },
+
+        u'12':
+        {
+            u'symbol': u'.'
+        },
+
+        u'13':
+        {
+            u'symbol': u'.'
+        },
+
+        u'14':
+        {
+            u'symbol': u'.'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'C':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'D':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'E':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'symbol': u'.'
+        },
+
+        u'4':
+        {
+            u'symbol': u'.'
+        },
+
+        u'5':
+        {
+            u'symbol': u'.'
+        },
+
+        u'6':
+        {
+            u'symbol': u'.'
+        },
+
+        u'7':
+        {
+            u'symbol': u'.'
+        },
+
+        u'8':
+        {
+            u'symbol': u'.'
+        },
+
+        u'9':
+        {
+            u'symbol': u'.'
+        },
+
+        u'10':
+        {
+            u'symbol': u'.'
+        },
+
+        u'11':
+        {
+            u'symbol': u'.'
+        },
+
+        u'12':
+        {
+            u'symbol': u'.'
+        },
+
+        u'13':
+        {
+            u'symbol': u'.'
+        },
+
+        u'14':
+        {
+            u'symbol': u'.'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'E'
+        }
+
+    },
+
+    u'F':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    }
+    
 })
+
+doc_ref = db.collection(u'carParkSpaces').document(u'carParkB')
+doc_ref.set({
+    u'A':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'B':
+    {
+        u'1':
+        {
+            u'symbol': u'E'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'symbol': u'.'
+        },
+
+        u'4':
+        {
+            u'symbol': u'.'
+        },
+
+        u'5':
+        {
+            u'symbol': u'.'
+        },
+
+        u'6':
+        {
+            u'symbol': u'.'
+        },
+
+        u'7':
+        {
+            u'symbol': u'.'
+        },
+
+        u'8':
+        {
+            u'symbol': u'.'
+        },
+
+        u'9':
+        {
+            u'symbol': u'.'
+        },
+
+        u'10':
+        {
+            u'symbol': u'.'
+        },
+
+        u'11':
+        {
+            u'symbol': u'.'
+        },
+
+        u'12':
+        {
+            u'symbol': u'.'
+        },
+
+        u'13':
+        {
+            u'symbol': u'.'
+        },
+
+        u'14':
+        {
+            u'symbol': u'.'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'C':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'D':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'E':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'symbol': u'.'
+        },
+
+        u'4':
+        {
+            u'symbol': u'.'
+        },
+
+        u'5':
+        {
+            u'symbol': u'.'
+        },
+
+        u'6':
+        {
+            u'symbol': u'.'
+        },
+
+        u'7':
+        {
+            u'symbol': u'.'
+        },
+
+        u'8':
+        {
+            u'symbol': u'.'
+        },
+
+        u'9':
+        {
+            u'symbol': u'.'
+        },
+
+        u'10':
+        {
+            u'symbol': u'.'
+        },
+
+        u'11':
+        {
+            u'symbol': u'.'
+        },
+
+        u'12':
+        {
+            u'symbol': u'.'
+        },
+
+        u'13':
+        {
+            u'symbol': u'.'
+        },
+
+        u'14':
+        {
+            u'symbol': u'.'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'E'
+        }
+
+    },
+
+    u'F':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    }
+    
+})
+
+doc_ref = db.collection(u'carParkSpaces').document(u'carParkC')
+doc_ref.set({
+    u'A':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'B':
+    {
+        u'1':
+        {
+            u'symbol': u'E'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'symbol': u'.'
+        },
+
+        u'4':
+        {
+            u'symbol': u'.'
+        },
+
+        u'5':
+        {
+            u'symbol': u'.'
+        },
+
+        u'6':
+        {
+            u'symbol': u'.'
+        },
+
+        u'7':
+        {
+            u'symbol': u'.'
+        },
+
+        u'8':
+        {
+            u'symbol': u'.'
+        },
+
+        u'9':
+        {
+            u'symbol': u'.'
+        },
+
+        u'10':
+        {
+            u'symbol': u'.'
+        },
+
+        u'11':
+        {
+            u'symbol': u'.'
+        },
+
+        u'12':
+        {
+            u'symbol': u'.'
+        },
+
+        u'13':
+        {
+            u'symbol': u'.'
+        },
+
+        u'14':
+        {
+            u'symbol': u'.'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'C':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'D':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    },
+
+    u'E':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'symbol': u'.'
+        },
+
+        u'4':
+        {
+            u'symbol': u'.'
+        },
+
+        u'5':
+        {
+            u'symbol': u'.'
+        },
+
+        u'6':
+        {
+            u'symbol': u'.'
+        },
+
+        u'7':
+        {
+            u'symbol': u'.'
+        },
+
+        u'8':
+        {
+            u'symbol': u'.'
+        },
+
+        u'9':
+        {
+            u'symbol': u'.'
+        },
+
+        u'10':
+        {
+            u'symbol': u'.'
+        },
+
+        u'11':
+        {
+            u'symbol': u'.'
+        },
+
+        u'12':
+        {
+            u'symbol': u'.'
+        },
+
+        u'13':
+        {
+            u'symbol': u'.'
+        },
+
+        u'14':
+        {
+            u'symbol': u'.'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'E'
+        }
+
+    },
+
+    u'F':
+    {
+        u'1':
+        {
+            u'symbol': u'-'
+        },
+
+        u'2':
+        {
+            u'symbol': u'.'
+        },
+
+        u'3':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'4':
+        {
+            u'isForDisabled': u'Y',
+            u'symbol': u'C'
+        },
+
+         u'5':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'6':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'7':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'8':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'9':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'10':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'11':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'12':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'13':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'C'
+        },
+
+         u'14':
+        {
+            u'isForDisabled': u'N',
+            u'symbol': u'F'
+        },
+
+         u'15':
+        {
+            u'symbol': u'.'
+        },
+
+         u'16':
+        {
+            u'symbol': u'-'
+        }
+
+    }
+    
+})
+
+
+
 
 doc_ref = db.collection(u'carParkData').document(u'exampleCarPark(A)')
 doc_ref.set({
-	u'name': u'A',
+    u'name': u'A',
     u'location': u'xxxxx',
     u'parking_entrance': u'xxxxxxx',
     u'parking_exit': u'xxxxxxx',
     u'mall_entrance': u'xxxxxxx',
     u'mall_exit': u'xxxxxxx',
     u'total_spaces': u'100',
-    u'disability_spaces': u'7'
-
+    u'disability_spaces': u'7',
+    u'taken_spaces': u'0'
 })
 
 doc_ref = db.collection(u'prices').document(u'examplePrices')
