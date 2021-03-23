@@ -92,7 +92,7 @@
     </div>
     <div class="container-fluid" style="text-align: center;">
       <!-- <a class="btn btn-primary" href="../parking-visualization/drawA.html" role="button" style="background-color: #004AAD; color: white;">Park at A</a> -->
-      <a class="btn btn-primary" onclick="sessionStorage.setItem('carPark', 'A')" href="../html/login/login.html" role="button" style="background-color: #004AAD; color: white;">Park at A</a>
+      <a class="btn btn-primary" onclick = "login()" href="../html/login/login.html" role="button" style="background-color: #004AAD; color: white;" id= 'Park'></a>
       <a class="btn btn-primary" href="map.html" role="button" style="background-color: #004AAD; color: white;">View Map</a>
       <h5 style="padding-top: 50px;padding-bottom: 10px; text-align: center;">Get Cark Park Name from Firebase</h5>
     </div>
@@ -142,33 +142,7 @@
         </div>
       </div>
     </div>
-    <script>
-      const db = firebase.firestore();
-      var carPark;
-      carPark = "exampleCarPark(A)";
-      
-      function aSelected() {
-        document.getElementById("carParkA").className = "dropdown-item active"; 
-        document.getElementById("carParkB").className = "dropdown-item"; 
-        document.getElementById("carParkC").className = "dropdown-item"; 
-        carPark = "exampleCarPark(A)";
-      };
-      function bSelected() {
-        document.getElementById("carParkB").className = "dropdown-item active"; 
-        document.getElementById("carParkA").className = "dropdown-item"; 
-        document.getElementById("carParkC").className = "dropdown-item";
-        carPark = "exampleCarPark(B)";
-
-      };
-      function cSelected() {
-        document.getElementById("carParkC").className = "dropdown-item active"; 
-        document.getElementById("carParkB").className = "dropdown-item"; 
-        document.getElementById("carParkC").className = "dropdown-item";
-        carPark = "exampleCarPark(C)";  
-        
-      };
-    </script>
-    <script src="../scripts/parkA_page.js">
+    <script src="../scripts/index.js">
     </script>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">

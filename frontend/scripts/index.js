@@ -1,9 +1,52 @@
+const db = firebase.firestore();
+var carPark;
+carPark = "exampleCarPark(A)";
+readData();
+
+function aSelected() {
+  document.getElementById("carParkA").className = "dropdown-item active"; 
+  document.getElementById("carParkB").className = "dropdown-item"; 
+  document.getElementById("carParkC").className = "dropdown-item"; 
+  carPark = "exampleCarPark(A)";
+  readData();
+  
+};
+function bSelected() {
+  document.getElementById("carParkB").className = "dropdown-item active"; 
+  document.getElementById("carParkA").className = "dropdown-item"; 
+  document.getElementById("carParkC").className = "dropdown-item";
+  carPark = "exampleCarPark(B)";
+  readData();
+};
+function cSelected() {
+  document.getElementById("carParkC").className = "dropdown-item active"; 
+  document.getElementById("carParkB").className = "dropdown-item"; 
+  document.getElementById("carParkC").className = "dropdown-item";
+  carPark = "exampleCarPark(C)";  
+  readData();
+  
+};
+
+function login(){
+	if (carPark == 'exampleCarPark(A)'){
+		sessionStorage.setItem('carPark', 'A');
+	}else if (carPark == 'exampleCarPark(B)'){
+		sessionStorage.setItem('carPark', 'B');
+	}else{
+		sessionStorage.setItem('carPark', 'C');
+	}
+}
+
+
+function readData(){
+
 const carParkA_Data = db.collection("carParkData").doc(carPark);
 
 const free_spaces = document.getElementById("free");
 const taken_spaces = document.getElementById("taken");
 const total_spaces = document.getElementById("total");
 const location1 = document.getElementById("location");
+const park = document.getElementById("Park");
 
 // var user = localStorage.getItem("currentUser");
 // var user = "test@gmail.com";
@@ -17,6 +60,7 @@ carParkA_Data
 			free_spaces.innerText =
 				(doc.data().total_spaces - doc.data().taken_spaces);
 			location1.innerText = "Car Park " + doc.data().name;
+			park.innerText = "Park at " + doc.data().name;
 		} else {
 			// doc.data() will be undefined in this case
 			console.log("No such document!");
@@ -53,3 +97,4 @@ carParkA_Prices
 	.catch((error) => {
 		console.log("Error getting document:", error);
 	});
+}
