@@ -1,10 +1,10 @@
 const db = firebase.firestore();
-const carParkA_Data = db.collection("carParkData").doc("exampleCarPark(A)");
+const carPark_Data = db.collection("carParkData").doc(carPark);
 
-const Afree_spaces = document.getElementById("free");
-const Ataken_spaces = document.getElementById("taken");
-const Atotal_spaces = document.getElementById("total");
-const Alocation = document.getElementById("location");
+const free_spaces = document.getElementById("free");
+const taken_spaces = document.getElementById("taken");
+const total_spaces = document.getElementById("total");
+const location1 = document.getElementById("location");
 
 // var user = localStorage.getItem("currentUser");
 // var user = "test@gmail.com";
@@ -13,11 +13,11 @@ carParkA_Data
 	.get()
 	.then((doc) => {
 		if (doc.exists) {
-			Ataken_spaces.innerText = doc.data().taken_spaces;
-			Atotal_spaces.innerText = doc.data().total_spaces;
-			Afree_spaces.innerText =
-				doc.data().total_spaces - doc.data().taken_spaces;
-			Alocation.innerText = "Car Park " + doc.data().name;
+			taken_spaces.innerText = doc.data().taken_spaces;
+			total_spaces.innerText = doc.data().total_spaces;
+			free_spaces.innerText =
+				(doc.data().total_spaces - doc.data().taken_spaces);
+			location1.innerText = "Car Park " + doc.data().name;
 		} else {
 			// doc.data() will be undefined in this case
 			console.log("No such document!");
@@ -28,7 +28,7 @@ carParkA_Data
 	});
 
 //car park proces constants
-const Ahalf = document.getElementById("half");
+const half = document.getElementById("half");
 const A1 = document.getElementById("one");
 const A2 = document.getElementById("two");
 const A3 = document.getElementById("three");

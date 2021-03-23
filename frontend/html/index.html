@@ -59,11 +59,11 @@
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "color: white;background-color: #004AAD; position: center;">
         Pick Cark Park
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item active" href="carParkA.html" aria-current="true">Cark Park A</a></li>
-        <li><a class="dropdown-item" href="carParkB.html">Car Park B</a></li>
-        <li><a class="dropdown-item" href="carParkC.html">Car Park C</a></li>
-      </ul>
+        <ul class="dropdown-menu">
+          <li><a onclick = "aSelected()"class="dropdown-item active" href="#" id= "carParkA" >Cark Park A</a></li>
+          <li><a onclick="bSelected()"class="dropdown-item" href="#" id= "carParkB">Car Park B</a></li>
+          <li><a onclick = "cSelected()"class="dropdown-item" href="#"  id= "carParkC">Car Park C</a></li>
+        </ul>
       </div>
     </div>
     <h5 style="padding-top: 50px;padding-bottom: 10px;text-align: center;" id = "location"></h5>
@@ -142,7 +142,28 @@
         </div>
       </div>
     </div>
-    <script src= "../scripts/parkA_page.js"></script>
+    <script>
+      var carPark;
+      function aSelected() {
+        document.getElementById("carParkA").className = "dropdown-item active"; 
+        document.getElementById("carParkB").className = "dropdown-item"; 
+        document.getElementById("carParkC").className = "dropdown-item"; 
+        window.carPark = 'exampleCarPark(A)';
+      };
+      function bSelected() {
+        document.getElementById("carParkB").className = "dropdown-item active"; 
+        document.getElementById("carParkA").className = "dropdown-item"; 
+        document.getElementById("carParkC").className = "dropdown-item";
+        window.carPark = 'exampleCarPark(B)';
+      };
+      function cSelected() {
+        document.getElementById("carParkC").className = "dropdown-item active"; 
+        document.getElementById("carParkB").className = "dropdown-item"; 
+        document.getElementById("carParkC").className = "dropdown-item"; 
+        window.carPark = 'exampleCarPark(C)';
+      };
+    </script>
+    <script src="../scripts/parkA_page.js"></script>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
         <span class="text-muted">
