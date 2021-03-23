@@ -29,27 +29,33 @@ bg = pygame.image.load('carPark.png')
 win.blit(pygame.transform.scale(bg, (500,600)),(0,0))
 
 # Car park location array
-carPark = [['' for i in range(12)] for j in range(4)]
+carPark = [['' for i in range(14)] for j in range(6)]
 
 
-for i in range(12):
-    for j in range(4):
-        if j == 0:
-            carPark[j][i] = (15, 70+(35*i))
-        elif j == 1:
-            carPark[j][i] = (180, 70+(35*i))
-        elif j == 2:
-            carPark[j][i] = (250, 70+(35*i))
-        elif j == 3:
-            carPark[j][i] = (410, 70+(35*i))
+for i in range(14):
+    for j in range(6):
+        if i > 0 and i < 13:
+            if j == 0:
+                carPark[j][i] = (15, 70+(35*(i-1)))
+            elif j == 2:
+                carPark[j][i] = (180, 70+(35*(i-1)))
+            elif j == 3:
+                carPark[j][i] = (250, 70+(35*(i-1)))
+            elif j == 5:
+                carPark[j][i] = (410, 70+(35*(i-1)))
+            else:
+                carPark[j][i] = (15,70)
+        else:
+            carPark[j][i] = (15,70)
 
 # Car park taken spots
-carParkTaken = [['' for i in range(12)] for j in range(4)]
-
+from map import *
+carParkTaken = parking_map(14,6)
 
 # Car test
-car1 = randomCar()
-car1.generateRandomSpot(win, carPark, carParkTaken)
+RandomCars = []
+RandomCars.append(randomCar())
+RandomCars[0].generateRandomSpot(win, carPark, carParkTaken)
 
 
 # setting up clock
@@ -65,7 +71,14 @@ while run:
         # bomb out of loop if quit
         if event.type == pygame.QUIT:
             run = False
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_SPACE]:
+        RandomCars.append(randomCar())
+        RandomCars[-1].generateRandomSpot(win, carPark, carParkTaken)
 
     pygame.display.update()
+
+pygame.image.save(win, "screenshot.jpeg")
 #quit program
 pygame.quit()
