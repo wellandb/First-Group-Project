@@ -14,10 +14,15 @@ class car():
 
 # car using the park me app
 class parkEzCar(car):
-    def __init__(self):
+    def __init__(self, parkingSpace):
         super().__init__()
+        self.parkingSpace = parkingSpace
         # This will be a different image when i edit the image to be a park ez car
         #self.image = "parkEzCar.png"
+
+    def move(self, window, array, taken):
+        window.blit(pygame.transform.rotate(pygame.transform.scale(self.image, (70,70)), 90), array[x][y])
+        taken.change_state(self.parkingSpace,'2')
 
 
 # car not using the park me app
@@ -27,9 +32,21 @@ class randomCar(car):
 
     def generateRandomSpot(self,window, array, taken):
         # make a randome car Park spot based on how we implement the car park storage
-        x = random.randint(0,3)
-        y = random.randint(0,11)
-        window.blit(pygame.transform.rotate(pygame.transform.scale(self.image, (70,70)), 90), array[x][y])
-        taken[x][y] = 'occupied'
+        spot = False
+        place = True
+        while not(spot):
+            x = random.randint(0,5)
+            y = random.randint(0,13)
+            if taken.checkLocation((x,y)) == "1":
+                spot = True
+                print((x,y))
+            if taken.checkFull():
+                spot = True
+                place = False
+        if place:
+            window.blit(pygame.transform.rotate(pygame.transform.scale(self.image, (70,70)), 90), array[x][y])
+            taken.change_state((x,y),'2')
+        else:
+            print("full")
         
 
