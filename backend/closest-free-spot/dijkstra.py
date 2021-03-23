@@ -2,7 +2,6 @@
 import collections
 import heapq
 
-
 def dijkstra(G, E, source):
     d = {}
     weight = {}
@@ -49,5 +48,5 @@ if __name__ == '__main__':
     E = [1, 2, 1, 2, 3]
 
     print(dijkstra(G, E, source='A'))
-	
+
 # source: https://github.com/manmaybarot/algorithms-data-structures/blob/master/graph/directed-graph/sp_dijkstra.py
