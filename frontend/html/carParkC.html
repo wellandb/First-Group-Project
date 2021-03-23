@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="../css/stylesheet.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
     <!-- FIREBASE PACKAGES -->
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
     <script src="../scripts/firebase.js"></script>
-     
+
     <title>Park EZ</title>
   </head>
   <body>
@@ -52,13 +53,13 @@
         Pick Cark Park
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="carParkA.html">Cark Park A</a></li>
-        <li><a class="dropdown-item active" href="#" aria-current="true">Car Park B</a></li>
-        <li><a class="dropdown-item" href="carParkC.html">Car Park C</a></li>
+        <li><a class="dropdown-item" href="carParkA.html" >Cark Park A</a></li>
+        <li><a class="dropdown-item" href="carParkB.html">Car Park B</a></li>
+        <li><a class="dropdown-item active" href="#" aria-current="true">Car Park C</a></li>
       </ul>
       </div>
     </div>
-    <h5 style="padding-top: 50px;padding-bottom: 10px;text-align: center;" >Car Park B</h5>
+    <h5 style="padding-top: 50px;padding-bottom: 10px;text-align: center;">Car park C</h5>
     <div class="container" style="text-align:center;">
       <div class="row g-2">
         <div class="col-6">
@@ -71,18 +72,18 @@
           <div class="p-3">Taken Spaces</div>
         </div>
         <div class="col-6">
-          <div class="p-3" id="taken"></div>
+          <div class="p-3" id="taken">Get from FB</div>
         </div>
         <div class="col-6">
           <div class="p-3">Capacity</div>
         </div>
         <div class="col-6">
-          <div class="p-3" id= "total"></div>
+          <div class="p-3" id="total"></div>
         </div>
       </div>
     </div>
     <div class="container-fluid" style="text-align: center;">
-      <a class="btn btn-primary" onclick="sessionStorage.setItem('carPark', 'B')" href="../html/login/login.html" role="button" style="background-color: #004AAD; color: white;">Park at B</a>
+      <a class="btn btn-primary" onclick="sessionStorage.setItem('carPark', 'C')" href="../html/login/login.html" role="button" style="background-color: #004AAD; color: white;">Park at C</a>
       <a class="btn btn-primary" href="map.html" role="button" style="background-color: #004AAD; color: white;">View Map</a>
       <hr>
     </div>
@@ -104,7 +105,7 @@
           <div class="p-3">1 Hour</div>
         </div>
         <div class="col-6">
-          <div class="p-3" id="one"></div>
+          <div class="p-3" id = "one"></div>
         </div>
         <div class="col-6">
           <div class="p-3">2 Hours</div>
@@ -132,7 +133,7 @@
         </div>
       </div>
     </div>
-    <script src="../scripts/parkB_page.js"></script>
+    <script src="../scripts/parkC_page.js"></script>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
         <span class="text-muted">
