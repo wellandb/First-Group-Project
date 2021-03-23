@@ -177,20 +177,31 @@ carParkA.get().then((doc) => {
 
 const rows = 16, cols = 6;
 
-const encoding = {
+const gridEncoding = {
     freeSlot: 'F',
     takenSlot: 'C',
     targetSlot: 'T', //this is given as additional info in the database - freeSpace coords
     disabled: 'D',
     entrance: 'E',
     road: '.',
-    shortestPath: '#',
-    border: '_'
+    border: '#'
 };
+
+const pathEncoding = {
+    up: 'U',
+    down: 'D',
+    left: 'L', //this is given as additional info in the database - freeSpace coords
+    right: 'R'
+};
+
+console.log(grid);
+const path = ["DDDDRRRUUUL"]
+const startRow = 0, startCol = 1;
+//const targetRow = 3, targetCol = 3;
 
 //TODO: get also from the database freeSpace coords, shortest path
 
-//get this info from the database END 
+//get this info from the database END
 //####################################
 
 const lineWidth = 3, freeSpace = 4, carWidth = 40;
@@ -207,28 +218,27 @@ const carProportion = 5/8;
 const carHeight = carProportion * carWidth;
 const cellWidth = carWidth + 2*freeSpace + lineWidth, cellHeight = carHeight + 2*freeSpace + lineWidth;
 
-//just calculated it with some numbers - 360/100 = 36/10 = 18/5
-const offsetProportion = 5/18;
-
-const offset = cellHeight*rows*offsetProportion;
-
 //TODO: think about this
 canvas.width = cellWidth * cols;
-canvas.height = cellHeight * rows + 2*offset;
+canvas.height = cellHeight * rows;
 
 /*
 Important: do not touch this END
 ################################
 */
 
-const carRight = new Image(); 
+const carRight = new Image();
 carRight.src = "car_right.png"; //car looking to the right
 const carLeft = new Image();
 carLeft.src = "car_left.png"; //car looking to the left
+const carUp = new Image();
+carUp.src = "car_up.png"; //car looking to the right
+const carDown = new Image();
+carDown.src = "car_down.png"; //car looking to the left
 //TODO: add the car in the other directions; use an array; move it to a function
 
 let counter = 0;
-const imagesCount = 2; //change if you add more images TODO: use the lenght of the image array
+const imagesCount = 4; //change if you add more images TODO: use the lenght of the image array
 
 function onImageLoaded (){
         counter++;
@@ -239,62 +249,66 @@ function onImageLoaded (){
 
 carRight.onload = onImageLoaded;
 carLeft.onload = onImageLoaded;
+carUp.onload = onImageLoaded;
+carDown.onload = onImageLoaded;
 
 function draw()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalAlpha = 1;
-    
+
     //TODO: use a container instead of adding offset everywhere
     for(let i = 0; i < rows; i++) {
         for(let j = 0; j < cols; j++) {
             //TODO: remove some of the cases in the switch-case
             switch(grid[i][j]) {
-                case encoding.freeSlot:
+                case gridEncoding.freeSlot:
                     break;
-                case encoding.takenSlot:
+                case gridEncoding.takenSlot:
                     let car = carRight;
                     //TODO: make this outside the draw
                     if (Math.random() < 0.5) {
                         car = carLeft;
                     }
-                    context.drawImage(car, lineWidth + freeSpace + j*cellWidth, offset + lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
+                    context.drawImage(car, lineWidth + freeSpace + j*cellWidth, lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
                     break;
-                case encoding.entrance:
+                case gridEncoding.entrance:
+                    context.fillStyle = "yellow";
+                    context.fillRect(lineWidth + freeSpace + j*cellWidth, lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
                     break;
-                case encoding.road:
+                case gridEncoding.road:
                     break;
-                case encoding.border:
+                case gridEncoding.border:
                     break;
-                case encoding.targetSlot:
+                case gridEncoding.targetSlot:
                     context.fillStyle = "green";
-                    context.fillRect(lineWidth + freeSpace + j*cellWidth, offset + lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
+                    context.fillRect(lineWidth + freeSpace + j*cellWidth, lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
                     break;
-                case encoding.disabled:
+                case gridEncoding.disabled:
                     context.fillStyle = "blue";
-                    context.fillRect(lineWidth + freeSpace + j*cellWidth, offset + lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
+                    context.fillRect(lineWidth + freeSpace + j*cellWidth, lineWidth + freeSpace +  + i*cellHeight, carWidth, carHeight);
                     break;
-                case encoding.shortestPath:
+                case gridEncoding.shortestPath:
                     break;
                 default:
                     break;
             }
-            
+
             //draws horizontal lines
-            if(grid[i][j] != '.') {
+            if(grid[i][j] != gridEncoding.road && grid[i][j] != gridEncoding.entrance) {
                 context.fillStyle = "black";
-                context.fillRect(j*cellWidth, offset + i*cellHeight, cellWidth, lineWidth);
-                if(i + 1 == rows) {
-                    context.fillRect(j*cellWidth, offset + (i + 1)* cellHeight, cellWidth, lineWidth);
-                }
+                context.fillRect(j*cellWidth, i*cellHeight, cellWidth, lineWidth);
+                /*if(i + 1 == rows) {
+                    context.fillRect(j*cellWidth, (i + 1)* cellHeight, cellWidth, lineWidth);
+                }*/
             }
         }
     }
-    
+
     //TODO: make it to depend on the number of rows
     //draws vertical line
     context.fillStyle = "black";
-    context.fillRect(cols/2*cellWidth, offset, lineWidth, rows*cellHeight);
+    context.fillRect(cols/2*cellWidth, 0, lineWidth, (rows-1)*cellHeight);
 
     //requestAnimationFrame(draw); //uncomment this when you add update feature for the grid
 }

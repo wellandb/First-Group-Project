@@ -12,7 +12,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 		<!-- FIREBASE PACKAGES -->
 		<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>     
+		<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
 		<script src="../scripts/firebase.js"></script>
 		<title>Park EZ</title>
 	</head>
@@ -38,17 +38,17 @@
 					<i class="far fa-user-circle" style="padding-right: 5px;"></i>Account
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="account.html">Profile</a>
+					<a class="dropdown-item" href="../html/account.html">Profile</a>
 					<a class="dropdown-item" href="#">Tickets</a>
-					<a class="dropdown-item" href="#">Summary</a>
+					<a class="dropdown-item" href="../html/summary.html">Summary</a>
 				  </div>
 				</li>
 			  </ul>
 			</div>
 		  </nav>
 		<h3 style="text-align: center;">Car Park B</h3>
-        <canvas id="canvas-id" ></canvas>
-		<div class="container" style="text-align:center;padding-bottom:30px;">
+        <canvas id="canvas-id"style="padding-bottom: 30px; padding-top:30px;"></canvas>
+		<div class="container" style="text-align:center">
 			<div class="row g-2">
 			  <div class="col-6">
 				<div class="p-3"><b>Duration</b></div>
@@ -90,16 +90,6 @@
 		  </span>
 		</div>
 	</footer> 
-    
-    <style>
-		/* #TODO: consider if you need this
-        body, html, #canvas-id {
-			border: 3px solid black; #TODO: understand why this adds 3 borders
-            #margin: 0;
-            #padding: 0;
-            #overflow: hidden;
-        } */
-    </style>
 	<script src="../scripts/parkingvis.js"></script>
-	
+
 </html>
