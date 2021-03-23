@@ -196,8 +196,8 @@ const pathEncoding = {
 
 console.log(grid);
 const path = ["DDDDRRRUUUL"]
-const startRow = 3, startCol = 3;
-const targetRow = 3, targetCol = 3;
+const startRow = 0, startCol = 1;
+//const targetRow = 3, targetCol = 3;
 
 //TODO: get also from the database freeSpace coords, shortest path
 
