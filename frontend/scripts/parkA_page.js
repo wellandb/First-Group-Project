@@ -1,5 +1,4 @@
-const db = firebase.firestore();
-const carPark_Data = db.collection("carParkData").doc(carPark);
+const carParkA_Data = db.collection("carParkData").doc(carPark);
 
 const free_spaces = document.getElementById("free");
 const taken_spaces = document.getElementById("taken");
@@ -28,7 +27,7 @@ carParkA_Data
 	});
 
 //car park proces constants
-const half = document.getElementById("half");
+const Ahalf = document.getElementById("half");
 const A1 = document.getElementById("one");
 const A2 = document.getElementById("two");
 const A3 = document.getElementById("three");

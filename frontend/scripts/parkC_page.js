@@ -1,5 +1,4 @@
-const db = firebase.firestore();
-const carParkA_Data = db.collection("carParkData").doc("exampleCarPark(A)");
+const carParkC_Data = db.collection("carParkData").doc("exampleCarPark(C)");
 
 const Cfree_spaces = document.getElementById("free");
 const Ctaken_spaces = document.getElementById("taken");
@@ -9,12 +8,12 @@ const Clocation = document.getElementById("location");
 // var user = localStorage.getItem("currentUser");
 // var user = "test@gmail.com";
 
-carParkA_Data.get().then((doc) => {
+carParkC_Data.get().then((doc) => {
     if (doc.exists) {
         Ctaken_spaces.innerText = doc.data().taken_spaces;
         Ctotal_spaces.innerText = doc.data().total_spaces;
         Cfree_spaces.innerText = (doc.data().total_spaces- doc.data().taken_spaces);
-        // Clocation.innerText = "Car Park " + doc.data().name;
+        Clocation.innerText = "Car Park " + doc.data().name;
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
