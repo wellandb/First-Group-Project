@@ -190,7 +190,7 @@ const encoding = {
 
 //TODO: get also from the database freeSpace coords, shortest path
 
-//get this info from the database END 
+//get this info from the database END
 //####################################
 
 const lineWidth = 3, freeSpace = 4, carWidth = 40;
@@ -221,14 +221,18 @@ Important: do not touch this END
 ################################
 */
 
-const carRight = new Image(); 
+const carRight = new Image();
 carRight.src = "car_right.png"; //car looking to the right
 const carLeft = new Image();
 carLeft.src = "car_left.png"; //car looking to the left
+const carUp = new Image();
+carUp.src = "car_up.png"; //car looking to the right
+const carDown = new Image();
+carDown.src = "car_down.png"; //car looking to the left
 //TODO: add the car in the other directions; use an array; move it to a function
 
 let counter = 0;
-const imagesCount = 2; //change if you add more images TODO: use the lenght of the image array
+const imagesCount = 4; //change if you add more images TODO: use the lenght of the image array
 
 function onImageLoaded (){
         counter++;
@@ -239,12 +243,14 @@ function onImageLoaded (){
 
 carRight.onload = onImageLoaded;
 carLeft.onload = onImageLoaded;
+carUp.onload = onImageLoaded;
+carDown.onload = onImageLoaded;
 
 function draw()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalAlpha = 1;
-    
+
     //TODO: use a container instead of adding offset everywhere
     for(let i = 0; i < rows; i++) {
         for(let j = 0; j < cols; j++) {
@@ -279,7 +285,7 @@ function draw()
                 default:
                     break;
             }
-            
+
             //draws horizontal lines
             if(grid[i][j] != '.') {
                 context.fillStyle = "black";
@@ -290,7 +296,7 @@ function draw()
             }
         }
     }
-    
+
     //TODO: make it to depend on the number of rows
     //draws vertical line
     context.fillStyle = "black";
