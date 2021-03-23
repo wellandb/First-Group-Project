@@ -8,12 +8,14 @@ Just a scratch for drawing the parking given an encoded grid/map.
 <br> • Think about the style, CSS. - useless - removed
 <br> • Add rotated up and down cars - it is better for javascript, the rotation is hard, and make a sprite sheet
 <br> • Removed draw.html - useless
+<br> • Draw the path to the closest free space - you should make direction checks for this (LRUP).
 
 # TODO
 
 <br> • Connect with the database.
 <br> • Add listeners for updates in the database after talking about the connection with Nadine.
 <br> • Entrance???? how are we doing this? do we remember in the database in which entrance the car comes in?
-<br> • Draw the path to the closest free space - you should make direction checks for this (LRUP).
 <br> • Change the pictures for the cars (Ben's is not cropped).
 <br> • Consider moving the car images to the res/img folder?
+<br> • Refactor parking vis.
+<br> • Add vertical free spaces.
