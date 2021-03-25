@@ -1,13 +1,15 @@
-
 /* center page */
 body {
   text-align: center;
 }
-.jumbotron{
-    text-align: center;
+.jumbotron {
+  text-align: center;
 }
 
-.nav-item:hover{background-color:rgb(224, 243, 255)}
+.nav-item:hover {
+  background-color: rgb(206, 234, 252);
+  border-radius: 5cm;
+}
 /*h1 - Park Ez change color, font and place
 .title {
   color: #3498DB;
@@ -31,13 +33,13 @@ h1 {
   border-style: solid;
   margin: 10px;
 }/**/
-#colored_list h4{
+#colored_list h4 {
   padding-bottom: 4px;
 }
-#colored_list h2{
+#colored_list h2 {
   margin-bottom: 2px;
 }
-#colored_list{
+#colored_list {
   text-align: left;
   padding-left: 20px;
 }
