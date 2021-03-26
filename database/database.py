@@ -45,73 +45,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
-            u'symbol': u'C'
+            u'symbol': u'D'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -225,73 +213,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
-            u'symbol': u'C'
+            u'symbol': u'D'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -321,73 +297,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
-            u'symbol': u'C'
+            u'symbol': u'D'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -501,73 +465,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
-            u'symbol': u'C'
+            u'symbol': u'D'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -601,73 +553,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -781,73 +721,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -877,73 +805,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -1057,73 +973,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -1157,73 +1061,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -1337,73 +1229,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -1433,73 +1313,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
@@ -1613,73 +1481,61 @@ doc_ref.set({
 
         u'3':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'4':
         {
-            u'isForDisabled': u'Y',
             u'symbol': u'C'
         },
 
          u'5':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'6':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'7':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'8':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'9':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'10':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'11':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'12':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
          u'13':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'C'
         },
 
          u'14':
         {
-            u'isForDisabled': u'N',
             u'symbol': u'F'
         },
 
