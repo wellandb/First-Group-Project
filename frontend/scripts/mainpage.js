@@ -117,18 +117,29 @@ function viewCarPark(doc) {
 	taken_spaces.innerText = doc.data().taken_spaces;
 	total_spaces.innerText = doc.data().total_spaces;
 	free_spaces.innerText = doc.data().total_spaces - doc.data().taken_spaces;
-	location1.innerText = "Car Park " + doc.data().name;
-	park.innerText = "Park at " + doc.data().name;
+	location1.innerText = doc.data().name;
+	park.innerText = "Park At " + doc.data().name;
 
 	if (doc.data().taken_spaces == doc.data().total_spaces) {
 		fullCarPark();
+	} else {
+		park.style.backgroundColor = "#004AAD";
+		park.disabled = false;
 	}
 }
 
 function fullCarPark() {
-	alert("Car Park Full! Park Elsewhere!");
+	park.style.backgroundColor = "#b0b0b0";
+	park.disabled = true;
 }
 
+function beginPark() {
+	if (park.disabled) {
+		alert("Car Park Full! Park Elsewhere!");
+	} else {
+		window.location = "login/login.html";
+	}
+}
 // let data = {
 // 	half: 2.99,
 // 	one: 5.99,
