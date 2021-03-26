@@ -44,12 +44,12 @@ form {
 
 h2 {
 	font-size: 2.2rem;
-	color: #444;
+	color: rgb(24, 24, 24);
 	margin-bottom: 10px;
 }
 h3 {
 	font-size: 1.5rem;
-	color: #444;
+	color: rgb(24, 24, 24);
 	text-align: center;
 	margin-top: 15;
 }
