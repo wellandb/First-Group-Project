@@ -1,6 +1,10 @@
 /* center page */
+* {
+	font-family: "Open Sans", sans-serif;
+}
+
 body {
-  text-align: center;
+	text-align: center;
 }
 .jumbotron {
   text-align: center;

@@ -59,14 +59,14 @@
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "color: white;background-color: #004AAD; position: center;">
         Pick Cark Park
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item active" href="carParkA.html" aria-current="true">Cark Park A</a></li>
-        <li><a class="dropdown-item" href="carParkB.html">Car Park B</a></li>
-        <li><a class="dropdown-item" href="carParkC.html">Car Park C</a></li>
-      </ul>
+        <ul class="dropdown-menu">
+          <li><a onclick = "aSelected()" class="dropdown-item active" href="#" id= "carParkA" >Manchester NCP Piccadilly Plaza</a></li>
+          <li><a onclick="bSelected()"class="dropdown-item" href="#" id= "carParkB">Manchester Arndale</a></li>
+          <li><a onclick = "cSelected()"class="dropdown-item" href="#"  id= "carParkC">Intu Trafford Centre</a></li>
+        </ul>
       </div>
     </div>
-    <h5 style="padding-top: 50px;padding-bottom: 10px;text-align: center;" id = "location"></h5>
+    <h3 style="padding-top: 50px;padding-bottom: 10px;text-align: center;" id = "location">Manchester NCP Piccadilly Plaza</h3>
     <div class="container" style="text-align:center;">
       <div class="row g-2">
         <div class="col-6">
@@ -91,10 +91,11 @@
       </div>
     </div>
     <div class="container-fluid" style="text-align: center;">
-      <!-- <a class="btn btn-primary" href="../parking-visualization/drawA.html" role="button" style="background-color: #004AAD; color: white;">Park at A</a> -->
-      <a class="btn btn-primary" onclick="sessionStorage.setItem('carPark', 'A')" href="../html/login/login.html" role="button" style="background-color: #004AAD; color: white;">Park at A</a>
-      <a class="btn btn-primary" href="map.html" role="button" style="background-color: #004AAD; color: white;">View Map</a>
-      <h5 style="padding-top: 50px;padding-bottom: 10px; text-align: center;">Get Cark Park Name from Firebase</h5>
+      <a class="btn btn-primary" onclick="beginPark()" role="button" style="color: white; border: none;background-color: #45b058;" id= 'Park'>Park At Manchester NCP Piccadilly Plaza</a>
+    </div>
+    <div class="container-fluid" style="text-align: center; padding-top:3px;">
+    <a class="btn btn-primary" href="map.html" role="button" style="background-color: #004AAD; color: white;">View Map</a>
+    <h3 style="padding-top: 50px;padding-bottom: 10px; text-align: center;">Prices</h3>
     </div>
     <div class="container" style="text-align:center;">
       <div class="row g-2">
@@ -142,7 +143,8 @@
         </div>
       </div>
     </div>
-    <script src= "../scripts/parkA_page.js"></script>
+    <script src="../scripts/mainpage.js">
+    </script>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
         <span class="text-muted">
