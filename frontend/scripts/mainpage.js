@@ -1,5 +1,6 @@
 const db = firebase.firestore();
-var listener;
+var listenerPrices;
+var listenerCarPark;
 //car park proces constants
 const Ahalf = document.getElementById("half");
 const A1 = document.getElementById("one");
@@ -16,18 +17,28 @@ const park = document.getElementById("Park");
 
 aSelected();
 
-function setListener(carPark) {
-	if (listener) {
-		listener();
+function setListener(collection, carPark) {
+	if (collection == "prices") {
+		if (listenerPrices) {
+			listenerCarPark();
+		}
+		listenerPrices = db
+			.collection(collection)
+			.doc(carPark)
+			.onSnapshot((doc) => {
+				viewPrices(doc);
+			});
+	} else if (collection == "carParkData") {
+		if (listenerCarPark) {
+			listenerCarPark();
+		}
+		listenerCarPark = db
+			.collection(collection)
+			.doc(carPark)
+			.onSnapshot((doc) => {
+				viewCarPark(doc);
+			});
 	}
-	listener = db
-		.collection("prices")
-		.doc(carPark)
-		.onSnapshot((doc) => {
-			console.log("fff");
-			console.log(listener);
-			viewPrices(doc);
-		});
 }
 
 function aSelected() {
@@ -35,24 +46,27 @@ function aSelected() {
 	document.getElementById("carParkB").className = "dropdown-item";
 	document.getElementById("carParkC").className = "dropdown-item";
 	sessionStorage.setItem("carPark", "A");
-	readCarParkData("exampleCarPark(A)");
-	setListener("exampleCarPark(A)");
+	// readCarParkData("exampleCarPark(A)");
+	setListener("prices", "exampleCarPark(A)");
+	setListener("carParkData", "exampleCarPark(A)");
 }
 function bSelected() {
 	document.getElementById("carParkB").className = "dropdown-item active";
 	document.getElementById("carParkA").className = "dropdown-item";
 	document.getElementById("carParkC").className = "dropdown-item";
 	sessionStorage.setItem("carPark", "B");
-	readCarParkData("exampleCarPark(B)");
-	setListener("exampleCarPark(B)");
+	// readCarParkData("exampleCarPark(B)");
+	setListener("prices", "exampleCarPark(B)");
+	setListener("carParkData", "exampleCarPark(B)");
 }
 function cSelected() {
 	document.getElementById("carParkC").className = "dropdown-item active";
 	document.getElementById("carParkB").className = "dropdown-item";
 	document.getElementById("carParkC").className = "dropdown-item";
 	sessionStorage.setItem("carPark", "C");
-	readCarParkData("exampleCarPark(C)");
-	setListener("exampleCarPark(C)");
+	// readCarParkData("exampleCarPark(C)");
+	setListener("prices", "exampleCarPark(C)");
+	setListener("carParkData", "exampleCarPark(C)");
 }
 
 function readCarParkData(carPark) {
@@ -61,13 +75,7 @@ function readCarParkData(carPark) {
 		.get()
 		.then((doc) => {
 			if (doc.exists) {
-				taken_spaces.innerText = doc.data().taken_spaces;
-				total_spaces.innerText = doc.data().total_spaces;
-				free_spaces.innerText =
-					doc.data().total_spaces - doc.data().taken_spaces;
-				location1.innerText = "Car Park " + doc.data().name;
-				park.innerText = "Park at " + doc.data().name;
-
+				viewCarPark(doc);
 				readPrices(carPark);
 			} else {
 				// doc.data() will be undefined in this case
@@ -103,6 +111,22 @@ function viewPrices(doc) {
 	A3.innerText = "£" + doc.data().three;
 	A4.innerText = "£" + doc.data().four;
 	A5.innerText = "£" + doc.data().five;
+}
+
+function viewCarPark(doc) {
+	taken_spaces.innerText = doc.data().taken_spaces;
+	total_spaces.innerText = doc.data().total_spaces;
+	free_spaces.innerText = doc.data().total_spaces - doc.data().taken_spaces;
+	location1.innerText = "Car Park " + doc.data().name;
+	park.innerText = "Park at " + doc.data().name;
+
+	if (doc.data().taken_spaces == doc.data().total_spaces) {
+		fullCarPark();
+	}
+}
+
+function fullCarPark() {
+	alert("Car Park Full! Park Elsewhere!");
 }
 
 // let data = {
