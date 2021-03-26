@@ -1,13 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@5x00&display=swap");
 
 /* center page */
-body {
-  text-align: center;
-}
-.jumbotron{
-    text-align: center;
+* {
+	font-family: "Open Sans", sans-serif;
 }
 
-.nav-item:hover{background-color:rgb(224, 243, 255)}
+body {
+	text-align: center;
+}
+.jumbotron {
+	text-align: center;
+}
+
+.nav-item:hover {
+	background-color: rgb(224, 243, 255);
+}
 /*h1 - Park Ez change color, font and place
 .title {
   color: #3498DB;
@@ -31,15 +38,15 @@ h1 {
   border-style: solid;
   margin: 10px;
 }/**/
-#colored_list h4{
-  padding-bottom: 4px;
+#colored_list h4 {
+	padding-bottom: 4px;
 }
-#colored_list h2{
-  margin-bottom: 2px;
+#colored_list h2 {
+	margin-bottom: 2px;
 }
-#colored_list{
-  text-align: left;
-  padding-left: 20px;
+#colored_list {
+	text-align: left;
+	padding-left: 20px;
 }
 /*the text is on the left and right*/
 /*#colored_list .left{

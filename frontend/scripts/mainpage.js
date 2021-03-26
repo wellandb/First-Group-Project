@@ -118,18 +118,18 @@ function viewCarPark(doc) {
 	total_spaces.innerText = doc.data().total_spaces;
 	free_spaces.innerText = doc.data().total_spaces - doc.data().taken_spaces;
 	location1.innerText = doc.data().name;
-	park.innerText = "Park at " + doc.data().name;
+	park.innerText = "Park At " + doc.data().name;
 
 	if (doc.data().taken_spaces == doc.data().total_spaces) {
 		fullCarPark();
 	} else {
-		park.style.backgroundColor = "#008000";
+		park.style.backgroundColor = "#45b058";
 		park.disabled = false;
 	}
 }
 
 function fullCarPark() {
-	park.style.backgroundColor = "#b0b0b0";
+	park.style.backgroundColor = "#c74040";
 	park.disabled = true;
 }
 
