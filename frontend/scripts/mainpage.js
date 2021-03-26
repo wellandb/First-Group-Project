@@ -68,12 +68,12 @@ function readPrices(carPark) {
 		.get()
 		.then((doc) => {
 			if (doc.exists) {
-				Ahalf.innerText = doc.data().half;
-				A1.innerText = doc.data().one;
-				A2.innerText = doc.data().two;
-				A3.innerText = doc.data().three;
-				A4.innerText = doc.data().four;
-				A5.innerText = doc.data().five;
+				Ahalf.innerText = "£" + doc.data().half;
+				A1.innerText = "£" + doc.data().one;
+				A2.innerText = "£" + doc.data().two;
+				A3.innerText = "£" + doc.data().three;
+				A4.innerText = "£" + doc.data().four;
+				A5.innerText = "£" + doc.data().five;
 			} else {
 				// doc.data() will be undefined in this case
 				console.log("No such document!");
@@ -83,3 +83,17 @@ function readPrices(carPark) {
 			console.log("Error getting document:", error);
 		});
 }
+
+d;
+
+// let data = {
+// 	half: 2.99,
+// 	one: 5.99,
+// 	two: 7.99,
+// 	three: 9.99,
+// 	four: 11.99,
+// 	five: 13.99,
+// };
+// db.collection("prices").doc("exampleCarPark(A)").set(data);
+// db.collection("prices").doc("exampleCarPark(B)").set(data);
+// db.collection("prices").doc("exampleCarPark(C)").set(data);
