@@ -1,5 +1,5 @@
 const db = firebase.firestore();
-
+var listener;
 //car park proces constants
 const Ahalf = document.getElementById("half");
 const A1 = document.getElementById("one");
@@ -16,12 +16,27 @@ const park = document.getElementById("Park");
 
 aSelected();
 
+function setListener(carPark) {
+	if (listener) {
+		listener();
+	}
+	listener = db
+		.collection("prices")
+		.doc(carPark)
+		.onSnapshot((doc) => {
+			console.log("fff");
+			console.log(listener);
+			viewPrices(doc);
+		});
+}
+
 function aSelected() {
 	document.getElementById("carParkA").className = "dropdown-item active";
 	document.getElementById("carParkB").className = "dropdown-item";
 	document.getElementById("carParkC").className = "dropdown-item";
 	sessionStorage.setItem("carPark", "A");
 	readCarParkData("exampleCarPark(A)");
+	setListener("exampleCarPark(A)");
 }
 function bSelected() {
 	document.getElementById("carParkB").className = "dropdown-item active";
@@ -29,6 +44,7 @@ function bSelected() {
 	document.getElementById("carParkC").className = "dropdown-item";
 	sessionStorage.setItem("carPark", "B");
 	readCarParkData("exampleCarPark(B)");
+	setListener("exampleCarPark(B)");
 }
 function cSelected() {
 	document.getElementById("carParkC").className = "dropdown-item active";
@@ -36,6 +52,7 @@ function cSelected() {
 	document.getElementById("carParkC").className = "dropdown-item";
 	sessionStorage.setItem("carPark", "C");
 	readCarParkData("exampleCarPark(C)");
+	setListener("exampleCarPark(C)");
 }
 
 function readCarParkData(carPark) {
@@ -68,12 +85,7 @@ function readPrices(carPark) {
 		.get()
 		.then((doc) => {
 			if (doc.exists) {
-				Ahalf.innerText = "£" + doc.data().half;
-				A1.innerText = "£" + doc.data().one;
-				A2.innerText = "£" + doc.data().two;
-				A3.innerText = "£" + doc.data().three;
-				A4.innerText = "£" + doc.data().four;
-				A5.innerText = "£" + doc.data().five;
+				viewPrices(doc);
 			} else {
 				// doc.data() will be undefined in this case
 				console.log("No such document!");
@@ -84,7 +96,14 @@ function readPrices(carPark) {
 		});
 }
 
-d;
+function viewPrices(doc) {
+	Ahalf.innerText = "£" + doc.data().half;
+	A1.innerText = "£" + doc.data().one;
+	A2.innerText = "£" + doc.data().two;
+	A3.innerText = "£" + doc.data().three;
+	A4.innerText = "£" + doc.data().four;
+	A5.innerText = "£" + doc.data().five;
+}
 
 // let data = {
 // 	half: 2.99,
