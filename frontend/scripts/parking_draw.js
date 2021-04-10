@@ -9,6 +9,9 @@ function startDrawing(grid) {
     // TODO: get from the database
     const rows = grid.length, cols = grid[0].length;
 
+    console.log(grid);
+
+
     const gridEncoding = {
         freeSlot: 'F',
         disabled: 'D',
@@ -29,13 +32,28 @@ function startDrawing(grid) {
         right: 'R'
     };
 
+    let newGrid = [];
+
+    for(let i = 0; i < rows; i ++) {
+        newGrid[i] = [];
+        for(let j = 0; j < cols; j ++) {
+            newGrid[i][j] = grid[i][j];
+        }
+    }
+
+    grid = newGrid;
+
+    for(let i = 2; i < 14; i ++) {
+        grid[i][0] = gridEncoding.takenSlot;
+        grid[i][2] = gridEncoding.takenSlot;
+    }
 
     const pathWidth = 8;
     const startRow3 = 0, startCol3 = 1;
     const startRow4 = 15, startCol4 = 4;
     const lastLineWithCars = 13; //TODO: use algorithm to find this
 
-    const startRow = startRow4, startCol = startCol4;
+    const startRow = startRow3, startCol = startCol3;
 
     //console.log(grid);
     const path1 = "#DDDDDRRRUUUL";
@@ -43,9 +61,11 @@ function startDrawing(grid) {
     const path3 = "#DDDDDDRRRDDDLLLDDDR";
     const path4 = "#UUUUUULLLUUURRRUL";
 
-    const obj = shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, false);
+    const obj = shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, true);
     const path = obj.path;
     const targetRow = obj.targetRow, targetCol = obj.targetCol;
+
+    console.log(obj);
 
     //TODO: get also from the database freeSpace coords, shortest path
 
@@ -106,7 +126,7 @@ function startDrawing(grid) {
         context.globalAlpha = 1;
 
         context.translate(canvas.width/2, canvas.height/2);
-        context.rotate(Math.PI);
+        //context.rotate(Math.PI);
         context.translate(-canvas.width/2, -canvas.height/2);
 
         //TODO: use a container instead of adding offset everywhere
