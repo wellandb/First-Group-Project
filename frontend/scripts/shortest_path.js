@@ -53,7 +53,8 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
                     //console.log("continue", row, col)
                     continue;
                 }
-                if(distances[row][col] === -1 && grid[row][col] !== gridEncoding["border"] && grid[row][col] !== gridEncoding["takenSlot"]) {
+                if(distances[row][col] === -1 && grid[row][col] !== gridEncoding["border"] &&
+                grid[row][col] !== gridEncoding["takenNormal"] && grid[row][col] !== gridEncoding["takenDisabled"]) {
                     distances[row][col] = distances[curr.row][curr.col] + 1;
                     parents[row][col] = {row: curr.row, col: curr.col};
                     if(grid[row][col] === gridEncoding["road"]) {
@@ -97,8 +98,8 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
 
     function canParkHere(where, isDisabled) {
         if(isDisabled) {
-            return where === gridEncoding["freeSlot"] || where === gridEncoding["disabled"];
+            return where === gridEncoding["freeNormal"] || where === gridEncoding["freeDisabled"];
         }
-        return where === gridEncoding["freeSlot"];
+        return where === gridEncoding["freeNormal"];
     }
 }

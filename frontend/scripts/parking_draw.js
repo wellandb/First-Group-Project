@@ -38,7 +38,7 @@ function startDrawing(grid) {
     const startRow4 = 15, startCol4 = 4;
     const lastLineWithCars = 13; //TODO: use algorithm to find this
 
-    const startRow = startRow4, startCol = startCol4;
+    const startRow = startRow3, startCol = startCol3;
 
     //console.log(grid);
     const path1 = "#DDDDDRRRUUUL";
