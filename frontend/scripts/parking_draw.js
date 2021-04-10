@@ -3,8 +3,10 @@
 
 function startDrawing(grid) {
     const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { setTimeout (callback, 1000 / 30);};
-    const canvas = document.getElementById("canvas-id");
-    const context = canvas.getContext("2d");
+    const canvasMain = document.getElementById("canvas-main");
+    const canvasNumbers = document.getElementById("canvas-numbers");
+    const contextMain = canvasMain.getContext("2d");
+    const contextNumbers = canvasNumbers.getContext("2d");
     //####################################
     // TODO: get from the database
     const rows = grid.length, cols = grid[0].length;
@@ -67,8 +69,16 @@ function startDrawing(grid) {
     const cellWidth = carWidth + 2*freeSpace + lineWidth, cellHeight = carHeight + 2*freeSpace + lineWidth;
 
     //TODO: think about this
-    canvas.width = cellWidth * cols;
-    canvas.height = cellHeight * rows;
+    canvasMain.width = cellWidth * cols;
+    canvasMain.height = cellHeight * rows;
+    canvasNumbers.width = cellWidth * cols+100;
+    canvasNumbers.height = cellHeight * rows;
+    //canvasMain.style.left = canvasNumbers.style.left + 10;
+    console.log(canvasMain.style.left);
+    console.log(canvasNumbers.style.left);
+    console.log("wtf");
+    console.log(cellHeight, rows, canvasNumbers.height)
+    //document.getElementById("canvases").style.height = canvasNumbers.height + "px";
 
     /*
     Important: do not touch this END
@@ -102,12 +112,15 @@ function startDrawing(grid) {
 
     function draw()
     {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.globalAlpha = 1;
+        contextMain.clearRect(0, 0, canvasMain.width, canvasMain.height);
+        contextNumbers.clearRect(0, 0, canvasMain.width, canvasMain.height);
+        contextMain.globalAlpha = 1;
+        contextNumbers.globalAlpha = 1;
 
-        context.translate(canvas.width/2, canvas.height/2);
-        context.rotate(Math.PI);
-        context.translate(-canvas.width/2, -canvas.height/2);
+        contextMain.translate(canvasMain.width/2, canvasMain.height/2);
+        contextNumbers.translate(-canvasMain.width, -canvasMain.height);
+        contextMain.rotate(Math.PI);
+        contextMain.translate(-canvasMain.width/2, -canvasMain.height/2);
 
         //TODO: use a container instead of adding offset everywhere
         for(let i = 0; i < rows; i++) {
@@ -122,23 +135,23 @@ function startDrawing(grid) {
                         if (Math.random() < 0.5) {
                             car = carLeft;
                         }
-                        context.drawImage(car, j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        contextMain.drawImage(car, j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
                     case gridEncoding.entrance:
-                        context.fillStyle = "yellow";
-                        context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        contextMain.fillStyle = "yellow";
+                        contextMain.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
                     case gridEncoding.road:
                         break;
                     case gridEncoding.border:
                         break;
                     case gridEncoding.targetSlot:
-                        context.fillStyle = "#3df58d";
-                        context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        contextMain.fillStyle = "#3df58d";
+                        contextMain.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
                     case gridEncoding.disabled:
-                        context.fillStyle = "blue";
-                        context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        contextMain.fillStyle = "blue";
+                        contextMain.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
                     case gridEncoding.shortestPath:
                         break;
@@ -147,19 +160,19 @@ function startDrawing(grid) {
                 }
 
                 if(i == targetRow && j == targetCol) {
-                    context.fillStyle = "#3df58d";
-                    context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                    contextMain.fillStyle = "#3df58d";
+                    contextMain.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                 }
 
 
                 //draws horizontal lines
                 if(grid[i][j] != gridEncoding.road && grid[i][j] != gridEncoding.entrance) {
-                    context.fillStyle = "black";
+                    contextMain.fillStyle = "black";
                     if(i <= lastLineWithCars) {
-                        context.fillRect(j*cellWidth, i*cellHeight - lineWidth/2, cellWidth, lineWidth);
+                        contextMain.fillRect(j*cellWidth, i*cellHeight - lineWidth/2, cellWidth, lineWidth);
                     }
                     if(i == lastLineWithCars || i + 1 == rows) {
-                        context.fillRect(j*cellWidth, (i + 1)* cellHeight - lineWidth/2, cellWidth, lineWidth);
+                        contextMain.fillRect(j*cellWidth, (i + 1)* cellHeight - lineWidth/2, cellWidth, lineWidth);
                     }
                 }
             }
@@ -167,15 +180,15 @@ function startDrawing(grid) {
 
         //TODO: make it to depend on the number of rows
         //draws vertical line
-        context.fillStyle = "black";
-        context.fillRect(cols/2*cellWidth - lineWidth/2, 2*cellHeight, lineWidth, (rows-4)*cellHeight);
+        contextMain.fillStyle = "black";
+        contextMain.fillRect(cols/2*cellWidth - lineWidth/2, 2*cellHeight, lineWidth, (rows-4)*cellHeight);
 
-        context.fillStyle = "#49c4f5";
+        contextMain.fillStyle = "#49c4f5";
         let row = startRow, col = startCol;
         /*//thiss adds circle also at the start point
-        context.beginPath();
-        context.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
-        context.fill();*/
+        contextMain.beginPath();
+        contextMain.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
+        contextMain.fill();*/
         //console.log(path, path.length)
         for(let i = 1; i < path.length; i ++) {
             //console.log("yo")
@@ -188,16 +201,16 @@ function startDrawing(grid) {
 
                 switch (path[i-1]) {
                     case pathEncoding.up:
-                        context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
+                        contextMain.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
                         break;
                     case pathEncoding.down:
-                        context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
+                        contextMain.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
                         break;
                     case pathEncoding.right:
-                        context.fillRect(col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                        contextMain.fillRect(col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
                         break;
                     case pathEncoding.left:
-                        context.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                        contextMain.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
                         break;
                     default:
                         break;
@@ -213,18 +226,18 @@ function startDrawing(grid) {
 
                 switch (path[i]) {
                     case pathEncoding.up:
-                        context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
+                        contextMain.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
                         break;
                     case pathEncoding.down:
-                        context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
+                        contextMain.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
                         break;
                     case pathEncoding.right:
                         offsetCol = 1/2*cellWidth;
-                        context.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                        contextMain.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
                         break;
                     case pathEncoding.left:
                         offsetCol = 1/6*cellWidth;
-                        context.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                        contextMain.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
                         break;
                     default:
                         break;
@@ -234,62 +247,62 @@ function startDrawing(grid) {
 
             switch (path[i]) {
                 case pathEncoding.up:
-                    context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
+                    contextMain.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
                     row --;
                     break;
                 case pathEncoding.down:
-                    context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
+                    contextMain.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
                     row ++;
                     break;
                 case pathEncoding.right:
-                    context.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                    contextMain.fillRect(offsetCol + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
                     col ++;
                     break;
                 case pathEncoding.left:
-                    context.fillRect(col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                    contextMain.fillRect(col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
                     col --;
                     break;
                 default:
                     break;
             }
 
-            context.beginPath();
-            context.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
-            context.fill();
+            contextMain.beginPath();
+            contextMain.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
+            contextMain.fill();
         }
 
-        context.beginPath();
+        contextMain.beginPath();
         const arrowSize = cellHeight/2;
         const arrowRow = row*cellHeight + cellHeight / 2;
         let arrowCol;
         switch (path[path.length - 1]) {
             /*//TODO: add vertical parkings
             case pathEncoding.up:
-                context.moveTo(arrowCol, arrowRow);
-                context.lineTo(arrowCol - arrowSize/2, arrowRow - arrowSize);
-                context.lineTo(arrowCol + arrowSize/2, arrowRow - arrowSize);
+                contextMain.moveTo(arrowCol, arrowRow);
+                contextMain.lineTo(arrowCol - arrowSize/2, arrowRow - arrowSize);
+                contextMain.lineTo(arrowCol + arrowSize/2, arrowRow - arrowSize);
                 break;
             case pathEncoding.down:
-                context.moveTo(arrowCol, arrowRow);
-                context.lineTo(arrowCol - arrowSize/2, arrowRow + arrowSize);
-                context.lineTo(arrowCol + arrowSize/2, arrowRow + arrowSize);
+                contextMain.moveTo(arrowCol, arrowRow);
+                contextMain.lineTo(arrowCol - arrowSize/2, arrowRow + arrowSize);
+                contextMain.lineTo(arrowCol + arrowSize/2, arrowRow + arrowSize);
                 break;
             */
             case pathEncoding.right:
                 arrowCol = (col + 1) * cellWidth;
-                context.moveTo(arrowCol, arrowRow);
-                context.lineTo(arrowCol - arrowSize, arrowRow - arrowSize/2);
-                context.lineTo(arrowCol - arrowSize, arrowRow + arrowSize/2);
+                contextMain.moveTo(arrowCol, arrowRow);
+                contextMain.lineTo(arrowCol - arrowSize, arrowRow - arrowSize/2);
+                contextMain.lineTo(arrowCol - arrowSize, arrowRow + arrowSize/2);
                 break;
             case pathEncoding.left:
                 arrowCol = col * cellWidth;
-                context.moveTo(arrowCol, arrowRow);
-                context.lineTo(arrowCol + arrowSize, arrowRow - arrowSize/2);
-                context.lineTo(arrowCol + arrowSize, arrowRow + arrowSize/2);
+                contextMain.moveTo(arrowCol, arrowRow);
+                contextMain.lineTo(arrowCol + arrowSize, arrowRow - arrowSize/2);
+                contextMain.lineTo(arrowCol + arrowSize, arrowRow + arrowSize/2);
                 break;
             default:
         }
-        context.fill();
+        contextMain.fill();
         //requestAnimationFrame(draw); //uncomment this when you add update feature for the grid
     }
 }
