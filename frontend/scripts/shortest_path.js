@@ -18,9 +18,8 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
 
     let path = [];
     let targetRow = -1, targetCol = -1, minDist = -1;
-    let freeSlot = ["freeSlot", "disabled"];
     const deltaRow = [1, -1, 0, 0];
-    const deltaCol = [0, 0, 1, -1];
+    const deltaCol = [0, 0, -1, 1];
 
     bfs(startRow, startCol, 0);
     findPath(startRow, startCol, targetRow, targetCol);
@@ -54,14 +53,14 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
                     //console.log("continue", row, col)
                     continue;
                 }
-                if(distances[row][col] == -1 && grid[row][col] != gridEncoding["border"] && grid[row][col] != gridEncoding["takenSlot"]) {
+                if(distances[row][col] === -1 && grid[row][col] !== gridEncoding["border"] && grid[row][col] !== gridEncoding["takenSlot"]) {
                     distances[row][col] = distances[curr.row][curr.col] + 1;
                     parents[row][col] = {row: curr.row, col: curr.col};
-                    if(grid[row][col] == gridEncoding["road"]) {
+                    if(grid[row][col] === gridEncoding["road"]) {
                         queue.push({row: row, col: col});
                     }
                     //console.log(gridEncoding[freeSlot[isDisabled]], isDisabled)
-                    if(grid[row][col] == gridEncoding[freeSlot[isDisabled]] && (minDist == -1 || distances[row][col] < minDist)) {
+                    if(canParkHere(grid[row][col], isDisabled) && (minDist === -1 || distances[row][col] < minDist)) {
                         //console.log("here")
                         minDist = distances[row][col];
                         targetRow = row;
@@ -75,15 +74,15 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
     function findPath(startRow, startCol, targetRow, targetCol) {
         //console.error(startRow, startCol, targetRow, targetCol, "find path START");
         let curr = {row: targetRow, col: targetCol};
-        while(curr.row != startRow || curr.col != startCol) {
+        while(curr.row !== startRow || curr.col !== startCol) {
             let parent = parents[curr.row][curr.col];
-            if(parent.row + 1 == curr.row) {
+            if(parent.row + 1 === curr.row) {
                 path.push(pathEncoding.down);
-            }else if(parent.row - 1 == curr.row) {
+            }else if(parent.row - 1 === curr.row) {
                 path.push(pathEncoding.up);
-            }else if(parent.col + 1 == curr.col) {
+            }else if(parent.col + 1 === curr.col) {
                 path.push(pathEncoding.right);
-            }else if(parent.col - 1 == curr.col) {
+            }else if(parent.col - 1 === curr.col) {
                 path.push(pathEncoding.left);
             }else{
                 console.error("INVALID PATH");
@@ -94,5 +93,12 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
         path.push("#");
         path.reverse();
         //console.error("find path END", path);
+    }
+
+    function canParkHere(where, isDisabled) {
+        if(isDisabled) {
+            return where === gridEncoding["freeSlot"] || where === gridEncoding["disabled"];
+        }
+        return where === gridEncoding["freeSlot"];
     }
 }
