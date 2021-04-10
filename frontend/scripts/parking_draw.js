@@ -105,6 +105,10 @@ function startDrawing(grid) {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.globalAlpha = 1;
 
+        context.translate(canvas.width/2, canvas.height/2);
+        context.rotate(Math.PI);
+        context.translate(-canvas.width/2, -canvas.height/2);
+
         //TODO: use a container instead of adding offset everywhere
         for(let i = 0; i < rows; i++) {
             for(let j = 0; j < cols; j++) {
