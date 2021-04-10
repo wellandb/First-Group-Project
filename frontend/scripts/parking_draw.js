@@ -10,13 +10,16 @@ function startDrawing(grid) {
     const rows = grid.length, cols = grid[0].length;
 
     const gridEncoding = {
-        freeSlot: 'F',
-        disabled: 'D',
+        freeNormal: 'F',
+        freeDisabled: 'D',
+
+        takenNormal: 'C',
+        takenDisabled: 'G',
+
         entrance: 'E',
+        exit: 'X',
 
         road: '.',
-
-        takenSlot: 'C',
         border: '-',
 
         targetSlot: 'T' //this is given as additional info in the database - freeSpace coords
@@ -43,7 +46,7 @@ function startDrawing(grid) {
     const path3 = "#DDDDDDRRRDDDLLLDDDR";
     const path4 = "#UUUUUULLLUUURRRUL";
 
-    const obj = shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, false);
+    const obj = shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, true);
     const path = obj.path;
     const targetRow = obj.targetRow, targetCol = obj.targetCol;
 
@@ -114,9 +117,9 @@ function startDrawing(grid) {
             for(let j = 0; j < cols; j++) {
                 //TODO: remove some of the cases in the switch-case
                 switch(grid[i][j]) {
-                    case gridEncoding.freeSlot:
+                    case gridEncoding.freeNormal:
                         break;
-                    case gridEncoding.takenSlot:
+                    case gridEncoding.takenNormal:
                         let car = carRight;
                         //TODO: make this outside the draw
                         if (Math.random() < 0.5) {
@@ -128,6 +131,10 @@ function startDrawing(grid) {
                         context.fillStyle = "yellow";
                         context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
+                    case gridEncoding.exit:
+                        context.fillStyle = "yellow";
+                        context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        break;
                     case gridEncoding.road:
                         break;
                     case gridEncoding.border:
@@ -136,9 +143,17 @@ function startDrawing(grid) {
                         context.fillStyle = "#3df58d";
                         context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
-                    case gridEncoding.disabled:
+                    case gridEncoding.freeDisabled:
                         context.fillStyle = "blue";
                         context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        break;
+                    case gridEncoding.takenDisabled:
+                        context.fillStyle = "blue";
+                        context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        if (Math.random() < 0.5) {
+                            car = carLeft;
+                        }
+                        context.drawImage(car, j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                         break;
                     case gridEncoding.shortestPath:
                         break;
