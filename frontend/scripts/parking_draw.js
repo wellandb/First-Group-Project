@@ -28,19 +28,38 @@ function startDrawing(grid) {
     const pathEncoding = {
         up: 'U',
         down: 'D',
-        left: 'L', //this is given as additional info in the database - freeSpace coords
+        left: 'L',
         right: 'R'
     };
-
 
     const pathWidth = 8;
     const startRow3 = 0, startCol3 = 1;
     const startRow4 = 15, startCol4 = 4;
     const lastLineWithCars = 13; //TODO: use algorithm to find this
 
+    //testing
+
+    let newGrid = [];
+
+    for(let i = 0; i < rows; i ++) {
+        newGrid[i] = [];
+        for(let j = 0; j < cols; j ++) {
+            newGrid[i][j] = grid[i][j];
+        }
+    }
+
+    grid = newGrid;
+    grid[3][0] = gridEncoding.takenDisabled;
+
+/* //bug
+    for(let i = 2; i < 14; i ++) {
+        grid[i][0] = gridEncoding.takenNormal;
+        grid[i][2] = gridEncoding.takenNormal;
+    }
+    */
+
     const startRow = startRow3, startCol = startCol3;
 
-    //console.log(grid);
     const path1 = "#DDDDDRRRUUUL";
     const path2 = "#DDDDDRRRDDDL";
     const path3 = "#DDDDDDRRRDDDLLLDDDR";
@@ -57,13 +76,10 @@ function startDrawing(grid) {
 
     const lineWidth = 3, freeSpace = 4, carWidth = 50;
 
-    /*
-    ##################################
-    Important: do not touch this START; done some calculations so it looks like the presentation
-    */
+    // ##################################
+    // Important: do not touch this START; done some calculations so it looks like the presentation
 
-    //the carWidth/carHeight = 40/25 = 8/5 -> this is a proportion
-    //old 5/8
+    //the carWidth/carHeight = 40/25 = 8/5 -> this is a proportion //old was 5/8
     const carProportion = 1/2;
 
     const carHeight = carProportion * carWidth;
@@ -73,10 +89,8 @@ function startDrawing(grid) {
     canvas.width = cellWidth * cols;
     canvas.height = cellHeight * rows;
 
-    /*
-    Important: do not touch this END
-    ################################
-    */
+    // Important: do not touch this END
+    // ################################
 
     const carRight = new Image();
     carRight.src = "car_right.png"; //car looking to the right
@@ -112,15 +126,17 @@ function startDrawing(grid) {
         context.rotate(Math.PI);
         context.translate(-canvas.width/2, -canvas.height/2);
 
-        //TODO: use a container instead of adding offset everywhere
         for(let i = 0; i < rows; i++) {
             for(let j = 0; j < cols; j++) {
                 //TODO: remove some of the cases in the switch-case
+
+                let car = carRight;
+                //console.log(grid[i][j], i, j)
                 switch(grid[i][j]) {
                     case gridEncoding.freeNormal:
                         break;
                     case gridEncoding.takenNormal:
-                        let car = carRight;
+                        //let car = carRight;
                         //TODO: make this outside the draw
                         if (Math.random() < 0.5) {
                             car = carLeft;
@@ -150,6 +166,8 @@ function startDrawing(grid) {
                     case gridEncoding.takenDisabled:
                         context.fillStyle = "blue";
                         context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+                        //let car = carRight;
+                        //TODO: make this outside the draw
                         if (Math.random() < 0.5) {
                             car = carLeft;
                         }
@@ -165,7 +183,6 @@ function startDrawing(grid) {
                     context.fillStyle = "#3df58d";
                     context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                 }
-
 
                 //draws horizontal lines
                 if(grid[i][j] != gridEncoding.road && grid[i][j] != gridEncoding.entrance) {
@@ -187,13 +204,13 @@ function startDrawing(grid) {
 
         context.fillStyle = "#49c4f5";
         let row = startRow, col = startCol;
+
         /*//thiss adds circle also at the start point
         context.beginPath();
         context.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
         context.fill();*/
-        //console.log(path, path.length)
+
         for(let i = 1; i < path.length; i ++) {
-            //console.log("yo")
             let height = cellHeight, width = cellWidth, offsetRow = 0, offsetCol = 0;
             if(path[i] != path[i-1]) {
                 height = cellHeight / 2;
