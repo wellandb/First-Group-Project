@@ -28,8 +28,8 @@ disabled.addEventListener("change", function (e) {
 		.update({ disabled: d });
 });
 
-var stays = await db.collection("userData").doc(uid).get();
-stays = stays.data().stays;
+// var stays = await db.collection("userData").doc(uid).get();
+// stays = stays.data().stays;
 
 firebase.auth().onAuthStateChanged(function (u) {
 	if (u) {
@@ -48,28 +48,13 @@ firebase.auth().onAuthStateChanged(function (u) {
 					} else {
 						disabled.value = "0";
 					}
-				} else {
-					// doc.data() will be undefined in this case
-					console.log("No such document!");
-				}
-			})
-			.catch((error) => {
-				console.log("Error getting document:", error);
-			});
 
-		var docRefTicket = db.collection("userData").doc(uid);
-		docRefTicket
-			.get()
-			.then((doc) => {
-				if (doc.exists) {
-					let o = doc.data().tickets;
-					o = o[stays];
-					date.innerHTML = o.time;
-					cost.innerHTML = "£" + o.cost;
-					duration.innerHTML = o.duration;
-					end.innerHTML = o.end;
-					location.innerHTML = o.location;
-					start.innerHTML = o.start;
+					date.innerHTML = doc.data().time;
+					cost.innerHTML = "£" + doc.data().cost;
+					duration.innerHTML = doc.data().duration;
+					end.innerHTML = doc.data().end;
+					location.innerHTML = doc.data().location;
+					start.innerHTML = doc.data().start;
 				} else {
 					// doc.data() will be undefined in this case
 					console.log("No such document!");
@@ -80,30 +65,3 @@ firebase.auth().onAuthStateChanged(function (u) {
 			});
 	}
 });
-
-// addTicket();
-
-function addTicket() {
-	stays = stays + 1;
-	let path = "tickets." + stays;
-
-	let data = {
-		time: "14:12 | 24/03/2020",
-		cost: 7.64,
-		duration: "2:25",
-		end: "15:37",
-		parking_spot: "00",
-		start: "13:13",
-		location: "Manchester Arndale",
-	};
-
-	db.collection("userData")
-		.doc(uid)
-		.update({ [path]: data });
-
-	db.collection("userData")
-		.doc(uid)
-		.update({ [path]: { cost: 7 } });
-
-	db.collection("userData").doc(uid).set({ stays: stays });
-}
