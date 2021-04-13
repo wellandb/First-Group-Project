@@ -51,6 +51,10 @@ function addToDatabase(event) {
 				first_name: fn.value,
 				last_name: ln.value,
 				disabled: d,
+				cost: 0,
+				spot : "00",
+				start : "",
+				end: ""
 			})
 			.then((docRef) => {
 				console.log("Document written with ID: ");

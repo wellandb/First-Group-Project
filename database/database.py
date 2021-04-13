@@ -4,30 +4,31 @@ from firebase_admin import firestore
 
 # Use the application default credentials
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('/home/csimage/GitRepos/first_group_project/database/private_key.json')
+cred = credentials.Certificate(
+    '/home/csimage/GitRepos/first_group_project/database/private_key.json')
 firebase_admin.initialize_app(cred, {
-  'projectId': "park-ez-36240"
+    'projectId': "park-ez-36240"
 })
 
 db = firestore.client()
 
-doc_ref = db.collection(u'userData').document(u'janedoe')
-doc_ref.set({
-    u'email': u'janedoe@janedoe.janedoe',
-    u'first_name': u'Jane',
-    u'last_name': u'Doe',
-    u'plate_number': u'XXXXXXX',
-    u'disability_info': u'0'
-})
+# doc_ref = db.collection(u'userData').document(u'janedoe')
+# doc_ref.set({
+#     u'email': u'janedoe@janedoe.janedoe',
+#     u'first_name': u'Jane',
+#     u'last_name': u'Doe',
+#     u'plate_number': u'XXXXXXX',
+#     u'disability_info': u'0'
+# })
 
-doc_ref = db.collection(u'userTicket').document(u'exampleTicket')
-doc_ref.set({
-    u'userId': u'janedoe',
-    u'parking_location': u'XX',
-    u'start_time': u'00:00',
-    u'end_time': u'00:00',
-    u'price': u'5'
-})
+# doc_ref = db.collection(u'userTicket').document(u'exampleTicket')
+# doc_ref.set({
+#     u'userId': u'janedoe',
+#     u'parking_location': u'XX',
+#     u'start_time': u'00:00',
+#     u'end_time': u'00:00',
+#     u'price': u'5'
+# })
 
 doc_ref = db.collection(u'carParkSpaces').document(u'carParkA')
 doc_ref.set({
@@ -48,67 +49,67 @@ doc_ref.set({
             u'symbol': u'D'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'F'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'C'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'C'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -187,12 +188,12 @@ doc_ref.set({
             u'symbol': u'.'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -216,67 +217,67 @@ doc_ref.set({
             u'symbol': u'D'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'C'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'C'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'F'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -300,67 +301,67 @@ doc_ref.set({
             u'symbol': u'D'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'F'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'C'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -439,12 +440,12 @@ doc_ref.set({
             u'symbol': u'.'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'E'
         }
@@ -468,73 +469,73 @@ doc_ref.set({
             u'symbol': u'D'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'F'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'C'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'F'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'C'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
 
     }
-    
+
 })
 
 doc_ref = db.collection(u'carParkSpaces').document(u'carParkB')
@@ -556,67 +557,67 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'F'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'C'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'C'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -695,12 +696,12 @@ doc_ref.set({
             u'symbol': u'.'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -724,67 +725,67 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'C'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'C'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'F'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -808,67 +809,67 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'F'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'C'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -947,12 +948,12 @@ doc_ref.set({
             u'symbol': u'.'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'E'
         }
@@ -976,73 +977,73 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'F'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'C'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'F'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'C'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
 
     }
-    
+
 })
 
 doc_ref = db.collection(u'carParkSpaces').document(u'carParkC')
@@ -1064,67 +1065,67 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'F'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'C'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'C'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -1203,12 +1204,12 @@ doc_ref.set({
             u'symbol': u'.'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -1232,67 +1233,67 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'C'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'C'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'F'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -1316,67 +1317,67 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'C'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'F'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'C'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'F'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
@@ -1455,12 +1456,12 @@ doc_ref.set({
             u'symbol': u'.'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'E'
         }
@@ -1484,76 +1485,74 @@ doc_ref.set({
             u'symbol': u'C'
         },
 
-         u'4':
+        u'4':
         {
             u'symbol': u'C'
         },
 
-         u'5':
+        u'5':
         {
             u'symbol': u'F'
         },
 
-         u'6':
+        u'6':
         {
             u'symbol': u'C'
         },
 
-         u'7':
+        u'7':
         {
             u'symbol': u'F'
         },
 
-         u'8':
+        u'8':
         {
             u'symbol': u'F'
         },
 
-         u'9':
+        u'9':
         {
             u'symbol': u'F'
         },
 
-         u'10':
+        u'10':
         {
             u'symbol': u'F'
         },
 
-         u'11':
+        u'11':
         {
             u'symbol': u'F'
         },
 
-         u'12':
+        u'12':
         {
             u'symbol': u'F'
         },
 
-         u'13':
+        u'13':
         {
             u'symbol': u'C'
         },
 
-         u'14':
+        u'14':
         {
             u'symbol': u'F'
         },
 
-         u'15':
+        u'15':
         {
             u'symbol': u'.'
         },
 
-         u'16':
+        u'16':
         {
             u'symbol': u'-'
         }
 
     }
-    
+
 })
-
-
 
 
 doc_ref = db.collection(u'carParkData').document(u'exampleCarPark(A)')
@@ -1580,4 +1579,3 @@ doc_ref.set({
     u'5': u'100',
 
 })
-

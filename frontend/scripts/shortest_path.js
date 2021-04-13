@@ -1,6 +1,7 @@
 
 "use strict";
 
+
 function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDisabled) {
     isDisabled = isDisabled ? 1 : 0;
     const rows = grid.length;
@@ -32,6 +33,33 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
     console.log(targetRow, targetCol);
     */
 
+    var uid = sessionStorage.getItem("currentUser");
+    var targetR_string = targetRow.toString();
+    var targetC_string = targetCol.toString();
+    const userData  = db.collection("userData").doc(uid);
+	userData.update({
+		spot : targetC_string + targetR_string,
+	  }).then(() => {
+		console.log("Document successfully updated!");
+	  })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+        });
+
+    const spot = document.getElementById("spot");
+    userData.get().then((doc) => {
+        if (doc.exists) {
+            spot.innerText = doc.data().spot;
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+        })
+    .catch((error) => {
+        console.log("Error getting document:", error);
+    });
+            
     return {
         targetRow: targetRow,
         targetCol: targetCol,
