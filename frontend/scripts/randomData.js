@@ -50,30 +50,12 @@ function randomData(grid, gridEncoding) {
                 if (grid[row,collumn] == gridEncoding.freeNormal){
                     check = True;
                     grid[row,collumn]= gridEncoding.takenNormal;
-                    switch(collumn){
-                        case 0:
-                            collumnEncoded = 'A';
-                            break;
-                        case 1:
-                            collumnEncoded = 'B';
-                            break;
-                        case 2:
-                            collumnEncoded = 'C';
-                            break;
-                        case 3:
-                            collumnEncoded = 'D';
-                            break;
-                        case 4:
-                            collumnEncoded = 'E';
-                            break;
-                        case 5:
-                            collumnEncoded = 'F';
-                            break;
-                    }
+                    
                     // Update database here
                     carParkRef.ref(collumnEncoded + '/' + String(row)).set({
                         symbol: gridEncoding.takenNormal
                     });
+                    updateSpace(row, collumn, False, gridEncoding, True);
                 }
             }
         }
@@ -89,39 +71,20 @@ function randomData(grid, gridEncoding) {
                 if (grid[row,collumn] == gridEncoding.takenNormal){
                     check = True;
                     grid[row,collumn]= gridEncoding.freeNormal;
-                    switch(collumn){
-                        case 0:
-                            collumnEncoded = 'A';
-                            break;
-                        case 1:
-                            collumnEncoded = 'B';
-                            break;
-                        case 2:
-                            collumnEncoded = 'C';
-                            break;
-                        case 3:
-                            collumnEncoded = 'D';
-                            break;
-                        case 4:
-                            collumnEncoded = 'E';
-                            break;
-                        case 5:
-                            collumnEncoded = 'F';
-                            break;
-                    }
+                    
                     // Update database here
-                    carParkRef.ref(collumnEncoded + '/' + String(row)).set({
-                        symbol: gridEncoding.freeNormal
-                    });
+                    updateSpace(row, collumn, False, gridEncoding, True);
                 }
             }
         }
         startDrawing(grid);
     }
     
-    // Set interval to add car every few minutes
-    setInterval(addCars(), 60 * 1000); // 60 * 1000 milsec
-
     // Set interval to remove car every few minutes to stop overcrowding
     setInterval(removeCars(), 60 * 1000 * 2); // 60 * 1000 milsec
+
+    // Add cars after so that the new car isn't removed
+    // Set interval to add car every minute
+    setInterval(addCars(), 60 * 1000); // 60 * 1000 milsec
+
 }
