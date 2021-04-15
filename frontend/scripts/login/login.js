@@ -34,7 +34,6 @@ loginButton.addEventListener("click", (e) => {
 			// Signed in
 			var user = userCredential.user;
 			localStorage.setItem("loggedIn", true);
-			// console.log(user);
 			sessionStorage.setItem("currentUser", user.uid);
 			if (sessionStorage.getItem("next") == "account") {
 				window.location = "../../html/account.html";
@@ -90,7 +89,6 @@ function nextScreen(e) {
 }
 
 function login(e) {
-	console.log("Sign In Sequence Initiated");
 	switch (e.target.id) {
 		case "btn-google":
 			var provider = new firebase.auth.GoogleAuthProvider();

@@ -15,20 +15,12 @@ var user, email;
 firebase.auth().onAuthStateChanged(function (u) {
 	if (u) {
 		user = u;
-		console.log(user);
 		email = user.email;
-		console.log(email);
 		sessionStorage.removeItem("user");
 		fn.value = user.displayName.split(" ")[0];
 		ln.value = user.displayName.split(" ")[1];
 	}
 });
-
-// var email = user.email;
-// console.log(email);
-// sessionStorage.removeItem("user");
-// fn.value = user.displayName.split(" ")[0];
-// ln.value = user.displayName.split(" ")[1];
 
 function addToDatabase(event) {
 	event.preventDefault();
@@ -52,13 +44,11 @@ function addToDatabase(event) {
 				last_name: ln.value,
 				disabled: d,
 				cost: 0,
-				spot : "00",
-				start : "",
-				end: ""
+				spot: "00",
+				start: "",
+				end: "",
 			})
 			.then((docRef) => {
-				console.log("Document written with ID: ");
-
 				if (sessionStorage.getItem("next") == "account") {
 					window.location = "../account.html";
 				} else if (sessionStorage.getItem("carPark") == "A") {
