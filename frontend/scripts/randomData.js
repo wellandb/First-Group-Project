@@ -38,7 +38,7 @@ function randomData(grid, gridEncoding) {
 
     getDocument(db);
 
-    console.log('test');
+    randomCars = [];
 
 
     function addCars(){
@@ -52,39 +52,37 @@ function randomData(grid, gridEncoding) {
                     grid[row,collumn]= gridEncoding.takenNormal;
                     
                     // Update database here
-                    carParkRef.ref(collumnEncoded + '/' + String(row)).set({
-                        symbol: gridEncoding.takenNormal
-                    });
                     updateSpace(row, collumn, False, gridEncoding, True);
+                    randomCars.append((row,collumn))
+
                 }
             }
         }
         startDrawing(grid);
     }
 
-    function removeCars(){
-        for(i=0; i<2; i++){
-            check = False;
-            while(not(check)){
-                row = Math.floor(Math.random() * rows);
-                collumn = Math.floor(Math.random() * cols);
-                if (grid[row,collumn] == gridEncoding.takenNormal){
-                    check = True;
-                    grid[row,collumn]= gridEncoding.freeNormal;
+    function removeCar(){
+        check = False;
+        while(not(check)){
+            (row,collumn) = Math.floor(Math.random() * randomCars.length());
+
+            if (grid[row,collumn] == gridEncoding.takenNormal){
+                check = True;
+                grid[row,collumn]= gridEncoding.freeNormal;
                     
-                    // Update database here
-                    updateSpace(row, collumn, False, gridEncoding, True);
-                }
+                // Update database here
+                updateSpace(row, collumn, False, gridEncoding, False);
             }
         }
+        
         startDrawing(grid);
     }
     
-    // Set interval to remove car every few minutes to stop overcrowding
-    setInterval(removeCars(), 60 * 1000 * 2); // 60 * 1000 milsec
-
-    // Add cars after so that the new car isn't removed
     // Set interval to add car every minute
     setInterval(addCars(), 60 * 1000); // 60 * 1000 milsec
+
+    // Set interval to remove car every few minutes to stop overcrowding
+    setInterval(removeCar(), 60 * 1000 * 2); // 60 * 1000 milsec
+
 
 }
