@@ -13,3 +13,19 @@ Making a map using python (Jiayou)
 Find better pay images - with transparent background <br>
 Add the logo <br>
 Fix the style of the nav part <br>
+
+# LAST TODOS
+ <br> <br>
+Fix shortest path <br>
+Fix arrow <br>
+Block pages <br>
+Fix visualization <br>
+Fix the bug from summary to previous <br>
+Add summary <br>
+Fix Jayan css <br>
+Get rid of redundant files <br>
+Make confirm apperar after you have choosen a slot <br>
+Integrate Ben's part for random data <br>
+Use vw instead of pixels <br>
+Fix canvas <br>
+Fix paths <br>
