@@ -1,7 +1,6 @@
 "use strict";
 
 const carParkA = db.collection("carParkSpaces").doc("carParkA");
-const carParkAdata = db.collection("carParkData").doc("exampleCarPark(A)");
 let gridEncoding;
 const gridEncodingDB = db.collection("gridEncoding").doc("gridEncodingDoc");
 gridEncodingDB
@@ -22,8 +21,7 @@ gridEncodingDB
 carParkA
 .get()
 .then((doc) => {
-	let AcolList = [],
-		Acol = [];
+	let AcolList = [], Acol = [];
 	let grid = [];
 
 	for (let i = 0; i < 6; i++) {
@@ -58,6 +56,8 @@ carParkA
     const rows = grid.length, cols = grid[0].length;
 	let takenSpaces = countTakenSpaces(grid, gridEncoding, rows, cols);
 	updateTakenSpaces(takenSpaces);
+
+
 	//startDrawing(grid, gridEncoding, rows, cols); // add also start
 	//randomData(grid, gridEncoding);
 })
@@ -65,26 +65,3 @@ carParkA
 	console.log("Error getting document:", error);
 });
 
-function countTakenSpaces(grid, gridEncoding, rows, cols) {
-	let takenSpaces = 0;
-	for(let i = 0; i < rows; i++) {
-		for(let j = 0; j < cols; j++) {
-			if(grid[i][j] == gridEncoding.takenNormal || grid[i][j] == gridEncoding.takenDisabled) {
-				takenSpaces ++;
-			}
-		}
-	}
-	return takenSpaces;
-}
-
-function updateTakenSpaces(takenSpaces) {
-	carParkAdata
-	.update({
-		"taken_spaces": String(takenSpaces),
-	})
-	.then(() => {})
-	.catch((error) => {
-		// The document probably doesn't exist.
-		console.error("Error updating document: ", error);
-	});
-}

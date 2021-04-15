@@ -1,8 +1,21 @@
 "use strict";
 
+function updateTakenSpaces(takenSpaces) {
+    const carParkAdata = db.collection("carParkData").doc("exampleCarPark(A)");
+	carParkAdata
+	.update({
+		"taken_spaces": String(takenSpaces),
+	})
+	.then(() => {})
+	.catch((error) => {
+		// The document probably doesn't exist.
+		console.error("Error updating document: ", error);
+	});
+}
+
 function updateTargetSpot(targetRow, targetCol) {
 	let uid = sessionStorage.getItem("currentUser");
-	let targetR_string = targetRow.toString();
+	let targetR_string = (targetRow + 1).toString();
 	let targetC_string = String.fromCharCode(targetCol + 65);
     const userData = db.collection("userData").doc(uid);  ///check this
 	userData
@@ -37,26 +50,27 @@ function updateTargetSpotHTML(newSpot) {
     });
 }
 
-function updateSpace(targetCol, isDisabled, gridEncoding, isFree) {
+function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, takenSpaces, isFree) {
 	const carParkA = db.collection("carParkSpaces").doc("carParkA"); ///check this
-	targetCol_letter = String.fromCharCode(targetCol + 65);
+	let targetCol_letter = String.fromCharCode(targetCol + 65);
+    let targetRow_string = String(targetRow + 1);
+    let index = targetCol_letter + '.' + targetRow_string;
 	carParkA
     .update({
-        targetCol_letter: {
-            targetRow: {
-                symbol: getSymbol(isDisabled, gridEncoding, isFree),
-            },
-        },
-    })
+        [index]: {
+               "symbol": getSymbol(isDisabled, gridEncoding, isFree),
+            }
+    }, {merge:true})
     .then(() => {})
     .catch((error) => {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
     });
-	const carParkA = db.collection("carParkData").doc("exampleCarPark(A)"); ///check this
-	carParkA
+
+    const carParkAdata = db.collection("carParkData").doc("exampleCarPark(A)");
+	carParkAdata
     .update({
-        taken_spaces = taken_spaces + (isFree ? 1 : -1), //FIX
+        "taken_spaces" : (isFree ? firebase.firestore.FieldValue.increment(1) : firebase.firestore.FieldValue.increment(-1)), //FIX
     })
     .then(() => {})
     .catch((error) => {
