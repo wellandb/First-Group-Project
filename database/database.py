@@ -1565,7 +1565,7 @@ doc_ref.set({
 
 doc_ref = db.collection(u'carParkData').document(u'exampleCarPark(A)')
 doc_ref.set({
-    u'name': u'A',
+    u'name': u'Manchester NCP Piccadilly Plaza',
     u'location': u'xxxxx',
     u'parking_entrance': u'xxxxxxx',
     u'parking_exit': u'xxxxxxx',
