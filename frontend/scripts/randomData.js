@@ -71,14 +71,14 @@ function randomData(grid, gridEncoding) {
                             break;
                     }
                     // Update database here
+                    carParkRef.ref(collumnEncoded + '/' + String(row)).set({
+                        symbol: gridEncoding.takenNormal
+                    });
                 }
             }
         }
         startDrawing(grid);
     }
-    // Set interval to add car every few minutes
-    setInterval(addCars(), 60 * 1000); // 60 * 1000 milsec
-
 
     function removeCars(){
         for(i=0; i<2; i++){
@@ -110,10 +110,18 @@ function randomData(grid, gridEncoding) {
                             break;
                     }
                     // Update database here
+                    carParkRef.ref(collumnEncoded + '/' + String(row)).set({
+                        symbol: gridEncoding.freeNormal
+                    });
                 }
             }
         }
         startDrawing(grid);
     }
+    
+    // Set interval to add car every few minutes
+    setInterval(addCars(), 60 * 1000); // 60 * 1000 milsec
+
+    // Set interval to remove car every few minutes to stop overcrowding
     setInterval(removeCars(), 60 * 1000 * 2); // 60 * 1000 milsec
 }
