@@ -29,3 +29,5 @@ Integrate Ben's part for random data <br>
 Use vw instead of pixels <br>
 Fix canvas <br>
 Fix paths <br>
+Use let and const instead of var<br>
+Reduce copy past<br>
