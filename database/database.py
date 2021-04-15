@@ -12,24 +12,31 @@ firebase_admin.initialize_app(cred, {
 
 
 db = firestore.client()
+gridEncoding = {
+    "freeNormal": "F",
+    "freeDisabled": "D",
 
-# doc_ref = db.collection(u'userData').document(u'janedoe')
-# doc_ref.set({
-#     u'email': u'janedoe@janedoe.janedoe',
-#     u'first_name': u'Jane',
-#     u'last_name': u'Doe',
-#     u'plate_number': u'XXXXXXX',
-#     u'disability_info': u'0'
-# })
+    "takenNormal": "C",
+    "takenDisabled": "G",
 
-# doc_ref = db.collection(u'userTicket').document(u'exampleTicket')
-# doc_ref.set({
-#     u'userId': u'janedoe',
-#     u'parking_location': u'XX',
-#     u'start_time': u'00:00',
-#     u'end_time': u'00:00',
-#     u'price': u'5'
-# })
+    "entrance": "E",
+    "exit": "X",
+
+    "road": ".",
+    "border": "#",
+
+    "targetSlot": "T"
+}
+doc_ref = db.collection(u'gridEncoding').document(
+    u'gridEncodingDoc').set(gridEncoding)
+
+
+colKeys = ['A', 'B', 'C', 'D', 'E', 'F']
+
+rowKeys = []
+for i in range(1, 17):
+    rowKeys.append(str(i))
+
 
 doc_ref = db.collection(u'carParkSpaces').document(u'carParkA')
 doc_ref.set({
@@ -37,82 +44,82 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'D'
+            u'symbol': gridEncoding["freeDisabled"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
@@ -121,250 +128,250 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'E'
+            u'symbol': gridEncoding["entrance"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'4':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'5':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'6':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'7':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'8':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'9':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'10':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'11':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'12':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'13':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'14':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
 
-    u'C':
+    gridEncoding["takenNormal"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'D'
+            u'symbol': gridEncoding["freeDisabled"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
 
-    u'D':
+    gridEncoding["freeDisabled"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'D'
+            u'symbol': gridEncoding["freeDisabled"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
@@ -373,166 +380,166 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'4':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'5':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'6':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'7':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'8':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'9':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'10':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'11':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'12':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'13':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'14':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'E'
+            u'symbol': gridEncoding["exit"]
         }
 
     },
 
-    u'F':
+    gridEncoding["freeNormal"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'D'
+            u'symbol': gridEncoding["freeDisabled"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     }
@@ -545,82 +552,82 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
@@ -629,250 +636,250 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'E'
+            u'symbol': gridEncoding["entrance"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'4':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'5':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'6':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'7':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'8':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'9':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'10':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'11':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'12':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'13':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'14':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
 
-    u'C':
+    gridEncoding["takenNormal"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
 
-    u'D':
+    gridEncoding["freeDisabled"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
@@ -881,166 +888,166 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'4':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'5':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'6':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'7':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'8':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'9':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'10':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'11':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'12':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'13':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'14':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'E'
+            u'symbol': gridEncoding["exit"]
         }
 
     },
 
-    u'F':
+    gridEncoding["freeNormal"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     }
@@ -1053,82 +1060,82 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
@@ -1137,250 +1144,250 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'E'
+            u'symbol': gridEncoding["entrance"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'4':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'5':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'6':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'7':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'8':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'9':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'10':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'11':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'12':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'13':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'14':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
 
-    u'C':
+    gridEncoding["takenNormal"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
 
-    u'D':
+    gridEncoding["freeDisabled"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     },
@@ -1389,166 +1396,166 @@ doc_ref.set({
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'4':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'5':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'6':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'7':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'8':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'9':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'10':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'11':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'12':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'13':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'14':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'E'
+            u'symbol': gridEncoding["exit"]
         }
 
     },
 
-    u'F':
+    gridEncoding["freeNormal"]:
     {
         u'1':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         },
 
         u'2':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'3':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'4':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'5':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'6':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'7':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'8':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'12':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'13':
         {
-            u'symbol': u'C'
+            u'symbol': gridEncoding["takenNormal"]
         },
 
         u'14':
         {
-            u'symbol': u'F'
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'15':
         {
-            u'symbol': u'.'
+            u'symbol': gridEncoding["road"]
         },
 
         u'16':
         {
-            u'symbol': u'-'
+            u'symbol': gridEncoding["border"]
         }
 
     }
@@ -1579,20 +1586,4 @@ doc_ref.set({
     u'4': u'9.99',
     u'5': u'100',
 
-})
-
-doc_ref = db.collection(u'gridEncoding').document(u'gridEncoding').set({
-    u'freeNormal': u'F',
-    u'freeDisabled': u'D',
-
-    u'takenNormal': u'C',
-    u'takenDisabled': u'G',
-
-    u'entrance': u'E',
-    u'exit': u'X',
-
-    u'road': u'.',
-    u'border': '-',
-
-    u'targetSlot': 'T',
 })

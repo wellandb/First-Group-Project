@@ -1,13 +1,30 @@
 "use strict";
 
 const carParkA = db.collection("carParkSpaces").doc("carParkA");
+const carParkAdata = db.collection("carParkData").doc("exampleCarPark(A)");
+let gridEncoding;
+const gridEncodingDB = db.collection("gridEncoding").doc("gridEncodingDoc");
+gridEncodingDB
+.get()
+.then((doc) => {
+	if (doc.exists) {
+		gridEncoding = doc.data();
+	} else {
+		// doc.data() will be undefined in this case
+		console.warn("No such document!");
+	}
+})
+.catch((error) => {
+	console.error("Error getting document:", error);
+});
+
 
 carParkA
 .get()
 .then((doc) => {
 	let AcolList = [],
 		Acol = [];
-	//let grid = [];
+	let grid = [];
 
 	for (let i = 0; i < 6; i++) {
 		AcolList.push([]);
@@ -38,40 +55,12 @@ carParkA
 		// doc.data() will be undefined in this case
 		console.log("No such document!");
 	}
-	const gridEncoding = {
-		freeNormal: "F",
-		freeDisabled: "D",
-
-		takenNormal: "C",
-		takenDisabled: "G",
-
-		entrance: "E",
-		exit: "X",
-
-		road: ".",
-		border: "-",
-
-		targetSlot: "T", //this is given as additional info in the database - freeSpace coords
-	};
     const rows = grid.length, cols = grid[0].length;
-
-	
 	let takenSpaces = countTakenSpaces(grid, gridEncoding, rows, cols);
-	const carParkA = db.collection("carParkData").doc("exampleCarPark(A)");
-	carParkA
-		.update({
-			taken_spaces = takenSpaces,
-		})
-		.then(() => {})
-		.catch((error) => {
-			// The document probably doesn't exist.
-			console.error("Error updating document: ", error);
-		});
-
-	startDrawing(grid, gridEncoding, rows, cols); // add also start
-	randomData(grid, gridEncoding);
+	updateTakenSpaces(takenSpaces);
+	//startDrawing(grid, gridEncoding, rows, cols); // add also start
+	//randomData(grid, gridEncoding);
 })
-
 .catch((error) => {
 	console.log("Error getting document:", error);
 });
@@ -88,3 +77,14 @@ function countTakenSpaces(grid, gridEncoding, rows, cols) {
 	return takenSpaces;
 }
 
+function updateTakenSpaces(takenSpaces) {
+	carParkAdata
+	.update({
+		"taken_spaces": String(takenSpaces),
+	})
+	.then(() => {})
+	.catch((error) => {
+		// The document probably doesn't exist.
+		console.error("Error updating document: ", error);
+	});
+}
