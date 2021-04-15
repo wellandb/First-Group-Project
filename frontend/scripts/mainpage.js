@@ -113,6 +113,7 @@ function viewPrices(doc) {
 	A5.innerText = "£" + doc.data().five;
 }
 
+
 function viewCarPark(doc) {
 	taken_spaces.innerText = doc.data().taken_spaces;
 	total_spaces.innerText = doc.data().total_spaces;
@@ -140,6 +141,7 @@ function beginPark() {
 		window.location = "login/login.html";
 	}
 }
+
 // let data = {
 // 	half: 2.99,
 // 	one: 5.99,

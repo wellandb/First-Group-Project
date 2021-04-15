@@ -161,6 +161,16 @@ function fillSpace() {
 			// The document probably doesn't exist.
 			console.error("Error updating document: ", error);
 		});
+	const carParkA = db.collection("carParkData").doc("exampleCarPark(A)");
+	carParkA
+		.update({
+			taken_spaces = taken_spaces + 1,
+		})
+		.then(() => {})
+		.catch((error) => {
+			// The document probably doesn't exist.
+			console.error("Error updating document: ", error);
+		});
 }
 
 function removeSpace() {
@@ -181,4 +191,15 @@ function removeSpace() {
 			// The document probably doesn't exist.
 			console.error("Error updating document: ", error);
 		});
+		
+	const carParkA = db.collection("carParkData").doc("exampleCarPark(A)");
+	carParkA
+	.update({
+		taken_spaces = taken_spaces - 1,
+	})
+	.then(() => {})
+	.catch((error) => {
+		// The document probably doesn't exist.
+		console.error("Error updating document: ", error);
+	});
 }
