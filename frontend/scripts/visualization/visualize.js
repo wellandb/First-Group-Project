@@ -1,22 +1,9 @@
 
 "use strict";
 
-function visualize(grid, rows, cols, gridEncoding, isDisabled) {
-    //make fun to find entr and exit
-    const startRow = 0, startCol = 1;
-    const isParking = true;
-	
-	const obj = shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, isDisabled, isParking);
-	const path = obj.path;
-	const targetRow = obj.targetRow, targetCol = obj.targetCol;
+let gridRotation = [];
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.globalAlpha = 1;
-
-    context.translate(canvas.width/2, canvas.height/2);
-    context.rotate(Math.PI);
-    context.translate(-canvas.width/2, -canvas.height/2);
-
+function drawGrid(grid, rows, cols, gridEncoding) {
     for(let i = 0; i < rows; i++) {
         for(let j = 0; j < cols; j++) {
             //TODO: remove some of the cases in the switch-case
@@ -29,7 +16,7 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled) {
                 case gridEncoding.takenNormal:
                     //let car = carRight;
                     //TODO: make this outside the draw
-                    if (Math.random() < 0.5) {
+                    if (gridRotation[i][j]) {
                         car = carLeft;
                     }
                     context.drawImage(car, j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
@@ -39,7 +26,7 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled) {
                     context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                     break;
                 case gridEncoding.exit:
-                    context.fillStyle = "yellow";
+                    context.fillStyle = "orange";
                     context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                     break;
                 case gridEncoding.road:
@@ -59,7 +46,7 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled) {
                     context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
                     //let car = carRight;
                     //TODO: make this outside the draw
-                    if (Math.random() < 0.5) {
+                    if (gridRotation[i][j]) {
                         car = carLeft;
                     }
                     context.drawImage(car, j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
@@ -69,12 +56,6 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled) {
                 default:
                     break;
             }
-
-            if(i == targetRow && j == targetCol) {
-                context.fillStyle = "#3df58d";
-                context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
-            }
-
             //draws horizontal lines
             if(grid[i][j] != gridEncoding.road && grid[i][j] != gridEncoding.entrance && grid[i][j] != gridEncoding.exit) {
                 context.fillStyle = "black";
@@ -87,19 +68,26 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled) {
             }
         }
     }
-
     //TODO: make it to depend on the number of rows
     //draws vertical line
     context.fillStyle = "black";
     context.fillRect(cols/2*cellWidth - lineWidth/2, 2*cellHeight, lineWidth, (rows-4)*cellHeight);
+}
 
+function drawTarget(i, j, type) {
+    if(type === "parkCar") {
+        context.fillStyle = "#3df58d";
+    } else if(type === "showCar") {
+        context.fillStyle = "black";
+    } else { //"exit"
+        context.fillStyle = "red";
+    }
+    context.fillRect(j*cellWidth + (cellWidth - carWidth)/2, i*cellHeight + (cellHeight - carHeight)/2, carWidth, carHeight);
+}
+
+function drawArrow(startRow, startCol, path, pathEncoding) {
     context.fillStyle = "#49c4f5";
     let row = startRow, col = startCol;
-
-    /*//thiss adds circle also at the start point
-    context.beginPath();
-    context.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
-    context.fill();*/
 
     for(let i = 1; i < path.length; i ++) {
         let height = cellHeight, width = cellWidth, offsetRow = 0, offsetCol = 0;
@@ -213,5 +201,54 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled) {
         default:
     }
     context.fill();
-    //requestAnimationFrame(draw); //uncomment this when you add update feature for the grid
+}
+
+function visualize(grid, rows, cols, gridEncoding, isDisabled, type) {
+    //make fun to find entr and exit
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.globalAlpha = 1;
+    
+    if(type === "showParking") {
+        drawGrid(grid, rows, cols, gridEncoding);
+        return;
+    }
+
+    let startRow = 0, startCol = 1, isParking = true;
+
+    switch(type) {
+        case "showExit":
+            //start is from the db
+            //target is the exit
+            //you only have to find the path
+            startRow = 0;
+            startCol = 1;
+            isParking = false;
+            break;
+        case "parkCar":
+            //find shortest path
+            startRow = 0;
+            startCol = 1;
+            isParking = true;
+            break;
+        case "showCar":
+            //drawTarget(MainData.targetRow, MainData.targetCol, type);
+            //just highlight for now
+            /*
+            startRow = 0;
+            startCol = 1;
+            isParking = false;
+            */
+            break;
+        default:
+            console.error("Invalid drawing.");
+            break;
+    }
+
+    const obj = shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, isDisabled, isParking);
+    const path = obj.path;
+    const targetRow = obj.targetRow, targetCol = obj.targetCol;
+
+    drawTarget(targetRow, targetCol, type);
+    drawGrid(grid, rows, cols, gridEncoding);
+    drawArrow(startRow, startCol, path, pathEncoding);
 }

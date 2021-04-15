@@ -1,6 +1,8 @@
 
 "use strict";
 
+//to fix: give a path between start and target
+
 function shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, isDisabled, isParking) {
 	///INITIALIZATION
 	let distances = [];

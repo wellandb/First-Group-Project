@@ -14,7 +14,9 @@ function updateTakenSpaces(takenSpaces) {
 }
 
 function updateTargetSpot(targetRow, targetCol) {
-	let uid = sessionStorage.getItem("currentUser");
+	const uid = MainData.uid;
+    MainData.targetRow = targetRow;
+    MainData.targetCol = targetCol;
 	let targetR_string = (targetRow + 1).toString();
 	let targetC_string = String.fromCharCode(targetCol + 65);
     const userData = db.collection("userData").doc(uid);  ///check this
@@ -31,20 +33,7 @@ function updateTargetSpot(targetRow, targetCol) {
         console.error("Error updating document: ", error);
     });
 
-    const spot = document.getElementById("spot");
-	userData
-    .get()
-    .then((doc) => {
-        if (doc.exists) {
-            spot.innerHTML = newSpot;
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    })
-    .catch((error) => {
-        console.log("Error getting document:", error);
-    });
+    document.getElementById("spot").innerHTML = newSpot;
 }
 
 function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
@@ -82,35 +71,16 @@ function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
         return isDisabled ? gridEncoding.freeDisabled : gridEncoding.freeNormal;
     }
 }
-function updateDB(type){
-    var uid = sessionStorage.getItem("currentUser");
+function updateDB(type) {
+    if(type === 'confirm'){
+        updateSpace(MainData.targetRow, MainData.targetCol, MainData.isDisabled, MainData.gridEncoding, true);
+        window.location = "drawA2.html";
+    }else{ // "done"
+        updateSpace(MainData.targetRow, MainData.targetCol, MainData.isDisabled, MainData.gridEncoding, false);
+        window.location="../html/summary.html";
+    }
+    const uid = MainData.uid;
     const userData = db.collection("userData").doc(uid);
-    let spot = "";
-    userData
-    .get()
-    .then((doc) => {
-        if (doc.exists) {
-            spot = doc.data().spot;
-
-            let targetRow = Number(spot[1]) - 1;
-            let targetCol = spot.charCodeAt(0) - 'A'.charCodeAt();
-            console.log(spot, targetRow, targetCol);
-
-            if(type === 'Confirm'){
-                updateSpace(targetRow, targetCol, data.isDisabled, data.gridEncoding, true);
-                window.location = "drawA2.html";
-            }else{
-                updateSpace(targetRow, targetCol, data.isDisabled, data.gridEncoding, false);
-                window.location="../html/summary.html";
-            }
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    })
-    .catch((error) => {
-        console.log("Error getting document:", error);
-    });
     userData
     .update({
         "start": firebase.firestore.FieldValue.serverTimestamp(),

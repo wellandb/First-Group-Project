@@ -1,12 +1,15 @@
 
 "use strict";
 
-const data = {
+const MainData = {
 	grid: [],
 	rows: 0,
 	cols: 0,
 	isDisabled: false, 
-	gridEncoding: {}
+	gridEncoding: {},
+	targetRow: -1,
+	targetCol: -1,
+	uid: -1
 };
 
 function loadDataBaseInfo() {
@@ -20,7 +23,7 @@ function loadDataBaseInfo() {
 	function update() {
 		updates++;
 		if(updates == requiredUpdates) {
-			start(data);
+			start(MainData);
 		}
 	}
 
@@ -30,7 +33,7 @@ function loadDataBaseInfo() {
 		.get()
 		.then((doc) => {
 			if (doc.exists) {
-				data.gridEncoding = doc.data();
+				MainData.gridEncoding = doc.data();
 				update();
 			} else {
 				// doc.data() will be undefined in this case
@@ -78,9 +81,9 @@ function loadDataBaseInfo() {
 					grid.push(ArowString);
 				}
 
-				data.grid = grid;
-				data.rows = grid.length;
-				data.cols = grid[0].length;
+				MainData.grid = grid;
+				MainData.rows = grid.length;
+				MainData.cols = grid[0].length;
 				update();
 			} else {
 				// doc.data() will be undefined in this case
@@ -94,10 +97,11 @@ function loadDataBaseInfo() {
 	
 	function getIsDiabled() {
 		let uid = sessionStorage.getItem("currentUser");
+		MainData.uid = uid;
 		const userData = db.collection("userData").doc(uid);
 		userData.get().then((doc) => {
 			if (doc.exists) {
-				data.isDisabled = doc.data().disabled;
+				MainData.isDisabled = doc.data().disabled;
 				update();
 			} else {
 				// doc.data() will be undefined in this case

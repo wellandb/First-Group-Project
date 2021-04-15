@@ -68,7 +68,8 @@
 			</div>
 		</div>
 		  <div class="container-fluid" style="text-align: center;padding-bottom: 50px;">
-			<a class="btn btn-primary" onclick=updateDB('Confirm') role="button" style="background-color: #004AAD; color: white;">Confirm Spot</a>
+			<a class="btn btn-primary" onclick=HandleEvent("parkCar") role="button" style="background-color: #004AAD; color: white;">FIND CLOSEST FREE SPOT</a><br>
+			<a class="btn btn-primary" onclick=HandleEvent("confirmSpot") role="button" style="background-color: #004AAD; color: white; margin-top: 5px">CONFIRM</a>
 		</div>
     </body>
 
@@ -80,8 +81,7 @@
 		  </span>
 		</div>
 	</footer>
-	<!--
-	-->
+	
 	<script src="../scripts/database/get_database.js"></script>
 	<script src="../scripts/database/update_database.js"></script>
 

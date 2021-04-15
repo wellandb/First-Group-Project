@@ -32,11 +32,14 @@ const cellWidth = carWidth + 2*freeSpace + lineWidth, cellHeight = carHeight + 2
 //TODO: think about this
 canvas.width = cellWidth * 6;
 canvas.height = cellHeight * 16;
+context.translate(canvas.width/2, canvas.height/2);
+context.rotate(Math.PI);
+context.translate(-canvas.width/2, -canvas.height/2);
 
 // Important: do not touch this END
 // ################################
 
-function loadImages(grid, rows, cols, gridEncoding, isDisabled) {
+function loadImages(grid, rows, cols, gridEncoding, isDisabled, type) {
 	carRight.src = "car_right.png"; //car looking to the right
 	carLeft.src = "car_left.png"; //car looking to the left
 	/*carUp.src = "car_up.png"; //car looking to the right
@@ -47,7 +50,7 @@ function loadImages(grid, rows, cols, gridEncoding, isDisabled) {
 	function onImageLoaded (){
 		counter++;
 		if (counter == imagesCount) {
-			visualize(grid, rows, cols, gridEncoding, isDisabled);
+			visualize(grid, rows, cols, gridEncoding, isDisabled, type);
 		}
 	}
 	
