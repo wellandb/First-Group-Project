@@ -9,8 +9,6 @@ const end = document.getElementById("end");
 
 var user = sessionStorage.getItem("currentUser");
 
-var db = firebase.firestore();
-
 firebase.auth().onAuthStateChanged(function (u) {
 	if (u) {
 		uid = u.uid;

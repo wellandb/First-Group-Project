@@ -37,8 +37,6 @@ function updateTargetSpot(targetRow, targetCol) {
     .then((doc) => {
         if (doc.exists) {
             spot.innerHTML = newSpot;
-            console.log("here3:" , document.getElementById("spot").innerHTML);
-            console.log("here54:" , document.getElementById("spot").innerText);
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -51,7 +49,7 @@ function updateTargetSpot(targetRow, targetCol) {
 
 function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
 	const carParkA = db.collection("carParkSpaces").doc("carParkA"); ///check this
-	let targetCol_letter = String.fromCharCode(targetCol + 65);
+	let targetCol_letter = String.fromCharCode(targetCol + 'A'.charCodeAt());
     let targetRow_string = String(targetRow + 1);
     let index = targetCol_letter + '.' + targetRow_string;
 	carParkA
@@ -84,25 +82,27 @@ function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
         return isDisabled ? gridEncoding.freeDisabled : gridEncoding.freeNormal;
     }
 }
-function updateDB(){
+function updateDB(type){
     var uid = sessionStorage.getItem("currentUser");
     const userData = db.collection("userData").doc(uid);
     let spot = "";
     userData
     .get()
     .then((doc) => {
-        console.log("herer");
         if (doc.exists) {
             spot = doc.data().spot;
 
-            let spot_list = spot.split("");
-            let targetRow = spot_list[1] - 1;
-            let targetCol = charCodeAt(spot_list[0]);
+            let targetRow = Number(spot[1]) - 1;
+            let targetCol = spot.charCodeAt(0) - 'A'.charCodeAt();
             console.log(spot, targetRow, targetCol);
 
-            updateTargetSpot(targetRow, targetCol);
-            console.log("herer");
-            updateSpace(targetRow, targetCol, getIsDiabled(),getGridEncoding(), true);
+            if(type === 'Confirm'){
+                updateSpace(targetRow, targetCol, data.isDisabled, data.gridEncoding, true);
+                window.location = "drawA2.html";
+            }else{
+                updateSpace(targetRow, targetCol, data.isDisabled, data.gridEncoding, false);
+                window.location="../html/summary.html";
+            }
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -111,4 +111,15 @@ function updateDB(){
     .catch((error) => {
         console.log("Error getting document:", error);
     });
+    userData
+    .update({
+        "start": firebase.firestore.FieldValue.serverTimestamp(),
+        "cost" : 500,
+    })
+    .then(() => {})
+    .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
+
 }

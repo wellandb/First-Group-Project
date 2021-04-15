@@ -1,15 +1,15 @@
 
 "use strict";
 
-function loadDataBaseInfo() {
-	const data = {
-		grid: [],
-		rows: 0,
-		cols: 0,
-		isDisabled: false, 
-		gridEncoding: {}
-	};
+const data = {
+	grid: [],
+	rows: 0,
+	cols: 0,
+	isDisabled: false, 
+	gridEncoding: {}
+};
 
+function loadDataBaseInfo() {
 	let updates = 0;
 	const requiredUpdates = 3;
 
