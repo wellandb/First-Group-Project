@@ -48,6 +48,7 @@ function randomData(grid, gridEncoding) {
                 row = Math.floor(Math.random() * rows);
                 collumn = Math.floor(Math.random() * cols);
                 if (grid[row,collumn] == gridEncoding.freeNormal){
+                    check = True;
                     grid[row,collumn]= gridEncoding.takenNormal;
                     switch(collumn){
                         case 0:
@@ -86,6 +87,7 @@ function randomData(grid, gridEncoding) {
                 row = Math.floor(Math.random() * rows);
                 collumn = Math.floor(Math.random() * cols);
                 if (grid[row,collumn] == gridEncoding.takenNormal){
+                    check = True;
                     grid[row,collumn]= gridEncoding.freeNormal;
                     switch(collumn){
                         case 0:
