@@ -36,7 +36,9 @@ function updateTargetSpot(targetRow, targetCol) {
     .get()
     .then((doc) => {
         if (doc.exists) {
-            spot.innerText = newSpot;
+            spot.innerHTML = newSpot;
+            console.log("here3:" , document.getElementById("spot").innerHTML);
+            console.log("here54:" , document.getElementById("spot").innerText);
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -81,4 +83,32 @@ function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
         }
         return isDisabled ? gridEncoding.freeDisabled : gridEncoding.freeNormal;
     }
+}
+function updateDB(){
+    var uid = sessionStorage.getItem("currentUser");
+    const userData = db.collection("userData").doc(uid);
+    let spot = "";
+    userData
+    .get()
+    .then((doc) => {
+        console.log("herer");
+        if (doc.exists) {
+            spot = doc.data().spot;
+
+            let spot_list = spot.split("");
+            let targetRow = spot_list[1] - 1;
+            let targetCol = charCodeAt(spot_list[0]);
+            console.log(spot, targetRow, targetCol);
+
+            updateTargetSpot(targetRow, targetCol);
+            console.log("herer");
+            updateSpace(targetRow, targetCol, getIsDiabled(),getGridEncoding(), true);
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    })
+    .catch((error) => {
+        console.log("Error getting document:", error);
+    });
 }

@@ -14,7 +14,7 @@ function countTakenSpaces(grid, rows, cols, gridEncoding) {
 }
 
 function start(data) {
-    console.log(data);
+    console.error(data);
     const grid = data.grid;
     const rows = data.rows;
     const cols = data.cols;
