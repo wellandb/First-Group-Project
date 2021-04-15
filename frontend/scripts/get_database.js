@@ -5,7 +5,7 @@ const carParkA = db.collection("carParkSpaces").doc("carParkA");
 
 carParkA.get().then((doc) => {
     let AcolList = [], Acol = [];
-    let grid = [];
+    //let grid = [];
 
     for(let i = 0; i < 6; i ++) {
         AcolList.push([]);

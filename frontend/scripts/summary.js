@@ -6,7 +6,8 @@ const start = document.getElementById("start");
 const end = document.getElementById("end");
 
 // var user = localStorage.getItem("currentUser");
-var user = "test@gmail.com";
+
+var user = sessionStorage.getItem("currentUser");
 
 var db = firebase.firestore();
 

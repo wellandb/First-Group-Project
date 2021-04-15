@@ -1,8 +1,10 @@
 
 "use strict";
 
+let targetRow = -1, targetCol = -1, isDisabled;
 
 function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDisabled) {
+    window.isDisabled = isDisabled;
     isDisabled = isDisabled ? 1 : 0;
     const rows = grid.length;
     const cols = grid[0].length;
@@ -18,7 +20,7 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
     }
 
     let path = [];
-    let targetRow = -1, targetCol = -1, minDist = -1;
+    let minDist = -1;
     const deltaRow = [1, -1, 0, 0];
     const deltaCol = [0, 0, -1, 1];
 
@@ -35,7 +37,7 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
 
     var uid = sessionStorage.getItem("currentUser");
     var targetR_string = targetRow.toString();
-    var targetC_string = targetCol.toString();
+    var targetC_string = String.fromCharCode(targetCol + 65);
     const userData  = db.collection("userData").doc(uid);
 	userData.update({
 		spot : targetC_string + targetR_string,
@@ -59,6 +61,8 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
     .catch((error) => {
         console.log("Error getting document:", error);
     });
+
+
             
     return {
         targetRow: targetRow,
@@ -130,4 +134,40 @@ function shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDi
         }
         return where === gridEncoding["freeNormal"];
     }
+}
+
+function fillSpace(){
+    const carParkA = db.collection("carParkSpaces").doc("carParkA");
+    targetCol_letter = String.fromCharCode(targetCol + 65)
+    carParkA.update({
+		targetCol_letter: {
+            targetRow: {
+                symbol: isDisabled ? gridEncoding.takenDisabled : gridEncoding.takenNormal,
+            }
+        }
+	  }).then(() => {
+		console.log("Document successfully updated!");
+	  })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+        });
+}
+
+function removeSpace(){
+    const carParkA = db.collection("carParkSpaces").doc("carParkA");
+    targetCol_letter = String.fromCharCode(targetCol + 65)
+    carParkA.update({
+        targetCol_letter:{
+            targetRow: {
+                symbol: isDisabled ? gridEncoding.freeDisabled : gridEncoding.freeNormal,
+            }
+        }
+	  }).then(() => {
+		console.log("Document successfully updated!");
+	  })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+        });
 }

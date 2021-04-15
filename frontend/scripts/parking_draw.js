@@ -6,6 +6,22 @@ function startDrawing(grid) {
     const canvas = document.getElementById("canvas-id");
     const context = canvas.getContext("2d");
     //####################################
+    let isDisabled;
+    var uid = sessionStorage.getItem("currentUser");
+    const userData = db.collection("userData").doc(uid);
+    userData.get().then((doc) => {
+		if (doc.exists) {
+			isDisabled = doc.data().disabled;
+
+		} else {
+			// doc.data() will be undefined in this case
+			console.log("No such document!");
+		}
+	})
+	.catch((error) => {
+		console.log("Error getting document:", error);
+	});
+
     // TODO: get from the database
     const rows = grid.length, cols = grid[0].length;
 
@@ -65,7 +81,7 @@ function startDrawing(grid) {
     const path3 = "#DDDDDDRRRDDDLLLDDDR";
     const path4 = "#UUUUUULLLUUURRRUL";
 
-    const obj = shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, true);
+    const obj = shortestPath(grid, gridEncoding, pathEncoding, startRow, startCol, isDisabled);
     const path = obj.path;
     const targetRow = obj.targetRow, targetCol = obj.targetCol;
 
