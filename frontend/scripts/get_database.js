@@ -36,8 +36,23 @@ carParkA.get().then((doc) => {
         // doc.data() will be undefined in this case
         console.log("No such document!");
     }
+    const gridEncoding = {
+        freeNormal: 'F',
+        freeDisabled: 'D',
 
-    startDrawing(grid); // add also start
+        takenNormal: 'C',
+        takenDisabled: 'G',
+
+        entrance: 'E',
+        exit: 'X',
+
+        road: '.',
+        border: '-',
+
+        targetSlot: 'T' //this is given as additional info in the database - freeSpace coords
+    };
+    startDrawing(grid, gridEncoding); // add also start
+    randomData(grid, gridEncoding);
 
     // })
     // .catch((error) => {
