@@ -43,7 +43,7 @@
 				<a class="dropdown-item" href="summary.html">Summary</a>
         <a class="dropdown-item" onclick="
                 firebase.auth().signOut();
-                localStorage.setItem('loggedIn', false); " href="index.html">Sign Out</a>
+                localStorage.setItem('loggedIn', false);sessionStorage.clear() " href="index.html">Sign Out</a>
 			  </div>
 			</li>
 		  </ul>
@@ -51,7 +51,7 @@
 	  </nav>
 	<br>
 	<header>
-		<h1>SUMMARY</h1>
+		<h1>Summary</h1>
 	</header>
 	<br>
     <p style = "text-align: left; padding-left: 10%" id="date"> </p>

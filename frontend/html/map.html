@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/stylesheet.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="frontend/scripts/javascript.js"></script>
+    <script src="../scripts/javascript.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
     <script src="../scripts/firebase.js"></script>
@@ -28,7 +28,7 @@
               <a class="nav-link" href="index.html" style = "color: #004AAD;"><i class="fas fa-home" style="padding-right: 5px;"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style = "color: #004AAD;"><i class="fas fa-users" style="padding-right: 5px;"></i>About</a>
+              <a class="nav-link" href="aboutUs.html" style = "color: #004AAD;"><i class="fas fa-users" style="padding-right: 5px;"></i>About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="map.html" style = "color: #004AAD;"><i class="fas fa-location-arrow" style="padding-right: 5px;"></i>Locations</a>
@@ -43,14 +43,14 @@
                 <a class="dropdown-item" href="summary.html">Summary</a>
                 <a class="dropdown-item" onclick="
                 firebase.auth().signOut();
-                localStorage.setItem('loggedIn', false); " href="index.html">Sign Out</a>
+                localStorage.setItem('loggedIn', false); sessionStorage.clear()" href="index.html">Sign Out</a>
               </div>
             </li>
           </ul>
         </div>
       </nav>
       <div class="container-fluid">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qo1kIPNR-jt1RFP1FC_1WxGMy-ocoIIu" width="100%" height="400px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qo1kIPNR-jt1RFP1FC_1WxGMy-ocoIIu" width="100%" height="600px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
 </body>
