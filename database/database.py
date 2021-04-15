@@ -5,10 +5,11 @@ from firebase_admin import firestore
 # Use the application default credentials
 # Fetch the service account key JSON file contents
 cred = credentials.Certificate(
-    '/home/csimage/GitRepos/first_group_project/database/private_key.json')
+    'private_key.json')
 firebase_admin.initialize_app(cred, {
     'projectId': "park-ez-36240"
 })
+
 
 db = firestore.client()
 
@@ -1578,4 +1579,20 @@ doc_ref.set({
     u'4': u'9.99',
     u'5': u'100',
 
+})
+
+doc_ref = db.collection(u'gridEncoding').document(u'gridEncoding').set({
+    u'freeNormal': u'F',
+    u'freeDisabled': u'D',
+
+    u'takenNormal': u'C',
+    u'takenDisabled': u'G',
+
+    u'entrance': u'E',
+    u'exit': u'X',
+
+    u'road': u'.',
+    u'border': '-',
+
+    u'targetSlot': 'T',
 })
