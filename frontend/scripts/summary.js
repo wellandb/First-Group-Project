@@ -20,12 +20,14 @@ firebase.auth().onAuthStateChanged(function (u) {
 			.get()
 			.then((doc) => {
 				if (doc.exists) {
-					date.innerHTML = doc.data().time;
-					cost.innerHTML = "£" + doc.data().cost;
-					duration.innerHTML = doc.data().duration;
-					end.innerHTML = doc.data().end;
-					park_location.innerHTML = doc.data().location;
-					start.innerHTML = doc.data().start;
+					if (doc.data().time != undefined) {
+						date.innerHTML = doc.data().time;
+						cost.innerHTML = "£" + doc.data().cost;
+						duration.innerHTML = doc.data().duration;
+						end.innerHTML = doc.data().end;
+						location.innerHTML = doc.data().location;
+						start.innerHTML = doc.data().start;
+					}
 				} else {
 					// doc.data() will be undefined in this case
 					console.log("No such document!");
