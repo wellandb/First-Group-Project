@@ -1,4 +1,4 @@
-const db = firebase.firestore();
+
 var listenerPrices;
 var listenerCarPark;
 //car park proces constants

@@ -13,7 +13,7 @@
 		<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
-		<script src="../scripts/firebase.js"></script>
+		<script src="../scripts/database/firebase.js"></script>
 		<title>Park EZ</title>
 	</head>
     <body>
@@ -71,7 +71,6 @@
 			<a class="btn btn-primary" onclick = fillSpace() href="drawA2.html" role="button" style="background-color: #004AAD; color: white;">Confirm Spot</a>
 		</div>
     </body>
-	<script src= "../scripts/Draw_page.js"></script>
 
 	<footer class="footer mt-auto py-3 bg-light">
 		<div class="container">
@@ -82,11 +81,14 @@
 		</div>
 	</footer>
 	<!--
-	<script src="../scripts/shortest_path.js"></script>
-	<script src="../scripts/parking_draw.js"></script>
 	-->
-	<script src="../scripts/help_functions.js"></script>
-	<script src="../scripts/update_database.js"></script>
-	<script src="../scripts/get_database.js"></script>
+	<script src="../scripts/database/get_database.js"></script>
+	<script src="../scripts/database/update_database.js"></script>
+
+	<script src="../scripts/visualization/initialize_vis.js"></script>
+	<script src="../scripts/visualization/shortest_path.js"></script>
+	<script src="../scripts/visualization/visualize.js"></script>
+
+	<script src="../scripts/start.js"></script>
 
 </html>

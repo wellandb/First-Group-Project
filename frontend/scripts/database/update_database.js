@@ -18,9 +18,10 @@ function updateTargetSpot(targetRow, targetCol) {
 	let targetR_string = (targetRow + 1).toString();
 	let targetC_string = String.fromCharCode(targetCol + 65);
     const userData = db.collection("userData").doc(uid);  ///check this
+    const newSpot = targetC_string + targetR_string;
 	userData
     .update({
-        spot: targetC_string + targetR_string,
+        spot: newSpot,
     })
     .then(() => {
         console.log("Document successfully updated!");
@@ -30,10 +31,6 @@ function updateTargetSpot(targetRow, targetCol) {
         console.error("Error updating document: ", error);
     });
 
-    updateTargetSpotHTML(doc.data().spot);
-}
-
-function updateTargetSpotHTML(newSpot) {
     const spot = document.getElementById("spot");
 	userData
     .get()
@@ -50,7 +47,7 @@ function updateTargetSpotHTML(newSpot) {
     });
 }
 
-function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, takenSpaces, isFree) {
+function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
 	const carParkA = db.collection("carParkSpaces").doc("carParkA"); ///check this
 	let targetCol_letter = String.fromCharCode(targetCol + 65);
     let targetRow_string = String(targetRow + 1);

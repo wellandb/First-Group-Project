@@ -1,6 +1,6 @@
 const db = firebase.firestore();
 // var user = localStorage.getItem("currentUser");
-var user = "test@gmail.com";
+var user = sessionStorage.getItem("currentUser");
 const userTicket = db.collection("userTicket").doc(user);
 
 const cost = document.getElementById("cost");
