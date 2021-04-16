@@ -1,17 +1,12 @@
 function randomData(grid, rows, cols, gridEncoding) {
 
     freeSpaces =[];
-    takenSpaces = [];
     for(i=0; i<rows; i++){
         for(j=0; j<cols; j++){
             if (grid[i,j] == gridEncoding.freeNormal){
                 freeSpaces.append((i,j));
             }else if(grid[i,j] == gridEncoding.freeDisabled){
                 freeSpaces.append((i,j));
-            }else if(grid[i,j] == gridEncoding.takenNormal){
-                takenSpaces.append((i,j));
-            }else if(grid[i,j] == gridEncoding.takenDisabled){
-                takenSpaces.append((i,j));
             }
         }
     }
@@ -32,32 +27,33 @@ function randomData(grid, rows, cols, gridEncoding) {
                 updateSpace(row, collumn, true, gridEncoding, true);
             }
             randomCars.append((row,collumn));
-            takenSpaces.append(freeSpaces[space]);
             freeSpaces.remove(space);
         }
         redraw(grid, rows, cols, gridEncoding);
     }
 
     function removeCar(){
-        space = Math.floor(Math.random() * randomCars.length());
-        (row, collumn) = randomCars[space];
+        if(randomCars.length() != 0){
+            space = Math.floor(Math.random() * randomCars.length());
+            (row, collumn) = randomCars[space];
 
-        if (grid[row,collumn] == gridEncoding.takenNormal){
-            grid[row,collumn] = gridEncoding.freeNormal;
-                    
-            // Update database here
-            updateSpace(row, collumn, false, gridEncoding, false);
-            
-        }else if(grid[row,collumn] == gridEncoding.takenDisabled){
-            grid[row,collumn]= gridEncoding.freeDisabled;
+            if (grid[row,collumn] == gridEncoding.takenNormal){
+                grid[row,collumn] = gridEncoding.freeNormal;
+                        
+                // Update database here
+                updateSpace(row, collumn, false, gridEncoding, false);
                 
-            updateSpace(row, collumn, true, gridEncoding, false);
+            }else if(grid[row,collumn] == gridEncoding.takenDisabled){
+                grid[row,collumn]= gridEncoding.freeDisabled;
+                    
+                updateSpace(row, collumn, true, gridEncoding, false);
+                
+            }
+            freeSpaces.append(randomCars[space]);
+            randomCars.remove(space);
             
+            redraw(grid, rows, cols, gridEncoding);
         }
-        freeSpaces.append(randomCars[space]);
-        randomCars.remove(space);
-        
-        redraw(grid, rows, cols, gridEncoding);
     }
     
     // Set interval to add car every minute
