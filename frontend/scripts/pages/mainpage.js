@@ -138,15 +138,6 @@ function beginPark() {
 	} else {
 		if (localStorage.getItem("loggedIn") != true)
 			window.location = "login/login.html";
-		else {
-			if (sessionStorage.getItem("carPark") == "A") {
-				window.location = "../../parking-visualization/drawA.html";
-			} else if (sessionStorage.getItem("carPark") == "B") {
-				window.location = "../../parking-visualization/drawB.html";
-			} else if (sessionStorage.getItem("carPark") == "C") {
-				window.location = "../../parking-visualization/drawC.html";
-			}
-		}
 	}
 }
 
