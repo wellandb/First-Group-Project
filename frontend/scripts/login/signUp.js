@@ -44,13 +44,14 @@ function addToDatabase(event) {
 				first_name: fn.value,
 				last_name: ln.value,
 				disabled: d,
+				duration: 0,
 				cost: 0,
 				spot: "00",
 				start: "",
 				end: "",
 				date: "",
-				row : 0,
-				col : 0,
+				row: 0,
+				col: 0,
 			})
 			.then((docRef) => {
 				if (sessionStorage.getItem("next") == "account") {
