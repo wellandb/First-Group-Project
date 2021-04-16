@@ -1,53 +1,63 @@
 function randomData(grid, rows, cols, gridEncoding) {
 
+    freeSpaces =[];
+    takenSpaces = [];
+    for(i=0; i<rows; i++){
+        for(j=0; j<cols; j++){
+            if (grid[i,j] == gridEncoding.freeNormal){
+                freeSpaces.append((i,j));
+            }else if(grid[i,j] == gridEncoding.freeDisabled){
+                freeSpaces.append((i,j));
+            }else if(grid[i,j] == gridEncoding.takenNormal){
+                takenSpaces.append((i,j));
+            }else if(grid[i,j] == gridEncoding.takenDisabled){
+                takenSpaces.append((i,j));
+            }
+        }
+    }
 
     randomCars = [];
 
     function addCars(){
         for(i=0; i<2; i++){
-            check = False;
-            while(not(check)){
-                row = Math.floor(Math.random() * rows);
-                collumn = Math.floor(Math.random() * cols);
-                if (grid[row,collumn] == gridEncoding.freeNormal){
-                    check = True;
-                    grid[row,collumn]= gridEncoding.takenNormal;
-                    
-                    // Update database here
-                    updateSpace(row, collumn, false, gridEncoding, true);
-                    randomCars.append((row,collumn))
-                }else if(grid[row,collumn] == gridEncoding.freeDisabled){
-                    check = True;
-                    grid[row,collumn]= gridEncoding.takenDisabled;
-                    
-                    updateSpace(row, collumn, true, gridEncoding, true);
-                    randomCars.append((row,collumn))
-                }
+            space = Math.floor(Math.random() * freeSpaces.length());
+            row, collumn = freeSpaces[space];
+            if(grid[row,collumn] = gridEncoding.freeNormal){
+                grid[row,collumn] = gridEncoding.takenNormal;
+                // Update database here
+                updateSpace(row, collumn, false, gridEncoding, true);
             }
+            else{
+                grid[row,collumn] = gridEncoding.takenDisabled;
+                updateSpace(row, collumn, true, gridEncoding, true);
+            }
+            randomCars.append((row,collumn));
+            takenSpaces.append(freeSpaces[space]);
+            freeSpaces.remove(space);
         }
         redraw(grid, rows, cols, gridEncoding);
     }
 
     function removeCar(){
-        check = False;
-        while(not(check)){
-            (row,collumn) = Math.floor(Math.random() * randomCars.length());
+        space = Math.floor(Math.random() * randomCars.length());
+        (row, collumn) = randomCars[space];
 
-            if (grid[row,collumn] == gridEncoding.takenNormal){
-                check = True;
-                grid[row,collumn]= gridEncoding.freeNormal;
+        if (grid[row,collumn] == gridEncoding.takenNormal){
+            grid[row,collumn] = gridEncoding.freeNormal;
                     
-                // Update database here
-                updateSpace(row, collumn, false, gridEncoding, false);
-            }else if(grid[row,collumn] == gridEncoding.takenDisabled){
-                check = True;
-                grid[row,collumn]= gridEncoding.freeDisabled;
+            // Update database here
+            updateSpace(row, collumn, false, gridEncoding, false);
+            
+        }else if(grid[row,collumn] == gridEncoding.takenDisabled){
+            grid[row,collumn]= gridEncoding.freeDisabled;
                 
-                updateSpace(row, collumn, true, gridEncoding, false);
-                randomCars.append((row,collumn))
-            }
+            updateSpace(row, collumn, true, gridEncoding, false);
+            
         }
-       redraw(grid, rows, cols, gridEncoding);
+        freeSpaces.append(randomCars[space]);
+        randomCars.remove(space);
+        
+        redraw(grid, rows, cols, gridEncoding);
     }
     
     // Set interval to add car every minute
