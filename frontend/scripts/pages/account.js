@@ -49,8 +49,8 @@ firebase.auth().onAuthStateChanged(function (u) {
 						disabled.value = "0";
 					}
 
-					if (doc.data().time != undefined) {
-						date.innerHTML = doc.data().time;
+					if (doc.data().date != "" && doc.data().date != undefined) {
+						date.innerHTML = doc.data().date;
 						cost.innerHTML = "£" + doc.data().cost;
 						duration.innerHTML = doc.data().duration;
 						end.innerHTML = doc.data().end;
