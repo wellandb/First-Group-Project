@@ -30,7 +30,7 @@ function start(data) {
     updateTakenSpaces(takenSpaces);
 
     initializeGridRotation(rows, cols);
-    loadImages(grid, rows, cols, gridEncoding, isDisabled, "showParking"); // add also start
+    loadImages(grid, rows, cols, gridEncoding, isDisabled, "showParking");
     //randomData(grid, gridEncoding);
     
     function initializeGridRotation(rows, cols) {
@@ -84,7 +84,3 @@ function HandleEvent(type) {
             break;
     }
 }
-/*
-HandleEvent("showParking");
-<a class="btn btn-primary" onclick=HandleEvent("confirm") role="button" style="background-color: #004AAD; color: white;">Confirm Spot</a>
-*/

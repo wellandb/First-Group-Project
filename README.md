@@ -14,20 +14,25 @@ Find better pay images - with transparent background <br>
 Add the logo <br>
 Fix the style of the nav part <br>
 
+
+# LAST DONES
+Fix shortest path - DONE<br>
+Fix visualization - DONE<br>
+Fix paths - DONE<br>
+Add summary - DONE<br>
+Make confirm apperar after you have choosen a slot - DONE<br>
+Get rid of redundant files - KINDOF <br>
+
 # LAST TODOS
- <br> <br>
-Fix shortest path <br>
 Fix arrow <br>
-Block pages <br>
-Fix visualization <br>
-Fix the bug from summary to previous <br>
-Add summary <br>
-Fix Jayan css <br>
-Get rid of redundant files <br>
-Make confirm apperar after you have choosen a slot <br>
 Integrate Ben's part for random data <br>
-Use vw instead of pixels <br>
-Fix canvas <br>
-Fix paths <br>
+
 Use let and const instead of var<br>
+Fix Jayan css <br>
+--------------------------------
+Use vw instead of pixels <br>
 Reduce copy past<br>
+Fix canvas <br>
+Block pages <br>
+-------------------------------
+Fix the bug from summary to previous - WTF<br>

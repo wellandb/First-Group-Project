@@ -117,17 +117,41 @@ function drawArrow(startRow, startCol, path, pathEncoding) {
         }
 
         if(i + 1 >= path.length) {
+            if(i>0 && path[i] == path[i-1]) {
+                /*width = cellWidth/3;
+                height = cellHeight/3;
+                offsetCol = 1/6*cellWidth;
+                offsetRow = 1/6*cellHeight;*/
+                switch (path[i]) {
+                    case pathEncoding.up:
+                        context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
+                        break;
+                    case pathEncoding.down:
+                        context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
+                        break;
+                    case pathEncoding.right:
+                        offsetCol = 1/2*cellWidth;
+                        context.fillRect(col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width - 10, pathWidth);
+                        break;
+                    case pathEncoding.left:
+                        offsetCol = 1/6*cellWidth;
+                        context.fillRect(10 + col*cellWidth, row*cellHeight + (cellHeight - pathWidth) / 2, width, pathWidth);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
             width = cellWidth/3;
             height = cellHeight/3;
             offsetCol = 1/6*cellWidth;
             offsetRow = 1/6*cellHeight;
-
             switch (path[i]) {
                 case pathEncoding.up:
                     context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, offsetRow + row*cellHeight, pathWidth, height);
                     break;
                 case pathEncoding.down:
-                    context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, row*cellHeight, pathWidth, height);
+                    context.fillRect(col*cellWidth + (cellWidth - pathWidth) / 2, cellHeight/2 + row*cellHeight, pathWidth, height);
                     break;
                 case pathEncoding.right:
                     offsetCol = 1/2*cellWidth;
@@ -168,24 +192,28 @@ function drawArrow(startRow, startCol, path, pathEncoding) {
         context.arc(col*cellWidth + cellWidth / 2, row*cellHeight + cellHeight / 2, pathWidth / 2, 0, 2 * Math.PI);
         context.fill();
     }
-
+    //context.fillStyle = "red";
     context.beginPath();
     const arrowSize = cellHeight/2;
-    const arrowRow = row*cellHeight + cellHeight / 2;
+    let arrowRow = row*cellHeight + cellHeight / 2;
     let arrowCol;
     switch (path[path.length - 1]) {
-        /*//TODO: add vertical parkings
+        //TODO: add vertical parkings
         case pathEncoding.up:
-            context.moveTo(arrowCol, arrowRow);
-            context.lineTo(arrowCol - arrowSize/2, arrowRow - arrowSize);
-            context.lineTo(arrowCol + arrowSize/2, arrowRow - arrowSize);
-            break;
-        case pathEncoding.down:
+            arrowCol = col * cellWidth + cellWidth/2;
+            arrowRow = arrowRow - arrowSize - 10;
             context.moveTo(arrowCol, arrowRow);
             context.lineTo(arrowCol - arrowSize/2, arrowRow + arrowSize);
             context.lineTo(arrowCol + arrowSize/2, arrowRow + arrowSize);
             break;
-        */
+        case pathEncoding.down:
+            arrowCol = col * cellWidth + cellWidth/2;
+            arrowRow = arrowRow + arrowSize + 10;
+            context.moveTo(arrowCol, arrowRow);
+            context.lineTo(arrowCol - arrowSize/2, arrowRow - arrowSize);
+            context.lineTo(arrowCol + arrowSize/2, arrowRow - arrowSize);
+            break;
+        
         case pathEncoding.right:
             arrowCol = (col + 1) * cellWidth;
             context.moveTo(arrowCol, arrowRow);
@@ -204,8 +232,6 @@ function drawArrow(startRow, startCol, path, pathEncoding) {
 }
 
 function visualize(grid, rows, cols, gridEncoding, isDisabled, type) {
-    console.log(arguments)
-    //make fun to find entr and exit
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalAlpha = 1;
     
@@ -218,24 +244,16 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled, type) {
 
     switch(type) {
         case "showExit":
-            console.log("show exit")
-            //start is from the db
-            //target is the exit
-            //you only have to find the path
             startRow = MainData.targetRow;
             startCol = MainData.targetCol;
             targetRow = 15;
             targetCol = 4;
             break;
         case "parkCar":
-            //find shortest path
             startRow = 0;
             startCol = 1;
             break;
         case "showCar":
-            //drawTarget(MainData.targetRow, MainData.targetCol, type);
-            //just highlight for now
-
             startRow = 0;
             startCol = 1;
             targetRow = MainData.targetRow;
@@ -245,7 +263,6 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled, type) {
             console.error("Invalid drawing.");
             break;
     }
-    console.error("tytytytytytyt");
     const obj = shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, targetRow, targetCol, isDisabled, type);
     const path = obj.path;
     targetRow = obj.targetRow;
