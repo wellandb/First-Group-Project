@@ -132,6 +132,10 @@ function firebasePopup(provider) {
 						} else if (sessionStorage.getItem("carPark") == "C") {
 							window.location =
 								"../../parking-visualization/drawC.html";
+						} else if (
+							sessionStorage.getItem("next") == "summary"
+						) {
+							window.location = "../summary.html";
 						}
 					} else {
 						// doc.data() will be undefined in this case

@@ -58,6 +58,8 @@ function addToDatabase(event) {
 					window.location = "../../parking-visualization/drawB.html";
 				} else if (sessionStorage.getItem("carPark") == "C") {
 					window.location = "../../parking-visualization/drawC.html";
+				} else if (sessionStorage.getItem("next") == "summary") {
+					window.location = "../summary.html";
 				}
 			})
 			.catch((error) => {
