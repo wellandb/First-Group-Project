@@ -134,41 +134,41 @@ function difference() {
 	var n = d.toLocaleTimeString();
 	n = n.slice(0, -3);
 
-	let start = db
-		.collection("userData")
-		.doc(MainData.uid)
-		.get()
-		.then((doc) => {
-			return doc.data().start;
-		});
-	// let start = "10:15"
+	db
+	.collection("userData")
+	.doc(MainData.uid)
+	.get()
+	.then((doc) => {
+		let start = doc.data().start;
+		let startH = start.slice(0, 2);
+		let startM = start.slice(3, 5);
+	
+		let currentH = n.slice(0, 2);
+		let currentM = n.slice(3, 5);
+	
+		let hourDiff = currentH - startH;
+		let minDiff = currentH - startH;
+	
+		var date1 = new Date(null, null, null, currentH, currentM);
+		var date2 = new Date(null, null, null, startH, startM);
+		let mins = (date1 - date2) / 1000 / 60;
+	
+		let durationH = Math.ceil(mins / 60);
+		let durationM = (mins / 60 - Math.floor(mins / 60)) * 60;
+	
+		userData
+			.update({
+				cost: getCost(durationH),
+				end: n,
+			})
+			.then(() => {})
+			.catch((error) => {
+				// The document probably doesn't exist.
+				console.error("Error updating document: ", error);
+			});
+	});
+// let start = "10:15"
 
-	let startH = start.slice(0, 2);
-	let startM = start.slice(3, 5);
-
-	let currentH = n.slice(0, 2);
-	let currentM = n.slice(3, 5);
-
-	let hourDiff = currentH - startH;
-	let minDiff = currentH - startH;
-
-	var date1 = new Date(null, null, null, currentH, currentM);
-	var date2 = new Date(null, null, null, startH, startM);
-	let mins = (date1 - date2) / 1000 / 60;
-
-	let = durationH = Math.ceil(mins / 60);
-	let = durationM = (mins / 60 - Math.floor(mins / 60)) * 60;
-
-	userData
-		.update({
-			cost: getCost(durationH),
-			end: n,
-		})
-		.then(() => {})
-		.catch((error) => {
-			// The document probably doesn't exist.
-			console.error("Error updating document: ", error);
-		});
 }
 
 function getCost(d) {
