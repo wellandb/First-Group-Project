@@ -155,8 +155,14 @@ function difference() {
 			var date2 = new Date(null, null, null, startH, startM);
 			let mins = (date1 - date2) / 1000 / 60;
 
-			let durationH = Math.ceil(mins / 60);
-			let durationM = (mins / 60 - Math.floor(mins / 60)) * 60;
+			if (mins / 60 < 0.5) {
+				var durationH = 0;
+			} else {
+				var durationH = Math.ceil(mins / 60);
+			}
+			let durationM = Math.floor(
+				(mins / 60 - Math.floor(mins / 60)) * 60
+			);
 
 			let dir = "exampleCarPark(A)";
 			const uid = MainData.uid;
@@ -168,81 +174,107 @@ function difference() {
 					.get()
 					.then((doc) => {
 						let cost = doc.data().half;
+						if (Math.floor(durationM) < 10) {
+							durationM = "0" + Math.floor(durationM);
+						}
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: Math.floor(mins / 60) + ":" + durationM,
 						});
 						window.location = "../html/summary.html";
 					});
-			} else if (d <= 1) {
+			} else if (durationH <= 1) {
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = doc.data().one;
+						if (Math.floor(durationM) < 10) {
+							durationM = "0" + Math.floor(durationM);
+						}
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: Math.floor(mins / 60) + ":" + durationM,
 						});
 						window.location = "../html/summary.html";
 					});
-			} else if (d <= 2) {
+			} else if (durationH <= 2) {
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = doc.data().two;
+						if (Math.floor(durationM) < 10) {
+							durationM = "0" + Math.floor(durationM);
+						}
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: Math.floor(mins / 60) + ":" + durationM,
 						});
 						window.location = "../html/summary.html";
 					});
-			} else if (d <= 3) {
+			} else if (durationH <= 3) {
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = doc.data().three;
+						if (Math.floor(durationM) < 10) {
+							durationM = "0" + Math.floor(durationM);
+						}
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: Math.floor(mins / 60) + ":" + durationM,
 						});
 						window.location = "../html/summary.html";
 					});
-			} else if (d <= 4) {
+			} else if (durationH <= 4) {
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = doc.data().four;
+						if (Math.floor(durationM) < 10) {
+							durationM = "0" + Math.floor(durationM);
+						}
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: Math.floor(mins / 60) + ":" + durationM,
 						});
 						window.location = "../html/summary.html";
 					});
-			} else if (d>= 5){
+			} else if (durationH > 4) {
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = doc.data().five;
+						if (Math.floor(durationM) < 10) {
+							durationM = "0" + Math.floor(durationM);
+						}
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: Math.floor(mins / 60) + ":" + durationM,
 						});
 						window.location = "../html/summary.html";
 					});
-			}else{
+			} else {
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = 0;
+
 						userData.update({
-							cost: cost * durationH,
+							cost: cost,
 							end: n,
+							duration: 0,
 						});
 						window.location = "../html/summary.html";
 					});

@@ -44,7 +44,7 @@ function addToDatabase(event) {
 				first_name: fn.value,
 				last_name: ln.value,
 				disabled: d,
-				duration: 0,
+				duration: "0",
 				cost: 0,
 				spot: "00",
 				start: "",
