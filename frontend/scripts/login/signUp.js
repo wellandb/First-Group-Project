@@ -48,6 +48,7 @@ function addToDatabase(event) {
 				spot: "00",
 				start: "",
 				end: "",
+				date: "",
 			})
 			.then((docRef) => {
 				if (sessionStorage.getItem("next") == "account") {
