@@ -1,4 +1,3 @@
-
 var listenerPrices;
 var listenerCarPark;
 //car park proces constants
@@ -113,7 +112,6 @@ function viewPrices(doc) {
 	A5.innerText = "£" + doc.data().five;
 }
 
-
 function viewCarPark(doc) {
 	taken_spaces.innerText = doc.data().taken_spaces;
 	total_spaces.innerText = doc.data().total_spaces;
@@ -138,7 +136,17 @@ function beginPark() {
 	if (park.disabled) {
 		alert("Car Park Full! Park Elsewhere!");
 	} else {
-		window.location = "login/login.html";
+		if (localStorage.getItem("loggedIn") != true)
+			window.location = "login/login.html";
+		else {
+			if (sessionStorage.getItem("carPark") == "A") {
+				window.location = "../../parking-visualization/drawA.html";
+			} else if (sessionStorage.getItem("carPark") == "B") {
+				window.location = "../../parking-visualization/drawB.html";
+			} else if (sessionStorage.getItem("carPark") == "C") {
+				window.location = "../../parking-visualization/drawC.html";
+			}
+		}
 	}
 }
 
