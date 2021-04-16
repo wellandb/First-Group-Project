@@ -22,16 +22,18 @@ function updateTargetSpot(targetRow, targetCol) {
 	const userData = db.collection("userData").doc(uid); ///check this
 	const newSpot = targetC_string + targetR_string;
 	userData
-		.update({
-			spot: newSpot,
-		})
-		.then(() => {
-			console.log("Document successfully updated!");
-		})
-		.catch((error) => {
-			// The document probably doesn't exist.
-			console.error("Error updating document: ", error);
-		});
+	.update({
+		spot: newSpot,
+		row: targetRow,
+		col: targetCol
+	})
+	.then(() => {
+		console.log("Document successfully updated!");
+	})
+	.catch((error) => {
+		// The document probably doesn't exist.
+		console.error("Error updating document: ", error);
+	});
 
 	document.getElementById("spot").innerHTML = newSpot;
 }
@@ -59,9 +61,7 @@ function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
 	const carParkAdata = db.collection("carParkData").doc("exampleCarPark(A)");
 	carParkAdata
 		.update({
-			taken_spaces: isFree
-				? firebase.firestore.FieldValue.increment(1)
-				: firebase.firestore.FieldValue.increment(-1), //FIX
+			taken_spaces: isFree ? firebase.firestore.FieldValue.increment(1) : firebase.firestore.FieldValue.increment(-1), //FIX
 		})
 		.then(() => {})
 		.catch((error) => {
@@ -71,40 +71,21 @@ function updateSpace(targetRow, targetCol, isDisabled, gridEncoding, isFree) {
 
 	function getSymbol(isDisabled, gridEncoding, isFree) {
 		if (isFree) {
-			return isDisabled
-				? gridEncoding.takenDisabled
-				: gridEncoding.takenNormal;
+			return isDisabled ? gridEncoding.takenDisabled : gridEncoding.takenNormal;
 		}
 		return isDisabled ? gridEncoding.freeDisabled : gridEncoding.freeNormal;
 	}
 }
 function updateDB(type) {
 	if (type === "confirm") {
-		updateSpace(
-			MainData.targetRow,
-			MainData.targetCol,
-			MainData.isDisabled,
-			MainData.gridEncoding,
-			true
-		);
-		window.location = "drawA2.html";
-	} else {
-		// "done"
-		updateSpace(
-			MainData.targetRow,
-			MainData.targetCol,
-			MainData.isDisabled,
-			MainData.gridEncoding,
-			false
-		);
-		window.location = "../html/summary.html";
-	}
-	const uid = MainData.uid;
-	const userData = db.collection("userData").doc(uid);
-	userData
+		updateSpace(MainData.targetRow, MainData.targetCol, MainData.isDisabled, MainData.gridEncoding, true);
+		
+		const uid = MainData.uid;
+		const userData = db.collection("userData").doc(uid);
+		userData
 		.update({
 			start: firebase.firestore.FieldValue.serverTimestamp(),
-			cost: 500,
+			cost: 0,
 			date: getDate(),
 		})
 		.then(() => {})
@@ -112,6 +93,13 @@ function updateDB(type) {
 			// The document probably doesn't exist.
 			console.error("Error updating document: ", error);
 		});
+		
+		window.location = "drawA2.html";
+	} else {
+		// "done"
+		updateSpace(MainData.targetRow, MainData.targetCol, MainData.isDisabled, MainData.gridEncoding, false);
+		window.location = "../html/summary.html";
+	}
 }
 
 function getDate() {

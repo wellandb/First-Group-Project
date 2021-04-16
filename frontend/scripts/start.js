@@ -21,6 +21,11 @@ function start(data) {
     const gridEncoding = MainData.gridEncoding;
     const isDisabled = MainData.isDisabled;
 
+    if(data.spot !== "") {
+        document.getElementById("spot").innerHTML = data.spot;
+        
+    }
+
     const takenSpaces = countTakenSpaces(grid, rows, cols, gridEncoding);
     updateTakenSpaces(takenSpaces);
 
@@ -46,9 +51,6 @@ function start(data) {
         }
     }
 }
-
-
-loadDataBaseInfo();
 
 function HandleEvent(type) {
 

@@ -204,6 +204,7 @@ function drawArrow(startRow, startCol, path, pathEncoding) {
 }
 
 function visualize(grid, rows, cols, gridEncoding, isDisabled, type) {
+    console.log(arguments)
     //make fun to find entr and exit
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalAlpha = 1;
@@ -213,40 +214,42 @@ function visualize(grid, rows, cols, gridEncoding, isDisabled, type) {
         return;
     }
 
-    let startRow = 0, startCol = 1, isParking = true;
+    let startRow = 0, startCol = 1, targetRow = -1, targetCol = -1;
 
     switch(type) {
         case "showExit":
+            console.log("show exit")
             //start is from the db
             //target is the exit
             //you only have to find the path
-            startRow = 0;
-            startCol = 1;
-            isParking = false;
+            startRow = MainData.targetRow;
+            startCol = MainData.targetCol;
+            targetRow = 15;
+            targetCol = 4;
             break;
         case "parkCar":
             //find shortest path
             startRow = 0;
             startCol = 1;
-            isParking = true;
             break;
         case "showCar":
             //drawTarget(MainData.targetRow, MainData.targetCol, type);
             //just highlight for now
-            /*
+
             startRow = 0;
             startCol = 1;
-            isParking = false;
-            */
+            targetRow = MainData.targetRow;
+            targetCol = MainData.targetCol;
             break;
         default:
             console.error("Invalid drawing.");
             break;
     }
-
-    const obj = shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, isDisabled, isParking);
+    console.error("tytytytytytyt");
+    const obj = shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, targetRow, targetCol, isDisabled, type);
     const path = obj.path;
-    const targetRow = obj.targetRow, targetCol = obj.targetCol;
+    targetRow = obj.targetRow;
+    targetCol = obj.targetCol;
 
     drawTarget(targetRow, targetCol, type);
     drawGrid(grid, rows, cols, gridEncoding);

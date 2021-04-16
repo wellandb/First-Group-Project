@@ -9,16 +9,26 @@ const MainData = {
 	gridEncoding: {},
 	targetRow: -1,
 	targetCol: -1,
+	spot: "",
 	uid: -1
 };
 
-function loadDataBaseInfo() {
-	let updates = 0;
-	const requiredUpdates = 3;
+function loadDataBaseInfo(page) {
+	let updates = 0, requiredUpdates;
+	MainData.uid = sessionStorage.getItem("currentUser");
 
+	if(page == "A") {
+		requiredUpdates = 3;
+		getGridEncoding();
+		getGridData();
+		getIsDiabled();
+		return;
+	}
+	requiredUpdates = 4;
 	getGridEncoding();
 	getGridData();
 	getIsDiabled();
+	getTargetSpot();
 
 	function update() {
 		updates++;
@@ -44,7 +54,29 @@ function loadDataBaseInfo() {
 			console.error("Error getting document:", error);
 		});
 	}
-	
+
+	function getTargetSpot() {
+		const uid = MainData.uid;
+		const userData = db.collection("userData").doc(uid);
+		userData
+		.get()
+		.then((doc) => {
+			if (doc.exists) {
+				MainData.spot = doc.data().spot;
+				MainData.targetRow = doc.data().row;
+				MainData.targetCol = doc.data().col;
+				update();
+				//localStorage.setItem(spot,assigned_spot);
+			} else {
+				// doc.data() will be undefined in this case
+				console.warn("No such document!");
+			}
+		})
+		.catch((error) => {
+			console.error("Error getting document:", error);
+		});
+	}
+
 	function getGridData() {
 		const carParkA = db.collection("carParkSpaces").doc("carParkA");
 
@@ -53,11 +85,11 @@ function loadDataBaseInfo() {
 		.then((doc) => {
 			let grid = [];
 			let AcolList = [], Acol = [];
-	
+
 			for (let i = 0; i < 6; i++) {
 				AcolList.push([]);
 			}
-	
+
 			if (doc.exists) {
 				console.warn("Does exist")
 				const keys = ["A", "B", "C", "D", "E", "F"];
@@ -75,9 +107,9 @@ function loadDataBaseInfo() {
 					for (let j = 0; j < 6; j++) {
 						Arow.push(AcolList[j][i]);
 					}
-	
+
 					let ArowString = Arow.join("").toString();
-	
+
 					grid.push(ArowString);
 				}
 
@@ -94,10 +126,9 @@ function loadDataBaseInfo() {
 			console.log("Error getting document:", error);
 		});
 	}
-	
+
 	function getIsDiabled() {
-		let uid = sessionStorage.getItem("currentUser");
-		MainData.uid = uid;
+		const uid = MainData.uid;
 		const userData = db.collection("userData").doc(uid);
 		userData.get().then((doc) => {
 			if (doc.exists) {
@@ -112,5 +143,4 @@ function loadDataBaseInfo() {
 			console.log("Error getting document:", error);
 		});
 	}
-	
 }
