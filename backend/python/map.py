@@ -5,6 +5,19 @@ class parking_map():
         self.l=[['1' for i in range(width)] for j in range(height)]
         self.width=width
         self.height=height
+        for i in range(height):
+            for j in range(width):
+                if i == 0:
+                    self.l[i][j] = "0"
+                elif i == 13:
+                    self.l[i][j] = "0"
+                else:
+                    if j == 1:
+                        self.l[i][j] = "0"
+                    elif j == 4:
+                        self.l[i][j] = "0"
+
+
 
     # prints a representation of the car park to the terminal
     def show_map(self):
@@ -20,10 +33,27 @@ class parking_map():
                     a+='may be occupied '
                 elif b=='4':
                     a+='exit            '
+                elif b=='0':
+                    a+='path            '
                 else:
                     a+='error           '
             print(a)
             print('\n')
+
+    def checkLocation(self, location):
+        j=location[0]
+        i=location[1]
+        return self.l[i][j]
+
+    def checkFull(self):
+        check = True
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.l[i][j] == "1":
+                    check = False
+        return check
+
+
 
     # takes in a tuple and changes the state of that coordinate of the car park, if no stat given default to 2 or occupied
     def change_state(self,location,state='2'):
@@ -97,11 +127,3 @@ class parking_map():
             way=[]
             return way
         return dijkstra(start_loc,end_loc)
-
-
-a=parking_map(10,10)
-a.show_map()
-a.change_state((1,2),'2')
-a.pick_location('seq')
-a.show_map()
-#a normal sequence:pick map, then ensure location, then again

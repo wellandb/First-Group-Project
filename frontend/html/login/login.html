@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Park EZ</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../../css/login.css">
 
     <!-- FIREBASE PACKAGES -->
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
 
@@ -24,8 +23,7 @@
     <h1 id='name'>Waiting For Login...</h1>
     <h1 id='email'></h1> -->
 
-    <script type="module" src="../scripts/login.js"></script>
-    <script src="../scripts/firebase.js"></script>
+    
 
     <div class="container">
         <div class="forms-container">
@@ -33,21 +31,27 @@
                 
                 <!-- <h1 class="company">Park EZ</h1> -->
 
-                <form action="" class="sign-in-form">
+                <form action="" class="sign-in-form" >
 
+                    <h1>Park EZ</h1>
                     <h2 class="title">Sign In</h2>
 
                     <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Email">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="txt-email" placeholder="Email">
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password">
+                        <input type="password" id="pass-password" placeholder="Password">
                     </div>
+                    
+                    <p id="error-In" class="error"></p>
 
-                    <input type="submit" value="Login" class="btn solid">
+                    <div class="signin-signup-container">
+                        <input type="submit" value="Login" id='btn-login' class="btn solid">
+                        <input type="submit" value="SignUp" id='btn-sign-up-screen' class="btn solid">
+                    </div>
 
                     <p class="social-text">Or Sign In Via Social Platform</p>
                     <div class="social-media">
@@ -66,37 +70,27 @@
 
                 </form>
 
-                <form action="" class="sign-up-form">
 
+                <form action="" class="sign-up-form">
+                    <h1>Park EZ</h1>
                     <h2 class="title">Sign Up</h2>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Email">
+                        <input type="text" id="sign-up-email" placeholder="Email">
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password">
+                        <input type="password" id="pass-password1" placeholder="Password">
                     </div>
-
-                    <input type="submit" value="Sign Up" class="btn solid">
-
-                    <p class="social-text">Or Sign Up Via Social Platform</p>
-                    <div class="social-media">
-
-                        <a href="#" class="social-icon" id="btn-google">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon" id="btn-twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon" id="btn-facebook">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="pass-password2" placeholder="Password">
                     </div>
+                    <p class="error2"></p>
 
+                    <input type="submit" class="btn" id="btn-sign-up" value="Sign Up" />
                 </form>
 
             </div>
@@ -105,7 +99,8 @@
         <div class="panels-container"></div>
         
     </div>
-
+    <script type="module" src="../../scripts/login/login.js"></script>
+    <script src="../../scripts/database/firebase.js"></script>
 </body>
 
 </html>
