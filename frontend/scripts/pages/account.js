@@ -54,7 +54,6 @@ firebase.auth().onAuthStateChanged(function (u) {
 						cost.innerHTML = "£" + doc.data().cost;
 						duration.innerHTML = doc.data().duration;
 						end.innerHTML = doc.data().end;
-						location.innerHTML = doc.data().location;
 						start.innerHTML = doc.data().start;
 					}
 				} else {
