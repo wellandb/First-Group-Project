@@ -1572,7 +1572,7 @@ doc_ref.set({
     u'mall_entrance': u'xxxxxxx',
     u'mall_exit': u'xxxxxxx',
     u'total_spaces': 100,
-    u'disability_spaces': 7,
+    u'disability_spaces': 4,
     u'taken_spaces': 14
 })
 
@@ -1585,7 +1585,7 @@ doc_ref.set({
     u'mall_entrance': u'xxxxxxx',
     u'mall_exit': u'xxxxxxx',
     u'total_spaces': 100,
-    u'disability_spaces': 7,
+    u'disability_spaces': 4,
     u'taken_spaces': 14
 })
 
@@ -1598,7 +1598,7 @@ doc_ref.set({
     u'mall_entrance': u'xxxxxxx',
     u'mall_exit': u'xxxxxxx',
     u'total_spaces': 100,
-    u'disability_spaces': 7,
+    u'disability_spaces': 4,
     u'taken_spaces': 0
 })
 
