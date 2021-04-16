@@ -208,7 +208,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["takenNormal"]:
+    u'C':
     {
         u'1':
         {
@@ -292,7 +292,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["freeDisabled"]:
+    u'D':
     {
         u'1':
         {
@@ -460,7 +460,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["freeNormal"]:
+    u'F':
     {
         u'1':
         {
@@ -716,7 +716,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["takenNormal"]:
+    u'C':
     {
         u'1':
         {
@@ -800,7 +800,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["freeDisabled"]:
+    u'D':
     {
         u'1':
         {
@@ -968,7 +968,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["freeNormal"]:
+    u'F':
     {
         u'1':
         {
@@ -1070,17 +1070,17 @@ doc_ref.set({
 
         u'3':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'4':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'5':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'6':
@@ -1100,12 +1100,12 @@ doc_ref.set({
 
         u'9':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'11':
@@ -1224,7 +1224,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["takenNormal"]:
+    u'C':
     {
         u'1':
         {
@@ -1238,22 +1238,22 @@ doc_ref.set({
 
         u'3':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'4':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'5':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'6':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
@@ -1263,7 +1263,7 @@ doc_ref.set({
 
         u'8':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'9':
@@ -1308,7 +1308,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["freeDisabled"]:
+    u'D':
     {
         u'1':
         {
@@ -1322,17 +1322,17 @@ doc_ref.set({
 
         u'3':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'4':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'5':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'6':
@@ -1352,7 +1352,7 @@ doc_ref.set({
 
         u'9':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'10':
@@ -1476,7 +1476,7 @@ doc_ref.set({
 
     },
 
-    gridEncoding["freeNormal"]:
+    u'F':
     {
         u'1':
         {
@@ -1490,12 +1490,12 @@ doc_ref.set({
 
         u'3':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'4':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'5':
@@ -1505,7 +1505,7 @@ doc_ref.set({
 
         u'6':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'7':
@@ -1540,7 +1540,7 @@ doc_ref.set({
 
         u'13':
         {
-            u'symbol': gridEncoding["takenNormal"]
+            u'symbol': gridEncoding["freeNormal"]
         },
 
         u'14':
@@ -1574,6 +1574,32 @@ doc_ref.set({
     u'total_spaces': 100,
     u'disability_spaces': 7,
     u'taken_spaces': 14
+})
+
+doc_ref = db.collection(u'carParkData').document(u'exampleCarPark(B)')
+doc_ref.set({
+    u'name': u'Manchester Arndale',
+    u'location': u'xxxxx',
+    u'parking_entrance': u'xxxxxxx',
+    u'parking_exit': u'xxxxxxx',
+    u'mall_entrance': u'xxxxxxx',
+    u'mall_exit': u'xxxxxxx',
+    u'total_spaces': 100,
+    u'disability_spaces': 7,
+    u'taken_spaces': 14
+})
+
+doc_ref = db.collection(u'carParkData').document(u'exampleCarPark(C)')
+doc_ref.set({
+    u'name': u'Intu Trafford Centre',
+    u'location': u'xxxxx',
+    u'parking_entrance': u'xxxxxxx',
+    u'parking_exit': u'xxxxxxx',
+    u'mall_entrance': u'xxxxxxx',
+    u'mall_exit': u'xxxxxxx',
+    u'total_spaces': 100,
+    u'disability_spaces': 7,
+    u'taken_spaces': 0
 })
 
 doc_ref = db.collection(u'prices').document(u'examplePrices')
