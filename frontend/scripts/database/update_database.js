@@ -87,6 +87,22 @@ function updateDB(type) {
 			MainData.gridEncoding,
 			true
 		);
+		const uid = MainData.uid;
+		const userData = db.collection("userData").doc(uid);
+		var d = new Date();
+		var n = d.toLocaleTimeString();
+		n = n.slice(0, -3);
+		userData
+			.update({
+				start: n,
+				cost: 0,
+				date: getDate(),
+			})
+			.then(() => {})
+			.catch((error) => {
+				// The document probably doesn't exist.
+				console.error("Error updating document: ", error);
+			});
 		window.location = "drawA2.html";
 	} else {
 		// "done"
@@ -100,19 +116,6 @@ function updateDB(type) {
 		difference();
 		window.location = "../html/summary.html";
 	}
-	const uid = MainData.uid;
-	const userData = db.collection("userData").doc(uid);
-	userData
-		.update({
-			start: firebase.firestore.FieldValue.serverTimestamp(),
-			cost: 500,
-			date: getDate(),
-		})
-		.then(() => {})
-		.catch((error) => {
-			// The document probably doesn't exist.
-			console.error("Error updating document: ", error);
-		});
 }
 
 function getDate() {
