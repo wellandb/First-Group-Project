@@ -5,7 +5,6 @@
 
 function shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, startCol, targetRow, targetCol, isDisabled, type) {
 	///INITIALIZATION
-	console.log(arguments, type)
 	let distances = [];
 	let parents = [];
 	for (let i = 0; i < rows; i++) {
@@ -24,19 +23,13 @@ function shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, st
 
 	///CALL ALGORITHMS
 	bfs(startRow, startCol);
-	console.error("WHY NOT");
-	console.log(distances)
-	console.log(parents)
-	console.error("STUPID");
 	findPath(startRow, startCol, targetRow, targetCol);
 
 	///UPDATE DATABASE
-	if(type === "parkCar") {
-		console.log("asdfghjklkjhgfdsdfghjklkjhgfdsdfghjklkjhgfxz");
+	if(type === "parkCar" && MainData.targetRow == -1) {
 		updateTargetSpot(targetRow, targetCol);
+		document.getElementById("control-buttons").innerHTML += `<br><a class="btn btn-primary" onclick=HandleEvent("confirmSpot") role="button" style="background-color: #004AAD; color: white; margin-top: 5px">CONFIRM</a>`
 	}
-
-	console.warn(type, "maaaaaaaaaaaaan");
 	
 	return {
 		targetRow: targetRow,
@@ -71,7 +64,7 @@ function shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, st
 						minDist = distances[row][col];
 						targetRow = row;
 						targetCol = col;
-						console.log("update")
+						//console.log("update")
 					}
 				}else if(type === "showCar" && row === targetRow && col === targetCol) {
 					distances[row][col] = distances[curr.row][curr.col] + 1;
@@ -82,7 +75,6 @@ function shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, st
 	}
 
 	function findPath(startRow, startCol, targetRow, targetCol) {
-		//console.error(startRow, startCol, targetRow, targetCol, "find path START");
 		let curr = { row: targetRow, col: targetCol };
 		while (curr.row !== startRow || curr.col !== startCol) {
 			let parent = parents[curr.row][curr.col];
@@ -104,14 +96,6 @@ function shortestPath(grid, rows, cols, gridEncoding, pathEncoding, startRow, st
 	}
 
 	function canGoHere(where, isDisabled, type) {
-/*		if (type == "showExit") {
-			return where == gridEncoding.exit;
-		}
-
-		if (type == "showCar") {
-			return where == gridEncoding.exit;
-		}
-*/
 		if (type !== "parkCar") {
 			return false;
 		}
