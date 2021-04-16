@@ -222,12 +222,24 @@ function difference() {
 						});
 						window.location = "../html/summary.html";
 					});
-			} else {
+			} else if (d>= 5){
 				db.collection("prices")
 					.doc(dir)
 					.get()
 					.then((doc) => {
 						let cost = doc.data().five;
+						userData.update({
+							cost: cost * durationH,
+							end: n,
+						});
+						window.location = "../html/summary.html";
+					});
+			}else{
+				db.collection("prices")
+					.doc(dir)
+					.get()
+					.then((doc) => {
+						let cost = 0;
 						userData.update({
 							cost: cost * durationH,
 							end: n,
