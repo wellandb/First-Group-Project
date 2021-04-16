@@ -1,17 +1,12 @@
 function randomData(grid, rows, cols, gridEncoding) {
 
     freeSpaces =[];
-    takenSpaces = [];
     for(i=0; i<rows; i++){
         for(j=0; j<cols; j++){
             if (grid[i,j] == gridEncoding.freeNormal){
                 freeSpaces.append((i,j));
             }else if(grid[i,j] == gridEncoding.freeDisabled){
                 freeSpaces.append((i,j));
-            }else if(grid[i,j] == gridEncoding.takenNormal){
-                takenSpaces.append((i,j));
-            }else if(grid[i,j] == gridEncoding.takenDisabled){
-                takenSpaces.append((i,j));
             }
         }
     }
@@ -32,7 +27,6 @@ function randomData(grid, rows, cols, gridEncoding) {
                 updateSpace(row, collumn, true, gridEncoding, true);
             }
             randomCars.append((row,collumn));
-            takenSpaces.append(freeSpaces[space]);
             freeSpaces.remove(space);
         }
         redraw(grid, rows, cols, gridEncoding);
