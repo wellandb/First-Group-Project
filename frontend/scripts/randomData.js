@@ -33,25 +33,27 @@ function randomData(grid, rows, cols, gridEncoding) {
     }
 
     function removeCar(){
-        space = Math.floor(Math.random() * randomCars.length());
-        (row, collumn) = randomCars[space];
+        if(randomCars.length() != 0){
+            space = Math.floor(Math.random() * randomCars.length());
+            (row, collumn) = randomCars[space];
 
-        if (grid[row,collumn] == gridEncoding.takenNormal){
-            grid[row,collumn] = gridEncoding.freeNormal;
-                    
-            // Update database here
-            updateSpace(row, collumn, false, gridEncoding, false);
-            
-        }else if(grid[row,collumn] == gridEncoding.takenDisabled){
-            grid[row,collumn]= gridEncoding.freeDisabled;
+            if (grid[row,collumn] == gridEncoding.takenNormal){
+                grid[row,collumn] = gridEncoding.freeNormal;
+                        
+                // Update database here
+                updateSpace(row, collumn, false, gridEncoding, false);
                 
-            updateSpace(row, collumn, true, gridEncoding, false);
+            }else if(grid[row,collumn] == gridEncoding.takenDisabled){
+                grid[row,collumn]= gridEncoding.freeDisabled;
+                    
+                updateSpace(row, collumn, true, gridEncoding, false);
+                
+            }
+            freeSpaces.append(randomCars[space]);
+            randomCars.remove(space);
             
+            redraw(grid, rows, cols, gridEncoding);
         }
-        freeSpaces.append(randomCars[space]);
-        randomCars.remove(space);
-        
-        redraw(grid, rows, cols, gridEncoding);
     }
     
     // Set interval to add car every minute
