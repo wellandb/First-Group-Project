@@ -4,7 +4,7 @@ function updateTakenSpaces(takenSpaces) {
     const carParkAdata = db.collection("carParkData").doc("exampleCarPark(A)");
 	carParkAdata
 	.update({
-		"taken_spaces": String(takenSpaces),
+		"taken_spaces": takenSpaces,
 	})
 	.then(() => {})
 	.catch((error) => {

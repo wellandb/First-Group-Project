@@ -1571,9 +1571,9 @@ doc_ref.set({
     u'parking_exit': u'xxxxxxx',
     u'mall_entrance': u'xxxxxxx',
     u'mall_exit': u'xxxxxxx',
-    u'total_spaces': u'100',
-    u'disability_spaces': u'7',
-    u'taken_spaces': u'0'
+    u'total_spaces': 100,
+    u'disability_spaces': 7,
+    u'taken_spaces': 14
 })
 
 doc_ref = db.collection(u'prices').document(u'examplePrices')
