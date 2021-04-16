@@ -36,6 +36,7 @@ function addToDatabase(event) {
 	if (fn.value == "" || ln.value == "") {
 		errorLog.innerHTML = "Enter first and last name!";
 	} else {
+		localStorage.setItem("loggedIn", true);
 		db.collection("userData")
 			.doc(sessionStorage.getItem("currentUser"))
 			.set({
