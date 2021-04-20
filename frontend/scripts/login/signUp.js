@@ -9,6 +9,10 @@ document.getElementById("submit").addEventListener("click", addToDatabase);
 buttonYes.addEventListener("click", setSelected);
 buttonNo.addEventListener("click", setSelected);
 
+alert(
+	"By signing up, I consent to Park EZ storing and using my data to access and use the services provided by Park EZ"
+);
+
 var db = firebase.firestore();
 // let user = JSON.parse(sessionStorage.getItem("user"));
 var user, email;
