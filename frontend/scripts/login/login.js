@@ -20,10 +20,6 @@ const container = document.querySelector(".container");
 var db = firebase.firestore();
 localStorage.clear();
 
-alert(
-	"By signing up and logging in, I consent to Park EZ storing and using my data to access and use the services provided by Park EZ"
-);
-
 loginButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	let email = txtEmail.value;
@@ -90,6 +86,9 @@ signUpButton.addEventListener("click", (e) => {
 function nextScreen(e) {
 	e.preventDefault();
 	container.classList.add("sign-up-mode");
+	alert(
+		"By signing up and creating an account, I consent to Park EZ storing and using the data provided to access and use the services provided by Park EZ"
+	);
 }
 
 function login(e) {
